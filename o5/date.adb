@@ -5,9 +5,9 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 package body date is
 
-    type Date_Type is record
-        Day, Month, Year : Integer;
-    end record;
+--    type Date_Type is record
+--        Day, Month, Year : Integer;
+--    end record;
 
     procedure Get (D : in out Date_Type) is
         Bound   : Integer := 30;
