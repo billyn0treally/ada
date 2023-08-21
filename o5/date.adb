@@ -9,17 +9,17 @@ package body date is
 --        Day, Month, Year : Integer;
 --    end record;
 
-    procedure Get (D : in out Date_Type) is
+    procedure Get (D: in out Date_Type) is
         Bound   : Integer := 30;
         F       : Float;
     begin
-        Get(S_3);
-        if S_3 (5) /= '-' or S_3 (8) /= '-' then
+        Get(S);
+        if S (5) /= '-' or S (8) /= '-' then
             raise Format_Error;
         end if;
-        D.Year  := Integer'Value (S_3 (1 .. 4));
-        D.Month := Integer'Value (S_3 (6 .. 7));
-        D.Day   := Integer'Value (S_3 (9 .. 10));
+        D.Year  := Integer'Value (S(1 .. 4));
+        D.Month := Integer'Value (S(6 .. 7));
+        D.Day   := Integer'Value (S(9 .. 10));
         if D.Year < 1532 or D.Year > 9000 then
             raise Year_Error;
         end if;
