@@ -5,21 +5,21 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 package body date is
 
---    type Date_Type is record
---        Day, Month, Year : Integer;
---    end record;
-
-    procedure Get (D: in out Date_Type) is
+    procedure Get (D : out Date_Type) is
         Bound   : Integer := 30;
+        S       : String(1..10);
         F       : Float;
     begin
         Get(S);
         if S (5) /= '-' or S (8) /= '-' then
             raise Format_Error;
         end if;
+
+        -- string to integer
         D.Year  := Integer'Value (S(1 .. 4));
         D.Month := Integer'Value (S(6 .. 7));
         D.Day   := Integer'Value (S(9 .. 10));
+
         if D.Year < 1532 or D.Year > 9000 then
             raise Year_Error;
         end if;
@@ -43,7 +43,7 @@ package body date is
     end Get;
 
     -- Output whole date array and insert zeros where needed
-    procedure Put ( D : in Date_Arr_Type ) is
+    procedure Put (D : in Date_Type) is
     begin
         for  i in D'Range loop
 
