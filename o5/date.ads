@@ -3,8 +3,8 @@ package date is
     type Date_Type is private;
     --type Date_Arr_Type is private;
 
-    procedure Get(D : in out Date_Type);
-    procedure Put(D : in out Date_Type);
+    procedure Get(D : out Date_Type);
+    procedure Put(D : in Date_Type);
 
 --    function Next_Date(D : in Date_Type) return Date_Type;
 --    function Previous_Date(D : in Date_Type) return Date_Type;

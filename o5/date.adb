@@ -5,42 +5,96 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 package body date is
 
+    function IsLeap ( D : in Date_Type) return Boolean is
+        Leap : Boolean;
+    begin
+
+      if (D.Year mod 4) = 0 then
+	 Leap := True;
+	 elsif (D.Year mod 100) = 0 then
+	    Leap := False;
+	    elsif (D.Year mod 400) = 0 then
+	       Leap := True;
+	    end if;
+   	 --end if;
+      --end if;
+      return Leap;
+    end IsLeap;
+      
+
+    procedure FormatCheck (S : in String; A, B : in Integer) is
+    begin
+        for I in A .. B loop
+            if S(I) < '0' or S(I) > '9' then
+                raise Format_Error;
+            end if;
+        end loop;
+    end FormatCheck;
+
+    function DayCheck (D : in Date_Type) return Boolean is
+    begin
+        if D.Day > 31 or D.Day <= 00 then
+            return False;
+
+        elsif D.Day = 31 and (D.Month = 4 or D.Month = 6 or D.Month = 9 or D.Month = 11) then
+            return False;
+
+        elsif D.Day > 29 and D.Month = 2 then
+            return False;
+
+        elsif D.Day > 29 and D.Month = 2 and IsLeap(D) = False then
+            return False;
+
+        else
+            return True;
+    end if;
+end DayCheck;
+
+    function MonthCheck (D : in Date_Type) return Boolean is
+    begin
+        if D.Month > 12 or D.Month <= 0 then
+            return False;
+        else
+            return True;
+        end if;
+    end MonthCheck;
+
+
+    procedure DateCheck (D : in Date_Type) is
+    begin
+        if D.Year < 100 or D.Year >= 10000 then
+            raise Format_Error;
+        elsif D.Year < 1532 or D.Year > 9000 then
+            raise Year_Error;
+        elsif MonthCheck(D) = False then
+            raise Month_Error;
+        elsif DayCheck(D) = False then
+            raise Day_Error;
+        end if;
+    end DateCheck;
+
     procedure Get (D : out Date_Type) is
-        Bound   : Integer := 30;
         S       : String(1..10);
-        F       : Float;
     begin
         Get(S);
         if S (5) /= '-' or S (8) /= '-' then
             raise Format_Error;
         end if;
 
+        -- Check formatting
+        FormatCheck(S,1,4);
+        FormatCheck(S,6,7);
+        FormatCheck(S,9,10);
+
         -- string to integer
         D.Year  := Integer'Value (S(1 .. 4));
         D.Month := Integer'Value (S(6 .. 7));
         D.Day   := Integer'Value (S(9 .. 10));
 
-        if D.Year < 1532 or D.Year > 9000 then
-            raise Year_Error;
-        end if;
-        if D.Month > 12 then
-            raise Month_Error;
-        end if;
-        if D.Month mod 2 = 0 then
-            Bound := 31;
-        end if;
-        if D.Month = 2 then
-            -- Ex: 1992 % 4 = 0 -> 1*0/3 = 0.0 -> Ceil(0.0) = 0
-            -- Ex: 1995 % 4 = 3 -> 1*3/6 = 0.5 -> Ceil(0.5) = 1
-            F := Float'Ceiling(1.0 * (Float (D.Year mod 4)) / 
-            (3.0 + (Float (D.Year mod 4))));
-            -- 29 - 1 -> Not Leap-Year, 29 - 0 -> Leap-Year   
-            Bound := 29 - Integer (F);
-        end if;
-        if D.Day > Bound then
-            raise Day_Error;
-        end if;
+        -- Cheack values for casting    
+        DateCheck(D);
     end Get;
+
 
     -- Output whole date array and insert zeros where needed
     procedure Put (D : in Date_Type) is
