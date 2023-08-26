@@ -9,18 +9,18 @@ package body date is
         Leap : Boolean;
     begin
 
-      if (D.Year mod 4) = 0 then
-	 Leap := True;
-	 elsif (D.Year mod 100) = 0 then
-	    Leap := False;
-	    elsif (D.Year mod 400) = 0 then
-	       Leap := True;
-	    end if;
-   	 --end if;
-      --end if;
-      return Leap;
+        if (D.Year mod 4) = 0 then
+            Leap := True;
+        elsif (D.Year mod 100) = 0 then
+            Leap := False;
+        elsif (D.Year mod 400) = 0 then
+            Leap := True;
+        end if;
+        --end if;
+        --end if;
+        return Leap;
     end IsLeap;
-      
+
 
     procedure FormatCheck (S : in String; A, B : in Integer) is
     begin
@@ -47,8 +47,8 @@ package body date is
 
         else
             return True;
-    end if;
-end DayCheck;
+        end if;
+    end DayCheck;
 
     function MonthCheck (D : in Date_Type) return Boolean is
     begin
@@ -109,6 +109,17 @@ end DayCheck;
         end if;
         Put(D.Day, Width => 1);
     end Put;
+
+    function Next_Date (D : in Date_Type) return Date_Type is
+        Next : Date_Type;
+    begin
+        Next := D;
+        Next.D := D +1;
+        if DateCheck (D) = True then
+            return Next;
+        else Next := D;
+    end if;
+
 
 end date;
 
