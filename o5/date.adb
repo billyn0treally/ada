@@ -95,55 +95,20 @@ end DayCheck;
         DateCheck(D);
     end Get;
 
-
-    -- Output whole date array and insert zeros where needed
     procedure Put (D : in Date_Type) is
     begin
-        for  i in D'Range loop
-
-            Put ("Datum nummer ");
-            Put (I, 0);
-            Put (": ");
-            Put (D (I).Year, 0);
-            Put ("-");
-            if (D (I).Month / 10) < 1 then
-                Put ("0");
-            end if;
-            Put (D (I).Month, 0);
-            Put ("-");
-            if (D (I).Day / 10) < 1 then
-                Put ("0");
-            end if;
-            Put (D (I).Day, 0);
-            if I /= D'Last then
-                New_Line;
-            end if;
-        end loop;
+        Put(D.Year, Width => 1);
+        Put("_");
+        if D.Month > 9 then
+            Put("0");
+        end if;
+        Put(D.Month, Width => 1);
+        Put("_");
+        if D.Day > 9 then
+            Put("0");
+        end if;
+        Put(D.Day, Width => 1);
     end Put;
-
-    -- Prompts for user-input which then is checked for errors. Part of Del_3
-    function Query (I : Integer) return Date_Type is
-    begin
-        Put ("Mata in datum ");
-        Put (I, Width => 0);
-        Put (": ");
-        Get (Dates (I));
-        return Dates (I);
-
-    exception
-        when Format_Error =>
-            Put ("Felaktigt format! ");
-            return Query (I);
-        when Year_Error =>
-            Put ("Felaktigt år! ");
-            return Query (I);
-        when Month_Error =>
-            Put ("Felaktig månad! ");
-            return Query (I);
-        when Day_Error =>
-            Put ("Felaktig dag! ");
-            return Query (I);
-    end Query;
 
 end date;
 
