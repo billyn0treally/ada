@@ -7,7 +7,7 @@ package date is
     procedure Put(D : in Date_Type);
 
     function Next_Date(D : in Date_Type) return Date_Type;
---    function Previous_Date(D : in Date_Type) return Date_Type;
+    function Previous_Date(D : in Date_Type) return Date_Type;
 
 --    function "<"(Left, Right : in Date_Type) return Boolean;
 --    function ">"(Left, Right : in Date_Type) return Boolean;

@@ -59,7 +59,6 @@ package body date is
         end if;
     end MonthCheck;
 
-
     procedure DateCheck (D : in Date_Type) is
     begin
         if D.Year < 100 or D.Year >= 10000 then
@@ -114,12 +113,41 @@ package body date is
         Next : Date_Type;
     begin
         Next := D;
-        Next.D := D +1;
-        if DateCheck (D) = True then
+        Next.Day := D.Day +1;
+        if DayCheck(Next) = True then
             return Next;
         else Next := D;
     end if;
 
+    Next.Day := 1;
+    Next.Month := Next.Month +1;
+    if MonthCheck (Next) = False then
+        return Next;
+    else 
+        Next := D;
+    end if;
+
+    Next.Day := 1;
+    Next.Month := 1;
+    Next.Year := Next.Year +1;
+    return Next;
+end Next_Date;
+
+function Previous_Date ( D : in Date_Type) return Date_Type is
+    Previous : Date_Type;
+begin
+
+procedure Last_Day (D : in out Date_Type) is
+begin
+    if D.Month = 4 or D.Month = 6 or D.Month = 9 or D.Month = 11 then
+        D.Day := 30;
+    elsif D.Month = 2 and IsLeap(D) = True then
+        D.Day := 29;
+    elsif D.Month = 2 and IsLeap(D) = False then
+        D.Day := 28;
+    else D.Day := 31;
+end if;
+end Last_Day;
 
 end date;
 
