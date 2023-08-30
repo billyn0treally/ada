@@ -1,13 +1,13 @@
-with Ada.Text_IO;         --use Ada.Text_IO;
-with Ada.Integer_Text_IO; --use Ada.Integer_Text_IO;
-with Ada.Float_Text_IO;   --use Ada.Float_Text_IO;
+with Ada.Text_IO;         use Ada.Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 procedure o3 is
 
     -- alias to make this less gruesome
-    package T_IO renames Ada.Text_IO;
-    package I_IO renames Ada.Integer_Text_IO;
-    package F_IO renames Ada.Float_Text_IO;
+--    package T_IO renames Ada.Text_IO;
+--    package I_IO renames Ada.Integer_Text_IO;
+--    package F_IO renames Ada.Float_Text_IO;
 
 
     -- Declare records
