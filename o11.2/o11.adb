@@ -1,7 +1,8 @@
 with Ada.Command_Line; 	use Ada.Command_Line;
 with Ada.Text_Io; 	use Ada.Text_Io;
---with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+--with Ada.Strings.Bounded; use Ada.Strings.Bounded;
+--with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 --with Ada.Strings;       use Ada.Strings;    
 
 procedure o11 is

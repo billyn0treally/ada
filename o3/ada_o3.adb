@@ -4,12 +4,6 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 procedure o3 is
 
-    -- alias to make this less gruesome
---    package T_IO renames Ada.Text_IO;
---    package I_IO renames Ada.Integer_Text_IO;
---    package F_IO renames Ada.Float_Text_IO;
-
-
     -- Declare records
 
     type Post_Type1 is record
@@ -23,7 +17,7 @@ procedure o3 is
     end record;
 
     type Post_Type3_N is record
-        Y, L, Q, T : Character := '@';
+        Y, L, Q, T : Character;
     end record;
 
     type Post_Type2 is record
@@ -42,26 +36,26 @@ procedure o3 is
 
     -- Procedures
 
-    procedure Whitespace is
-    begin
-        T_IO.Put (" ");
-    end Whitespace;
+--    procedure Whitespace is
+--    begin
+--        Put (" ");
+--    end Whitespace;
 
     -- Float puts
     procedure Put_F (F : in Float; W : Boolean) is
     begin
-        F_IO.Put(F, Fore => 0, Aft => 3, Exp => 0);
+        Put(F, Fore => 0, Aft => 3, Exp => 0);
         if W then 
-            Whitespace;
+            Put (" ");
         end if;
     end Put_F;
 
     -- String Puts
     procedure Put_S (S : in String; W : Boolean) is
     begin
-        T_IO.Put(S);
+        Put(S);
         if W then
-            Whitespace;
+            Put (" ");
         end if;
     end Put_S;
        
@@ -69,57 +63,57 @@ procedure o3 is
     procedure Put_C (C : in Character; W : Boolean) is
     begin
         if C /= '@' then
-            T_IO.Put(C);
+            Put(C);
             if W then
-                Whitespace;
+                Put (" ");
             end if;
         end if;
     end Put_C;
 
     -- Character bool  parser
-    procedure Parse_Bool_Char (C : in Character) is
+    procedure IsBool (C : in Character) is
     begin
         if C = 'F' then
             Put_S("False", True);
         elsif C = 'T' then
             Put_S("True", True);
         end if;
-    end Parse_Bool_Char;
+    end IsBool;
 
     -- Put procedure for Post_Type_1
-    procedure Put (Args : in Post_Type1) is
+    procedure Put (DS1 : in Post_Type1) is
     begin
-        Put_C (Args.W, True);
-        Put_S (Args.P, True);
-        T_IO.New_Line(2);
+        Put_C (DS1.W, True);
+        Put_S (DS1.P, True);
+        New_Line(2);
     end Put;
 
  -- Put procedure for Post_Type_2
-    procedure Put (Args : in Post_Type2) is
+    procedure Put (DS2 : in Post_Type2) is
     begin
-      Put_F (Args.D.S, True);
-      Put_S (Args.D.Z, True);
-      Put_F (Args.U.S, True);
-      Put_S (Args.U.Z, False);
-        T_IO.New_Line(2);
+      Put_F (DS2.D.S, True);
+      Put_S (DS2.D.Z, True);
+      Put_F (DS2.U.S, True);
+      Put_S (DS2.U.Z, False);
+        New_Line(2);
     end Put;
 
  -- Put procedure for Post_Type_3
-    procedure Put (Args : in Post_Type3) is
+    procedure Put (DS3 : in Post_Type3) is
     begin
-      Put_C (Args.J.Y, True);
-      Put_C (Args.J.Q, True);
-      Put_C (Args.B.Y, True);
-      Put_C (Args.B.Q, True);
-      Parse_Bool_Char (Args.O.T);
-      Put_C (Args.O.L, False);
-        T_IO.New_Line(2);
+      Put_C (DS3.J.Y, True);
+      Put_C (DS3.J.Q, True);
+      Put_C (DS3.B.Y, True);
+      Put_C (DS3.B.Q, True);
+      IsBool (DS3.O.T);
+      Put_C (DS3.O.L, False);
+        New_Line(2);
     end Put;
 
     -- Filter whitespaces from the input buffer
-    procedure Get_C( C : in out Character) is 
+    procedure Get_C(C : in out Character) is 
     begin
-        T_IO.Get(White);
+        Get(White);
         if White /= ' ' then
             C := White;
         else Get_C(C);
@@ -129,21 +123,21 @@ procedure o3 is
     -- Get prodedure for  Post_Type_1
     procedure Get(DS: in out Post_Type1) is
     begin
-        T_IO.Get(DS.W);
-        T_IO.Get(White);
-        T_IO.Get(DS.P);
+        Get(DS.W);
+        Get(White);
+        Get(DS.P);
     end Get;
 
 -- Get prodedure for  Post_Type_2
     procedure Get(DS: in out Post_Type2) is
     begin
-        F_IO.Get(DS.D.S);
-        T_IO.Get(White);
-        T_IO.Get(DS.D.Z);
-        T_IO.Get(White);
-        F_IO.Get(DS.U.S);
-        T_IO.Get(White);
-        T_IO.Get(DS.U.Z);
+        Get(DS.D.S);
+        Get(White);
+        Get(DS.D.Z);
+        Get(White);
+        Get(DS.U.S);
+        Get(White);
+        Get(DS.U.Z);
     end Get;
 
 -- Get prodedure for  Post_Type_3
@@ -159,25 +153,25 @@ procedure o3 is
 
 begin
 
-    T_IO.Put("För DS1:");
-    T_IO.New_Line;
-    T_IO.Put("Mata in datamängd: ");
+    Put("För DS1:");
+    New_Line;
+    Put("Mata in datamängd: ");
     Get(DS1);
-    T_IO.Put("Inmatad datamängd: ");
+    Put("Inmatad datamängd: ");
     Put(DS1);
 
-    T_IO.Put("För DS2:");
-    T_IO.New_Line;
-    T_IO.Put("Mata in datamängd: ");
+    Put("För DS2:");
+    New_Line;
+    Put("Mata in datamängd: ");
     Get(DS2);
-    T_IO.Put("Inmatad datamängd: ");
+    Put("Inmatad datamängd: ");
     Put(DS2);
 
-T_IO.Put("För DS3:");
-    T_IO.New_Line;
-    T_IO.Put("Mata in datamängd: ");
+    Put("För DS3:");
+    New_Line;
+    Put("Mata in datamängd: ");
     Get(DS3);
-    T_IO.Put("Inmatad datamängd: ");
+    Put("Inmatad datamängd: ");
     Put(DS3);
 
 
