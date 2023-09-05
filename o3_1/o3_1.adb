@@ -17,7 +17,8 @@ procedure o3_1 is
     end record;
 
     type Post_Type3_N is record
-        Y, L, Q, T : Character;
+        Y, L, Q : Character;
+        T : Boolean;
     end record;
 
     type Post_Type2 is record
@@ -28,7 +29,7 @@ procedure o3_1 is
         J, B, O : Post_Type3_N;
     end record;
 
-    -- Döpa posterna
+    -- Tilldela posterna
     DS1     : Post_Type1;
     DS2     : Post_Type2;
     DS3     : Post_Type3;
@@ -36,86 +37,7 @@ procedure o3_1 is
 
     -- Procedures
 
-    -- Put för floats
-    procedure Put_F (F : in Float; W : Boolean) is
-    begin
-        Put(F, Fore => 0, Aft => 3, Exp => 0);
-        if W then 
-            Put (" ");
-        end if;
-    end Put_F;
-
-    -- Put för strängar
-    procedure Put_S (S : in String; W : Boolean) is
-    begin
-        Put(S);
-        if W then
-            Put (" ");
-        end if;
-    end Put_S;
-       
-    -- Put för Chars
-    procedure Put_C (C : in Character; W : Boolean) is
-    begin
-        if C /= '@' then
-            Put(C);
-            if W then
-                Put (" ");
-            end if;
-        end if;
-    end Put_C;
-
-    -- Avgöra vilken boolean programmet ska printa
-    procedure IsBool (C : in Character) is
-    begin
-        if C = 'F' then
-            Put_S("False", True);
-        elsif C = 'T' then
-            Put_S("True", True);
-        end if;
-    end IsBool;
-
-    -- Put för Post_Type_1
-    procedure Put (DS1 : in Post_Type1) is
-    begin
-        Put_C (DS1.W, True);
-        Put_S (DS1.P, True);
-        New_Line(2);
-    end Put;
-
- -- Put för Post_Type_2
-    procedure Put (DS2 : in Post_Type2) is
-    begin
-      Put_F (DS2.D.S, True);
-      Put_S (DS2.D.Z, True);
-      Put_F (DS2.U.S, True);
-      Put_S (DS2.U.Z, False);
-        New_Line(2);
-    end Put;
-
- -- Put för Post_Type_3
-    procedure Put (DS3 : in Post_Type3) is
-    begin
-      Put_C (DS3.J.Y, True);
-      Put_C (DS3.J.Q, True);
-      Put_C (DS3.B.Y, True);
-      Put_C (DS3.B.Q, True);
-      IsBool (DS3.O.T);
-      Put_C (DS3.O.L, False);
-        New_Line(2);
-    end Put;
-
-    -- Filter whitespaces from the input buffer
-    procedure Get_C(C : in out Character) is 
-    begin
-        Get(W);
-        if W /= ' ' then
-            C := W;
-        else Get_C(C);
-        end if;
-    end Get_C;
-
-    -- Get prodedure for  Post_Type_1
+    -- Get för  Post_Type_1
     procedure Get(DS: in out Post_Type1) is
     begin
         Get(DS.W);
@@ -123,7 +45,16 @@ procedure o3_1 is
         Get(DS.P);
     end Get;
 
--- Get prodedure for  Post_Type_2
+    -- Put för Post_Type_1
+    procedure Put (DS1 : in Post_Type1) is
+    begin
+        Put(DS1.W);
+        Put(" ");
+        Put(DS1.P);
+        New_Line(2);
+    end Put;
+
+    -- Get för  Post_Type_2
     procedure Get(DS: in out Post_Type2) is
     begin
         Get(DS.D.S);
@@ -135,16 +66,59 @@ procedure o3_1 is
         Get(DS.U.Z);
     end Get;
 
--- Get prodedure for  Post_Type_3
+    -- Put för Post_Type_2
+    procedure Put (DS2 : in Post_Type2) is
+    begin
+        Put(DS2.D.S,0,3,0);
+        Put (" ");
+        Put(DS2.D.Z);
+        Put (" ");
+        Put(DS2.U.S,0,3,0);
+        Put (" ");
+        Put(DS2.U.Z);
+        New_Line(2);
+    end Put;
+
+    -- Get för  Post_Type_3
     procedure Get(DS: in out Post_Type3) is
     begin
-      Get_C(DS3.J.Y);
-      Get_C(DS3.J.Q);
-      Get_C(DS3.B.Y);
-      Get_C(DS3.B.Q);
-      Get_C(DS3.O.T);
-      Get_C(DS3.O.L);
+        Get(DS3.J.Y);
+        Get(W);
+        Get(DS3.J.Q);
+        Get(W);
+        Get(DS3.B.Y);
+        Get(W);
+        Get(DS3.B.Q);
+        Get(W);
+        Get(W);
+        if W = 'T' then
+            DS3.O.T := True;
+        else
+            DS3.O.T := False;
+        end if;  
+        Get(W);
+        Get(DS3.O.L);
     end Get;
+
+    -- Put för Post_Type_3
+    procedure Put (DS3 : in Post_Type3) is
+    begin
+        Put(DS3.J.Y);
+        Put (" ");
+        Put(DS3.J.Q);
+        Put (" ");
+        Put(DS3.B.Y);
+        Put (" ");
+        Put(DS3.B.Q);
+        Put (" ");
+        if DS3.O.T = True then
+            Put("True ");
+        else 
+            Put("False ");
+        end if;
+        Put(DS3.O.L);
+        New_Line(2);
+    end Put;
 
 begin
 
