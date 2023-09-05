@@ -33,12 +33,12 @@ procedure o3_1 is
     DS1     : Post_Type1;
     DS2     : Post_Type2;
     DS3     : Post_Type3;
-    W       : Character;
 
     -- Procedures
 
     -- Get för  Post_Type_1
     procedure Get(DS: in out Post_Type1) is
+    W : Character;
     begin
         Get(DS.W);
         Get(W);
@@ -56,6 +56,7 @@ procedure o3_1 is
 
     -- Get för  Post_Type_2
     procedure Get(DS: in out Post_Type2) is
+    W : Character;
     begin
         Get(DS.D.S);
         Get(W);
@@ -81,6 +82,7 @@ procedure o3_1 is
 
     -- Get för  Post_Type_3
     procedure Get(DS: in out Post_Type3) is
+    W : Character;
     begin
         Get(DS3.J.Y);
         Get(W);

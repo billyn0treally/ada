@@ -44,10 +44,35 @@ procedure o3_2 is
             Put(" ");
             Put(DS1(I),0,3,0);
         end loop;
+        New_Line(2);
     end Put;
 
+    -- Get DS2
     procedure Get(DS2 : in Array_Type_2) is
+        C : Character;
     begin
+        for I in Boolean loop
+            for J in reverse crange loop
+                Get(DS2(I)(J));
+                if J = crange'First and I = Boolean'Last then
+                    exit;
+                end if;
+                Get(C);
+            end loop;
+        end loop;
+    end Get;
+
+    -- Put DS2
+    procedure Put(DS2 : out Array_Type_2) is
+    begin
+        for I in Boolean loop
+            for J in reverse crange loop
+                Put(" ");
+                Put(DS2(I)(J));
+            end loop;
+        end loop;
+    end Put;
+
 
 
 
