@@ -7,48 +7,45 @@ RV NO_DIRECT_BOOLEAN_OPERATORS
 RV NO_FLOATING_POINT
 RV NO_IO
 
-U o1_2%b		o1.2.adb		fc0227c5 NE OO SU IL
+U o1_2%b		o1.2.adb		4ef80260 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-Z system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
 
-D ada.ads		20230614000000 76789da1 ada%s
-D a-except.ads		20230614000000 2a7d8d70 ada.exceptions%s
-D a-flteio.ads		20230614000000 e18a47a0 ada.float_text_io%s
-D a-inteio.ads		20230614000000 f64b89a4 ada.integer_text_io%s
-D a-ioexce.ads		20230614000000 40018c65 ada.io_exceptions%s
-D a-stream.ads		20230614000000 119b8fb3 ada.streams%s
-D a-string.ads		20230614000000 90ac6797 ada.strings%s
-D a-sttebu.ads		20230614000000 f1ad67a2 ada.strings.text_buffers%s
-D a-stuten.ads		20230614000000 c6ced0ae ada.strings.utf_encoding%s
-D a-tags.ads		20230614000000 9eaa38c6 ada.tags%s
-D a-textio.ads		20230614000000 5c2c6153 ada.text_io%s
-D a-tiflio.ads		20230614000000 9fe024a2 ada.text_io.float_io%s
-D a-tiinio.ads		20230614000000 e58fa6fb ada.text_io.integer_io%s
-D a-unccon.ads		20230614000000 0e9b276f ada.unchecked_conversion%s
-D interfac.ads		20230614000000 15f799c2 interfaces%s
-D i-cstrea.ads		20230614000000 e53d8b8e interfaces.c_streams%s
-D o1.2.adb		20230703111853 b7ef8892 o1_2%b
-D system.ads		20230614000000 426dafb8 system%s
-D s-crtl.ads		20230614000000 8a0692f8 system.crtl%s
-D s-exctab.ads		20230614000000 91bef6ef system.exception_table%s
-D s-fatflt.ads		20230614000000 11beb392 system.fat_flt%s
-D s-fatgen.ads		20230614000000 d28c6cfe system.fat_gen%s
-D s-ficobl.ads		20230614000000 dc5161d4 system.file_control_block%s
-D s-parame.ads		20230614000000 d494a4a6 system.parameters%s
-D s-putima.ads		20230614000000 17291fe4 system.put_images%s
-D s-secsta.ads		20230614000000 578279f5 system.secondary_stack%s
-D s-soflin.ads		20230614000000 df77073e system.soft_links%s
-D s-stache.ads		20230614000000 0b81c1fe system.stack_checking%s
-D s-stalib.ads		20230614000000 1c9580f6 system.standard_library%s
-D s-stoele.ads		20230614000000 ab5468e4 system.storage_elements%s
-D s-stoele.adb		20230614000000 8f5a9db6 system.storage_elements%b
-D s-traent.ads		20230614000000 c81cbf8c system.traceback_entries%s
-D s-unstyp.ads		20230614000000 fa2a7f59 system.unsigned_types%s
-D s-wchcon.ads		20230614000000 d9032363 system.wch_con%s
+D ada.ads		20230728000000 76789da1 ada%s
+D a-except.ads		20230728000000 2a7d8d70 ada.exceptions%s
+D a-flteio.ads		20230728000000 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20230728000000 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20230728000000 40018c65 ada.io_exceptions%s
+D a-stream.ads		20230728000000 119b8fb3 ada.streams%s
+D a-string.ads		20230728000000 90ac6797 ada.strings%s
+D a-sttebu.ads		20230728000000 f1ad67a2 ada.strings.text_buffers%s
+D a-stuten.ads		20230728000000 c6ced0ae ada.strings.utf_encoding%s
+D a-tags.ads		20230728000000 9eaa38c6 ada.tags%s
+D a-textio.ads		20230728000000 5c2c6153 ada.text_io%s
+D a-tiflio.ads		20230728000000 9fe024a2 ada.text_io.float_io%s
+D a-tiinio.ads		20230728000000 e58fa6fb ada.text_io.integer_io%s
+D a-unccon.ads		20230728000000 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20230728000000 15f799c2 interfaces%s
+D i-cstrea.ads		20230728000000 e53d8b8e interfaces.c_streams%s
+D o1.2.adb		20230907123114 0515ad37 o1_2%b
+D system.ads		20230728000000 426dafb8 system%s
+D s-crtl.ads		20230728000000 8a0692f8 system.crtl%s
+D s-exctab.ads		20230728000000 91bef6ef system.exception_table%s
+D s-ficobl.ads		20230728000000 dc5161d4 system.file_control_block%s
+D s-parame.ads		20230728000000 d494a4a6 system.parameters%s
+D s-putima.ads		20230728000000 17291fe4 system.put_images%s
+D s-secsta.ads		20230728000000 578279f5 system.secondary_stack%s
+D s-soflin.ads		20230728000000 df77073e system.soft_links%s
+D s-stache.ads		20230728000000 0b81c1fe system.stack_checking%s
+D s-stalib.ads		20230728000000 1c9580f6 system.standard_library%s
+D s-stoele.ads		20230728000000 ab5468e4 system.storage_elements%s
+D s-stoele.adb		20230728000000 8f5a9db6 system.storage_elements%b
+D s-traent.ads		20230728000000 c81cbf8c system.traceback_entries%s
+D s-unstyp.ads		20230728000000 fa2a7f59 system.unsigned_types%s
+D s-wchcon.ads		20230728000000 d9032363 system.wch_con%s
 G a e
 G c Z b b [o1_2 standard 5 11 none]
 X 1 ada.ads
@@ -60,25 +57,25 @@ X 4 a-inteio.ads
 X 11 a-textio.ads
 58K13*Text_IO 787e16 17|1w10 1r37
 88I12*Field{integer}
-282U14*New_Line 17|44s5 63s9
-519U14*Put 17|12s5 16s9 20s5 24s9 28s5 32s9 36s5 40s9 57s9 59s9
+282U14*New_Line 17|44s5 65s9
+519U14*Put 17|12s5 16s9 20s5 24s9 28s5 32s9 36s5 40s9 60s9 62s9
 566U14*Put_Line 17|15s9 23s9 31s9 39s9 45s5 46s5
 X 12 a-tiflio.ads
 61U14*Get 17|13s5[3|20] 17s9[3|20] 21s5[3|20] 25s9[3|20] 29s5[3|20] 33s9[3|20]
 . 37s5[3|20] 41s9[3|20]
-85U14*Put 17|56s9[3|20] 58s9[3|20] 60s9[3|20]
-87i7 Fore{11|88I12} 17|56r19[3|20] 58r17[3|20] 60r24[3|20]
-88i7 Aft{11|88I12} 17|56r30[3|20] 58r28[3|20] 60r35[3|20]
-89i7 Exp{11|88I12} 17|56r40[3|20] 58r38[3|20] 60r45[3|20]
+85U14*Put 17|59s9[3|20] 61s9[3|20] 63s9[3|20]
+87i7 Fore{11|88I12} 17|59r19[3|20] 61r17[3|20] 63r24[3|20]
+88i7 Aft{11|88I12} 17|59r30[3|20] 61r28[3|20] 63r35[3|20]
+89i7 Exp{11|88I12} 17|59r40[3|20] 61r38[3|20] 63r45[3|20]
 X 17 o1.2.adb
-5U11*o1_2 5b11 69l5 69t9
-7f5 Fp{float} 13m9 14r11 17m13 22r29 48r16 51r13
+5U11*o1_2 5b11 71l5 71t9
+7f5 Fp{float} 13m9 14r11 17m13 22r29 48r16 54r13
 7f9 Sp{float} 21m9 22r11 22r24 25m13 48r11
-7f13 Steg{float} 29m9 30r11 33m13 48r22 64r25
-7f19 Mp{float} 55m9 58r13 60r13
-7f23 Pris{float} 51m5 55r16 56r13 60r18 64m9 64r18
-7f29 Moms{float} 37m9 38r11 38r25 41m13 55r24
-8f5 F{float} 48m5 49m5 49r23 50r19
-9i5 N{integer} 50m5 53r21
-53i9 Row{integer}
+7f13 Steg{float} 29m9 30r11 33m13 48r22 66r25
+7f19 Mp{float} 58m9 61r13 63r13
+7f23 Pris{float} 54m5 58r16 59r13 63r18 66m9 66r18
+7f29 Moms{float} 37m9 38r11 38r25 41m13 58r24
+8f5 F{float} 48m5 50r18
+9i5 N{integer} 50m5 51r8 52m9 56r21
+56i9 Row{integer}
 

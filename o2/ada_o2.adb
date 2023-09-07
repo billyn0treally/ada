@@ -32,8 +32,6 @@ procedure o2 is
         return C = 'S';
     end iss;
 
-
-
 begin
     Put("Mata in ett heltal och ett flyttal: ");
     Get(I);

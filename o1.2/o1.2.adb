@@ -46,8 +46,11 @@ begin
     Put_Line ("Pris utan moms  Moms   Pris med moms");
 
     F := (Sp - Fp) / Steg;
-    F := Float'Floor (F);
-    N := Integer (F);
+    --F := Float'Floor (F);
+    N := Integer(F);
+    if N <1 then
+        N := 1;
+    end if;
     pris := Fp;
 
     for Row in 1 .. N loop
@@ -59,7 +62,6 @@ begin
         Put("   ");
         Put(Mp + Pris, Fore => 6, Aft => 2, Exp => 0);
         
-
         New_Line;
         Pris := (Pris + Steg);
 
