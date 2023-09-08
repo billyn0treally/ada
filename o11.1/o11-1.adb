@@ -6,6 +6,46 @@ with Ada.Numerics.Elementary_Functions;    use Ada.Numerics.Elementary_Functions
 
 procedure o11 is
 
+    --- Hypothenuse Section ---
+    function Calculate_Hypothenuse (Va, Vb : Float) return Float is
+        Va, Vb = Float := 1;
+    begin
+    end Calculate_Hypothenuse;
+
+    procedure Hypothenuse_Program is
+        Va, Vb : Float;
+    begin
+        Put("Mata in kateternas längder: ");
+        Get(Va);
+        Get(Vb);
+        Put("Hypotenusan är: ");
+        Put(Calculate_Hypothenuse(Va,Vb);
+    end Hypothenuse_Program;
+
+    --- Angle Section ---
+    procedure Angle_Program is
+        Hypo, Katet, Va, Vb, Vc : Float;
+    begin
+        Put("Mata in hypotenusans längd: ");
+        Get(Hypo);
+        Skip_Line;
+        Put("Mata in vertikala ketetens längd: ");
+        Get(Katet);
+        Skip_Line;
+        Calculate_Angles(Hypo, Katet, Va, Vb, Vc)
+        Put("Va: " && (Va,0,0,0) && " grader");
+        --Put(Va,0,0,0);
+        --Put(" grader");
+        New_Line;
+        Put("Vb: ");
+        Put(Vb,0,0,0);
+        Put(" grader");
+        New_Line;
+        Put("Vc: ");
+        Put(Vc,0,0,0);
+        Put(" grader");
+    end Angle_Program;
+
     --- Factorial Section ---
     function Calculate_Factorial (N : Integer) return Integer is
         Factorial : Integer := 1;
@@ -27,8 +67,6 @@ procedure o11 is
     end Factorial_Program;
 
 
-
-
     --- Menu Selection ---
     procedure Menu_Selection  (Selection : out Integer) is
     begin
@@ -47,7 +85,6 @@ procedure o11 is
           end if;
       end loop;
     end Menu_Selection;
-
 
     --- Huvudprogram ---
 
