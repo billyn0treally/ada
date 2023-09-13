@@ -19,7 +19,7 @@ procedure o11 is
         Put("Mata in kateternas längder: ");
         Get(Va);
         Get(Vb);
-        Put("Hypotenusan är: ");
+        Put("Hypotenusan är ");
         Put(Calculate_Hypothenuse(Va,Vb),1,2,0);
     end Hypothenuse_Program;
 
