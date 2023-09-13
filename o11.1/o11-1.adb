@@ -42,9 +42,10 @@ procedure o11 is
         Get(Katet);
         Skip_Line;
         Calculate_Angles(Hypo, Katet, Va, Vb, Vc);
-        Put("Va: " & (Va,0,0,0) & " grader");
-        --Put(Va,0,0,0);
-        --Put(" grader");
+       -- Put("Va: " & (Va,0,0,0) & " grader");
+        Put("Va: ");
+        Put(Va,0,0,0);
+        Put(" grader");
         New_Line;
         Put("Vb: ");
         Put(Vb,0,0,0);
