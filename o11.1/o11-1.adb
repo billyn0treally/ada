@@ -103,7 +103,7 @@ procedure o11 is
     Selection : Integer;
 
 begin
-    Put_Line ("Välkkommen till miniräknaren");
+    Put_Line ("Välkommen till miniräknaren");
     loop
         Menu_Selection (Selection);
 
