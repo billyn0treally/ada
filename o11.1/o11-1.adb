@@ -8,8 +8,8 @@ procedure o11 is
 
     --- Hypothenuse Section ---
     function Calculate_Hypothenuse (Va, Vb : Float) return Float is
-        Va, Vb = Float := 1;
     begin
+      return Sqrt ((Va * Va) + (Vb * Vb));
     end Calculate_Hypothenuse;
 
     procedure Hypothenuse_Program is
@@ -19,10 +19,19 @@ procedure o11 is
         Get(Va);
         Get(Vb);
         Put("Hypotenusan är: ");
-        Put(Calculate_Hypothenuse(Va,Vb);
+        Put(Calculate_Hypothenuse(Va,Vb),1,2,0);
     end Hypothenuse_Program;
 
     --- Angle Section ---
+   procedure Calculate_Angles (Hc, Sa : in Float; Va, Vb, Vc : out Float) is
+       C : FLoat;
+   begin
+      C  := Sa / Hc;
+      Va := 90.0 - Arccos (C) * (180.0 / Pi);
+      Vb := 90.0 - Va;
+      Vc := 90.0;
+   end Calculate_Angles;
+
     procedure Angle_Program is
         Hypo, Katet, Va, Vb, Vc : Float;
     begin
@@ -32,8 +41,8 @@ procedure o11 is
         Put("Mata in vertikala ketetens längd: ");
         Get(Katet);
         Skip_Line;
-        Calculate_Angles(Hypo, Katet, Va, Vb, Vc)
-        Put("Va: " && (Va,0,0,0) && " grader");
+        Calculate_Angles(Hypo, Katet, Va, Vb, Vc);
+        Put("Va: " & (Va,0,0,0) & " grader");
         --Put(Va,0,0,0);
         --Put(" grader");
         New_Line;
@@ -80,6 +89,7 @@ procedure o11 is
           Get(Selection);
           if Selection <= 0 or Selection >= 5 then
               Put("Felaktigt val!");
+              New_Line;
           else
               exit;
           end if;
@@ -101,6 +111,7 @@ begin
 
         elsif Selection = 2 then
             Angle_Program;
+            --Put("placeholder");
             New_Line; 
 
         elsif Selection = 3 then
