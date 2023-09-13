@@ -29,7 +29,7 @@ procedure o2 is
 
     function iss (C : Character) return Boolean is
     begin
-        return C = 'S';
+        return C = 'S' or C = 's';
     end iss;
 
 begin

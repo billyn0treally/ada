@@ -39,7 +39,7 @@ procedure o11 is
         Put("Mata in hypotenusans längd: ");
         Get(Hypo);
         Skip_Line;
-        Put("Mata in vertikala ketetens längd: ");
+        Put("Mata in vertikala katetens längd: ");
         Get(Katet);
         Skip_Line;
         Calculate_Angles(Hypo, Katet, Va, Vb, Vc);
