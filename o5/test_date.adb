@@ -1,3 +1,4 @@
+--mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Text_IO; use Ada.Text_IO;
 with date; use date;
 
