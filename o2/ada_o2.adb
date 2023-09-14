@@ -13,7 +13,7 @@ procedure o2 is
 
     function Calc_Delta ( A : Integer; B : Float ) return Float is
     begin
-        return Float'Max (Float (A), B) - Float'Min (Float (A), B);
+        return Float(A) - B;
     end Calc_Delta;
 
     procedure strlenxd ( S : in out String; B : out Boolean ) is
