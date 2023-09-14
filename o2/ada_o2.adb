@@ -36,7 +36,7 @@ begin
     Put("Mata in ett heltal och ett flyttal: ");
     Get(I);
     Get(F);
-    Put("Differensen mellan dem är: ");
+    Put("Differensen mellan dem är ");
     Put(Calc_Delta (I, F), Fore =>  0, Aft => 2, Exp => 0);
     New_Line (2);
 
