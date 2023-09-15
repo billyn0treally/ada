@@ -13,7 +13,13 @@ begin
     elsif Argument_Count < 3 or Argument_Count > 3 then
         Put("Fel antal argument angivna.");
     else 
-        Put_Line("Meddelande: " & Integer'Value(Argument(1)) * Argument(2));
+        --Put_Line("Meddelande: " & Integer'Value(Argument(1)) * Argument(3) & (Argument(2)));
+        Put("Meddelande: ");
+        For I in 1..Integer'Value(Argument(3)) loop
+            Put(Argument(1));
+        end loop;
+        Put(Argument(2));
+        New_Line;
         Put("Programmet """ & Command_Name & """ avslutas.");
     end if;
 end o11;
