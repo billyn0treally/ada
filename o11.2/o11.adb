@@ -11,7 +11,7 @@ begin
         Put("Fel antal argument angivna.");
     elsif Argument(1) = Command_Name or Command_Name(3..Command_Name'Last) = Argument(1) then
         Put("Error! Input file """ & Argument(1) & """ cannot be same as the program itself!");
-    elsif Argument(1) = Argument(2) or Argument(1)(3..Argument(1)'Last) = Argument(2) then
+    elsif Argument(1) = Argument(2) or Argument(1)(3..Argument(1)'Last) = Argument(2) or Argument(2)(3..Argument(2)'Last) = Argument(1) then
         Put("Error! Output file """ & Argument(2) & """ cannot be same as input file!");
     else 
         Put("Meddelande: ");
