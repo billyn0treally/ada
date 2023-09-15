@@ -2,9 +2,6 @@
 with Ada.Command_Line; 	use Ada.Command_Line;
 with Ada.Text_Io; 	use Ada.Text_Io;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
---with Ada.Strings.Bounded; use Ada.Strings.Bounded;
---with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
---with Ada.Strings;       use Ada.Strings;    
 
 procedure o11 is
 begin
@@ -17,7 +14,6 @@ begin
     elsif Argument(1) = Argument(2) or Argument(1)(3..Argument(1)'Last) = Argument(2) then
         Put("Error! Output file """ & Argument(2) & """ cannot be same as the input file!");
     else 
-        --Put_Line("Meddelande: " & Integer'Value(Argument(1)) * Argument(3) & (Argument(2)));
         Put("Meddelande: ");
         For I in 1..Integer'Value(Argument(3)) loop
             Put(Argument(1));
