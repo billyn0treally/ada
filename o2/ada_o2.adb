@@ -1,3 +1,4 @@
+--mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Text_IO;                       use Ada.Text_IO;
 with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
@@ -12,7 +13,7 @@ procedure o2 is
 
     function Calc_Delta ( A : Integer; B : Float ) return Float is
     begin
-        return Float'Max (Float (A), B) - Float'Min (Float (A), B);
+        return Float(A) - B;
     end Calc_Delta;
 
     procedure strlenxd ( S : in out String; B : out Boolean ) is
@@ -36,7 +37,7 @@ begin
     Put("Mata in ett heltal och ett flyttal: ");
     Get(I);
     Get(F);
-    Put("Differensen mellan dem är: ");
+    Put("Differensen mellan dem är ");
     Put(Calc_Delta (I, F), Fore =>  0, Aft => 2, Exp => 0);
     New_Line (2);
 

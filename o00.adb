@@ -1,4 +1,4 @@
---melgu374: Samarbetat med mikna021, Miklós Nagy, samma program
+--mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Text_IO;                       use Ada.Text_IO;
 
 procedure Course_Information_System_Used_In_Course is

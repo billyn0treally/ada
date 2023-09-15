@@ -1,3 +1,4 @@
+--mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Command_Line; 	use Ada.Command_Line;
 with Ada.Text_Io; 	use Ada.Text_Io;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 -- mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
+=======
+--mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
+>>>>>>> 0f89104e7da6260b7e61ceb2d91d65cf52de3059
 with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
