@@ -12,6 +12,8 @@ begin
         Put("Inga argument angivna.");
     elsif Argument_Count < 3 or Argument_Count > 3 then
         Put("Fel antal argument angivna.");
+    elsif Argument(1) = Command_Name or (3..Argument(1)'Last) = Command_Name then
+        Put("Error! Input file """ & Argument(1) & """ cannot be same as the program itself!");
     else 
         --Put_Line("Meddelande: " & Integer'Value(Argument(1)) * Argument(3) & (Argument(2)));
         Put("Meddelande: ");
