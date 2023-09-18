@@ -108,14 +108,14 @@ begin
     New_Line;
     Put("Mata in datamängd: ");
     Get(DS1);
-    Put("Inmatad datamängd: ");
+    Put("Inmatad datamängd:");
     Put(DS1);
 
     Put("För DS2:");
     New_Line;
     Put("Mata in datamängd: ");
     Get(DS2);
-    Put("Inmatad datamängd: ");
+    Put("Inmatad datamängd:");
     Put(DS2);
     New_Line(2);
 
@@ -123,7 +123,7 @@ begin
     New_Line;
     Put("Mata in datamängd: ");
     Get(DS3);
-    Put("Inmatad datamängd: ");
+    Put("Inmatad datamängd:");
     Put(DS3);
 
 end o3_2;
