@@ -20,11 +20,8 @@ procedure o3_2 is
 
     subtype crange2 is Character range '4'..'8';
         
-    type Array_Type_3_N is
-        Array(crange2) of Integer;
-
     type Array_Type_3 is 
-        array(Integer(73..74)) of Array_Type_3_N;
+        array(73..74,crange2) of Integer;
         
         DS1 : Array_Type_1;
         DS2 : Array_Type_2;
@@ -80,31 +77,29 @@ procedure o3_2 is
     end Put;
 
     -- Get DS3
-    procedure Get(DS3 : out Array_Type_3) is
-        C : Character;
-        Temp_Str : String(1..5);
+    procedure Get (DS3 : out Array_Type_3) is
     begin
-        for I in crange2 loop
-            for J in reverse Integer loop
-                Get(Temp_Str);
-                DS3(I)(J) := Temp_Str;
-                if J = crange2'First and I = Integer'Last then
-                    exit;
-                end if;
-                Get(C);
+        for I in  DS3'first..DS3'last loop
+            for J in  crange2 loop
+                Get(DS3(I,J));
             end loop;
         end loop;
+        Skip_Line;
     end Get;
 
-    procedure Put(DS3 : in Array_Type_3) is
-    begin
-        for I in crange2 loop
-            for J in reverse Integer loop
+   ---------------------
+   
+    procedure Put (DS3 : in Array_Type_3) is  
+    begin                          
+        for I in DS3'first..DS3'last loop
+            for J in crange2 loop
                 Put(" ");
-                Put(DS3(I)(J));
+                Put(DS3(I,J),Width  => 1);
             end loop;
         end loop;
+        New_Line;    
     end Put;
+
                 -- Main program
 
 begin
@@ -122,12 +117,13 @@ begin
     Get(DS2);
     Put("Inmatad datamängd: ");
     Put(DS2);
+    New_Line(2);
 
-    --    Put("För DS3:");
-    --    New_Line;
-    --    Put("Mata in datamängd: ");
-    --    Get(DS3);
-    --    Put("Inmatad datamängd: ");
-    --    Put(DS3);
+    Put("För DS3:");
+    New_Line;
+    Put("Mata in datamängd: ");
+    Get(DS3);
+    Put("Inmatad datamängd: ");
+    Put(DS3);
 
 end o3_2;
