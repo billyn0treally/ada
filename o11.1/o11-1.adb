@@ -8,19 +8,24 @@ with Ada.Numerics.Elementary_Functions;    use Ada.Numerics.Elementary_Functions
 procedure o11 is
 
     --- Hypothenuse Section ---
-    function Calculate_Hypothenuse (Va, Vb : Float) return Float is
+    function Calculate_Hypothenuse (Va, Vb : Integer) return Float is
+    Y : Float;
     begin
-      return Sqrt ((Va * Va) + (Vb * Vb));
+    Y := Sqrt (Float(Va * Va) + Float(Vb * Vb));
+    return Y;
     end Calculate_Hypothenuse;
 
     procedure Hypothenuse_Program is
-        Va, Vb : Float;
+        Va, Vb : Integer;
+        C : Float;
     begin
         Put("Mata in kateternas längder: ");
         Get(Va);
         Get(Vb);
+        Skip_Line;
         Put("Hypotenusan är ");
-        Put(Calculate_Hypothenuse(Va,Vb),1,2,0);
+        C := (Calculate_Hypothenuse(Va,Vb));
+        Put (C,1,2,0);
     end Hypothenuse_Program;
 
     --- Angle Section ---
