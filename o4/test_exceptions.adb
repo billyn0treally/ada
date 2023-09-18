@@ -16,7 +16,7 @@ procedure Test_Exceptions is
       
    begin
       Put_Line("1. Felkontrollerad heltalsinläsning");
-      Put_Line("2. Längdkontrollerad strÃ¤nginläsning");
+      Put_Line("2. Längdkontrollerad stränginläsning");
       Put_Line("3. Felkontrollerad datuminläsning");
       Put_Line("4. Avsluta programmet");
       
@@ -36,7 +36,7 @@ procedure Test_Exceptions is
    -- Underprogrammet låter användaren mata in ett intervall angivet   --
    -- med två heltal Min och Max. Get_Safe anropas                     --
    -- sedan med detta intervall och sköter felhanteringen av           --
-   -- heltalsinläsningen dÃ¤r anvÃ¤ndaren får mata in värden tills       --
+   -- heltalsinläsningen där användaren får mata in värden tills       --
    -- korrekt värde matas in.                                          --
    ----------------------------------------------------------------------
    procedure Upg1 is
