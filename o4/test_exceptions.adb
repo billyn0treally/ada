@@ -15,9 +15,9 @@ procedure Test_Exceptions is
       N : Integer;
       
    begin
-      Put_Line("1. Felkontrollerad heltalsinläsning");
-      Put_Line("2. Längdkontrollerad stränginläsning");
-      Put_Line("3. Felkontrollerad datuminläsning");
+      Put_Line("1. Felkontrollerad heltalsinlÃ¤sning");
+      Put_Line("2. LÃ¤ngdkontrollerad strÃ¤nginlÃ¤sning");
+      Put_Line("3. Felkontrollerad datuminlÃ¤sning");
       Put_Line("4. Avsluta programmet");
       
       loop
@@ -71,14 +71,14 @@ procedure Test_Exceptions is
       S : String(1 .. Length);
       
    begin      
-      Put("Mata in en sträng med exakt ");
+      Put("Mata in en strÃ¤ng med exakt ");
       Put(Length, Width => 0);
       Put(" tecken: ");
       
       Get_Correct_String(S);
       Skip_Line;
       
-      Put_Line("Du matade in strängen " & S & ".");      
+      Put_Line("Du matade in strÃ¤ngen " & S & ".");      
    end Upg2;
    
    ----------------------------------------------------------------------
@@ -107,10 +107,10 @@ procedure Test_Exceptions is
    ----------------------------------------------------------------------
    -- Huvudprogram                                                     --
    --                                                                  --
-   -- Huvudprogrammet skriver ut och låter anvÃ¤ndaren välja val i en   --
+   -- Huvudprogrammet skriver ut och låter användaren välja val i en   --
    -- meny via underprogrammet Menu_Selection. Beroende på vilket      --
    -- menyval användaren valt kommer olika underprogram anropas.       --
-   -- Observera att får menyval 2 kommer anvÃ¤ndaren få mata in längden -- 
+   -- Observera att får menyval 2 kommer användaren få mata in längden -- 
    -- av en sträng vilket skickas vidare till underporgrammet Upg2 där --
    -- strängen i sig skapas.                                           --
    ----------------------------------------------------------------------
@@ -124,7 +124,7 @@ begin
 	 Upg1;
 	 
       elsif Choice = 2 then
-	 Put("Mata in en strÃ¤nglÃ¤ngd: ");
+	 Put("Mata in en stränglängd: ");
 	 Get(Length);
 	 Skip_Line;
 	 
