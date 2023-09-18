@@ -15,9 +15,9 @@ procedure Test_Exceptions is
       N : Integer;
       
    begin
-      Put_Line("1. Felkontrollerad heltalsinlÃ¤sning");
-      Put_Line("2. LÃ¤ngdkontrollerad strÃ¤nginlÃ¤sning");
-      Put_Line("3. Felkontrollerad datuminlÃ¤sning");
+      Put_Line("1. Felkontrollerad heltalsinläsning");
+      Put_Line("2. Längdkontrollerad strÃ¤nginläsning");
+      Put_Line("3. Felkontrollerad datuminläsning");
       Put_Line("4. Avsluta programmet");
       
       loop
@@ -71,14 +71,14 @@ procedure Test_Exceptions is
       S : String(1 .. Length);
       
    begin      
-      Put("Mata in en strÃ¤ng med exakt ");
+      Put("Mata in en sträng med exakt ");
       Put(Length, Width => 0);
       Put(" tecken: ");
       
       Get_Correct_String(S);
       Skip_Line;
       
-      Put_Line("Du matade in strÃ¤ngen " & S & ".");      
+      Put_Line("Du matade in strängen " & S & ".");      
    end Upg2;
    
    ----------------------------------------------------------------------
