@@ -15,9 +15,9 @@ procedure Test_Exceptions is
       N : Integer;
       
    begin
-      Put_Line("1. Felkontrollerad heltalsinlÃ¤sning");
-      Put_Line("2. LÃ¤ngdkontrollerad strÃ¤nginlÃ¤sning");
-      Put_Line("3. Felkontrollerad datuminlÃ¤sning");
+      Put_Line("1. Felkontrollerad heltalsinläsning");
+      Put_Line("2. Längdkontrollerad stränginläsning");
+      Put_Line("3. Felkontrollerad datuminläsning");
       Put_Line("4. Avsluta programmet");
       
       loop
