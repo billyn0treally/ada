@@ -71,14 +71,14 @@ procedure Test_Exceptions is
       S : String(1 .. Length);
       
    begin      
-      Put("Mata in en strÃ¤ng med exakt ");
+      Put("Mata in en sträng med exakt ");
       Put(Length, Width => 0);
       Put(" tecken: ");
       
       Get_Correct_String(S);
       Skip_Line;
       
-      Put_Line("Du matade in strÃ¤ngen " & S & ".");      
+      Put_Line("Du matade in strängen " & S & ".");      
    end Upg2;
    
    ----------------------------------------------------------------------
