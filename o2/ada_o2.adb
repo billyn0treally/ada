@@ -11,10 +11,10 @@ procedure o2 is
     Bool    : Boolean;
     Char    : Character;
 
-    function Calc_Delta ( A : Integer; B : Float ) return Float is
+   function "-" (A : Integer; B : Float) return Float is
     begin
         return Float(A) - B;
-    end Calc_Delta;
+    end "-";
 
     procedure strlenxd ( S : in out String; B : out Boolean ) is
         Local_S : String(1 .. S'Length + 1);
@@ -38,7 +38,7 @@ begin
     Get(I);
     Get(F);
     Put("Differensen mellan dem är ");
-    Put(Calc_Delta (I, F), Fore =>  0, Aft => 2, Exp => 0);
+    Put(I-F, Fore =>  0, Aft => 2, Exp => 0);
     New_Line (2);
 
     Put("Skriv in ett 5 tecken långt engelskt substantiv: ");
