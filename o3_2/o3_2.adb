@@ -3,6 +3,21 @@ with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
+--Viktigt för uppgiften:
+--
+--  Saknar specificerare för Put för heltal eller
+--  flyttal
+--
+--  Ordning av kodens olika delar
+--
+--  Felaktig hantering av upprepning
+--
+--  Rensar inte bufferten innan påföljande inmatning
+--  skall påbörjas
+--
+--  Mellanlagring av delar av din datatyp
+
+
 procedure o3_2 is
 
     -- Type Declaration
@@ -87,8 +102,7 @@ procedure o3_2 is
         Skip_Line;
     end Get;
 
-   ---------------------
-   
+    -- Put DS3
     procedure Put (DS3 : in Array_Type_3) is  
     begin                          
         for I in DS3'first..DS3'last loop
@@ -110,6 +124,7 @@ begin
     Get(DS1);
     Put("Inmatad datamängd:");
     Put(DS1);
+    Skip_Line;
 
     Put("För DS2:");
     New_Line;
@@ -117,6 +132,7 @@ begin
     Get(DS2);
     Put("Inmatad datamängd:");
     Put(DS2);
+    Skip_Line;
     New_Line(2);
 
     Put("För DS3:");
@@ -125,5 +141,6 @@ begin
     Get(DS3);
     Put("Inmatad datamängd:");
     Put(DS3);
+    Skip_Line;
 
 end o3_2;
