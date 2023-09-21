@@ -16,17 +16,30 @@ procedure o2 is
         return Float(A) - B;
     end "-";
 
-    procedure strlenxd ( S : in out String; B : out Boolean ) is
-        Local_S : String(1 .. S'Length + 1);
+--gamla koden nedan, bytes ut av TestString
+
+    --  procedure strlenxd ( S : in out String; B : out Boolean ) is
+    --      Local_S : String(1 .. S'Length + 1);
+    --  begin
+    --      if S (S'Last) = 's' then
+    --          B := True;
+    --      else
+    --          B           := False;
+    --          S (S'Last)  := 's';
+    --          Local_S     := S & 's';
+    --      end if;
+    --  end strlenxd;
+
+    procedure TestString ( S : in out String; B : out Boolean) is 
     begin
-        if S (S'Last) = 's' then
+        if S(S'last) = 's' then 
             B := True;
         else
-            B           := False;
-            S (S'Last)  := 's';
-            Local_S     := S & 's';
+            B := False; 
+            S(S'last) := 's';
         end if;
-    end strlenxd;
+        
+    end TestString;
 
     function iss (C : Character) return Boolean is
     begin
@@ -43,7 +56,7 @@ begin
 
     Put("Skriv in ett 5 tecken långt engelskt substantiv: ");
     Get(S);
-    strlenxd (S, Bool);
+    TestString (S, Bool);
     Put("Ordet ");
     Put(S);
     if Bool then
