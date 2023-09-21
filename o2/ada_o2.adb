@@ -15,7 +15,9 @@ procedure o2 is
     begin
         return Float(A) - B;
     end "-";
---gammla koden nedan, bytes ut av TestString
+
+--gamla koden nedan, bytes ut av TestString
+
     --  procedure strlenxd ( S : in out String; B : out Boolean ) is
     --      Local_S : String(1 .. S'Length + 1);
     --  begin
