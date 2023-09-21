@@ -19,7 +19,7 @@ procedure o3_2 is
         array(Boolean) of Array_Type_2_N; 
 
     subtype crange2 is Character range '4'..'8';
-        
+
     type Array_Type_3 is 
         array(73..74,crange2) of Integer;
         
@@ -102,7 +102,7 @@ procedure o3_2 is
 
                 -- Main program
 
-begin
+begin   
 
     Put("För DS1:");
     New_Line;
