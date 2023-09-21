@@ -50,7 +50,6 @@ procedure o3_2 is
         for I in reverse DS1'First..DS1'Last loop
             Get(DS1(I));
         end loop;
-        Skip_Line;
     end Get;
 
     -- Put DS1
@@ -60,7 +59,6 @@ procedure o3_2 is
             Put(" ");
             Put(DS1(I),0,3,0);
         end loop;
-        New_Line(2);
     end Put;
 
     -- Get DS2
@@ -99,7 +97,6 @@ procedure o3_2 is
                 Get(DS3(I,J));
             end loop;
         end loop;
-        Skip_Line;
     end Get;
 
     -- Put DS3
@@ -111,7 +108,6 @@ procedure o3_2 is
                 Put(DS3(I,J),Width  => 1);
             end loop;
         end loop;
-        New_Line;    
     end Put;
 
                 -- Main program
@@ -124,6 +120,7 @@ begin
     Get(DS1);
     Put("Inmatad datamängd:");
     Put(DS1);
+    New_Line (2);
     Skip_Line;
 
     Put("För DS2:");
@@ -132,8 +129,8 @@ begin
     Get(DS2);
     Put("Inmatad datamängd:");
     Put(DS2);
+    New_Line (2);
     Skip_Line;
-    New_Line(2);
 
     Put("För DS3:");
     New_Line;
