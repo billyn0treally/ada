@@ -3,21 +3,6 @@ with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
---Viktigt för uppgiften:
---
---  Saknar specificerare för Put för heltal eller
---  flyttal
---
---  Ordning av kodens olika delar
---
---  Felaktig hantering av upprepning
---
---  Rensar inte bufferten innan påföljande inmatning
---  skall påbörjas
---
---  Mellanlagring av delar av din datatyp
-
-
 procedure o3_2 is
 
     -- Type Declaration
