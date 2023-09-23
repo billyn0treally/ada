@@ -99,8 +99,7 @@ procedure o3_2 is
 
 begin   
 
-    Put("För DS1:");
-    New_Line;
+    Put_Line("För DS1:");
     Put("Mata in datamängd: ");
     Get(DS1);
     Put("Inmatad datamängd:");
@@ -108,8 +107,7 @@ begin
     New_Line (2);
     Skip_Line;
 
-    Put("För DS2:");
-    New_Line;
+    Put_Line("För DS2:");
     Put("Mata in datamängd: ");
     Get(DS2);
     Put("Inmatad datamängd:");
@@ -117,8 +115,7 @@ begin
     New_Line (2);
     Skip_Line;
 
-    Put("För DS3:");
-    New_Line;
+    Put_Line("För DS3:");
     Put("Mata in datamängd: ");
     Get(DS3);
     Put("Inmatad datamängd:");
