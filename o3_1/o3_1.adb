@@ -146,5 +146,4 @@ begin
     Put("Inmatad datamängd: ");
     Put(DS3);
 
-
 end o3_1;
