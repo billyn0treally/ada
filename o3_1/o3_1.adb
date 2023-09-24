@@ -68,6 +68,10 @@ procedure o3_1 is
 
     -- Procedures
 
+    procedure whitespace is
+    begin Put(" ");
+    end whitespace;
+
     -- Get för  Post_Type_1
     procedure Get(DS1: out Post_Type1) is
     Ch : Character;
@@ -116,7 +120,7 @@ procedure o3_1 is
     procedure Put (DS1 : in Post_Type1) is
     begin
         Put(DS1.W);
-        Put(" ");
+        whitespace;
         Put(DS1.P);
     end Put;
 
@@ -124,11 +128,11 @@ procedure o3_1 is
     procedure Put (DS2 : in Post_Type2) is
     begin
         Put(DS2.D.S,0,3,0);
-        Put (" ");
+        whitespace;
         Put(DS2.D.Z);
-        Put (" ");
+        whitespace;
         Put(DS2.U.S,0,3,0);
-        Put (" ");
+        whitespace;
         Put(DS2.U.Z);
     end Put;
 
@@ -136,13 +140,13 @@ procedure o3_1 is
     procedure Put (DS3 : in Post_Type3) is
     begin
         Put(DS3.J.Y);
-        Put (" ");
+        whitespace;
         Put(DS3.J.Q);
-        Put (" ");
+        whitespace;
         Put(DS3.B.Y);
-        Put (" ");
+        whitespace;
         Put(DS3.B.Q);
-        Put (" ");
+        whitespace;
         if DS3.O.T = True then
             Put("True ");
         else 
