@@ -5,13 +5,7 @@ with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure o2 is
-    I       : Integer;
-    F       : Float;
-    S       : String (1 .. 5);
-    Bool    : Boolean;
-    Char    : Character;
-
-   function "-" (A : Integer; B : Float) return Float is
+   function "-" (A : in Integer; B : in Float) return Float is
     begin
         return Float(A) - B;
     end "-";
@@ -41,11 +35,16 @@ procedure o2 is
         
     end TestString;
 
-    function iss (C : Character) return Boolean is
+    function iss (C : in Character) return Boolean is
     begin
         return C = 'S' or C = 's';
     end iss;
 
+    I       : Integer;
+    F       : Float;
+    S       : String (1 .. 5);
+    Bool    : Boolean;
+    Char    : Character;
 begin
     Put("Mata in ett heltal och ett flyttal: ");
     Get(I);
