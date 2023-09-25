@@ -52,6 +52,7 @@ begin
     Get(F);
     Put("Differensen mellan dem är ");
     Put(I-F, Fore =>  0, Aft => 2, Exp => 0);
+    Skip_Line;
     New_Line (2);
 
     Put("Skriv in ett 5 tecken långt engelskt substantiv: ");
