@@ -47,6 +47,7 @@ procedure o2 is
     end iss;
 
 begin
+
     Put("Mata in ett heltal och ett flyttal: ");
     Get(I);
     Get(F);
@@ -64,6 +65,7 @@ begin
     else
         Put(" var troligtvis inte i plural från början");
     end if;
+    Skip_Line;
     New_Line (2);
 
     Put("Mata in ett tecken: ");
