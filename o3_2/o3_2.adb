@@ -5,11 +5,11 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 --Viktigt för uppgiften:
 
---  Saknar specificerare för Put för heltal eller flyttal
+--CHECK  Saknar specificerare för Put för heltal eller flyttal
 
---  Ordning av kodens olika delar
+--CHECK  Ordning av kodens olika delar
 
---  Mellanlagring av delar av din datatyp
+--CHECK  Mellanlagring av delar av din datatyp
 
 --  Skapa en Get/Put för varje datatyp, även inre
 
