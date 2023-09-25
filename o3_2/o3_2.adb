@@ -3,6 +3,22 @@ with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
+--Viktigt för uppgiften:
+
+--  Saknar specificerare för Put för heltal eller flyttal
+
+--  Ordning av kodens olika delar
+
+--  Mellanlagring av delar av din datatyp
+
+--  Skapa en Get/Put för varje datatyp, även inre
+
+--Tips:
+
+--  Placering av Skip_Line
+
+--  Några enstaka indenteringsfel
+
 procedure o3_2 is
 
     -- Type Declaration
@@ -35,7 +51,6 @@ procedure o3_2 is
         for I in reverse DS1'First..DS1'Last loop
             Get(DS1(I));
         end loop;
-        Skip_Line;
     end Get;
 
     -- Put DS1
@@ -45,7 +60,6 @@ procedure o3_2 is
             Put(" ");
             Put(DS1(I),0,3,0);
         end loop;
-        New_Line(2);
     end Put;
 
     -- Get DS2
@@ -84,11 +98,9 @@ procedure o3_2 is
                 Get(DS3(I,J));
             end loop;
         end loop;
-        Skip_Line;
     end Get;
 
-   ---------------------
-   
+    -- Put DS3
     procedure Put (DS3 : in Array_Type_3) is  
     begin                          
         for I in DS3'first..DS3'last loop
@@ -97,33 +109,33 @@ procedure o3_2 is
                 Put(DS3(I,J),Width  => 1);
             end loop;
         end loop;
-        New_Line;    
     end Put;
 
                 -- Main program
 
 begin   
 
-    Put("För DS1:");
-    New_Line;
+    Put_Line("För DS1:");
     Put("Mata in datamängd: ");
     Get(DS1);
     Put("Inmatad datamängd:");
     Put(DS1);
+    New_Line (2);
+    Skip_Line;
 
-    Put("För DS2:");
-    New_Line;
+    Put_Line("För DS2:");
     Put("Mata in datamängd: ");
     Get(DS2);
     Put("Inmatad datamängd:");
     Put(DS2);
-    New_Line(2);
+    New_Line (2);
+    Skip_Line;
 
-    Put("För DS3:");
-    New_Line;
+    Put_Line("För DS3:");
     Put("Mata in datamängd: ");
     Get(DS3);
     Put("Inmatad datamängd:");
     Put(DS3);
+    Skip_Line;
 
 end o3_2;
