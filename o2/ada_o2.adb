@@ -5,13 +5,15 @@ with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure o2 is
-   function "-" (A : in Integer; B : in Float) return Float is
+   function "-" (A : in Integer; 
+                B : in Float) return Float is
     begin
         return Float(A) - B;
     end "-";
 
 
-    procedure TestString ( S : in out String; B : out Boolean) is 
+    procedure TestString ( S : in out String; 
+                         B : out Boolean) is 
     begin
         if S(S'last) = 's' then 
             B := True;
@@ -19,10 +21,11 @@ procedure o2 is
             B := False; 
             S(S'last) := 's';
         end if;
-        
+
+
     end TestString;
 
-    function iss (C : in Character) return Boolean is
+    function iss (C : in Character)  return Boolean is
     begin
         return C = 'S' or C = 's';
     end iss;
@@ -57,6 +60,7 @@ begin
 
     Put("Mata in ett tecken: ");
     Get(Char);
+    Skip_Line;
     if iss (Char) then
         Put("Tecknet var sant");
     else 

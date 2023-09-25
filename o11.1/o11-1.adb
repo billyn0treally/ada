@@ -1,4 +1,4 @@
---mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
+ --mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Text_Io;                          use Ada.Text_Io;
 with Ada.Integer_Text_Io;                  use Ada.Integer_Text_Io;
 with Ada.Float_Text_Io;                    use Ada.Float_Text_Io;
