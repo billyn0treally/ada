@@ -70,7 +70,7 @@ Skip_Line;
     Put("Mata in ett tecken: ");
     Get(Char);
     if iss (Char) then
-        Put("Tecknet var sant");
+        Put("Tecknet var sant") ;
     else 
         Put("Tecknet var inte sant");
     end if;

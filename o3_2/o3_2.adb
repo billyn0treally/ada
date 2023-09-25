@@ -58,19 +58,17 @@ procedure o3_2 is
     begin
         for I in reverse DS1'First..DS1'Last loop
             Put(" ");
-            Put(DS1(I),0,3,0);
+            Put(DS1(I),Fore => 0,Aft =>3,Exp => 0);
         end loop;
     end Put;
 
     -- Get DS2
     procedure Get(DS2 : out Array_Type_2) is
         C : Character;
-        Temp_Str : String(1..5);
     begin
         for I in Boolean loop
             for J in reverse crange loop
-                Get(Temp_Str);
-                DS2(I)(J) := Temp_Str;
+                Get(DS2(I)(J));
                 if J = crange'First and I = Boolean'Last then
                     exit;
                 end if;

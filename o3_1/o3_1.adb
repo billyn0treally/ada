@@ -7,16 +7,16 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 --CHECK  Felaktigt definierad datatyp
 
 --Viktigt för uppgiften:
-
+ 
 --CHECK?  Ordning av kodens olika delar
 
 --CHECK  Parametrar i underprogram har felaktig mod
 
 --  Skapa en Get/Put för varje datatyp, även inre
 
---  Saknar specificerare för Put för heltal eller flyttal
+--CHECK  Saknar specificerare för Put för heltal eller flyttal
 
---  Onaturligt eller felaktigt formulerade if-satser
+--CHECK  Onaturligt eller felaktigt formulerade if-satser
 
 --CHECK  Rensar inte bufferten innan påföljande inmatning skall påbörjas
 
@@ -111,11 +111,7 @@ procedure o3_1 is
         Get(DS3.B.Q);
         Get(Ch);
         Get(Ch);
-        if Ch = 'T' then
-            DS3.O.T := True;
-        else
-            DS3.O.T := False;
-        end if;  
+        DS3.O.T := Ch = 'T';
         Get(Ch);
         Get(DS3.O.L);
     end Get;
@@ -131,11 +127,11 @@ procedure o3_1 is
     -- Put för Post_Type_2
     procedure Put (DS2 : in Post_Type2) is
     begin
-        Put(DS2.D.S,0,3,0);
+        Put(DS2.D.S,Fore => 0, Aft =>3, Exp => 0);
         whitespace;
         Put(DS2.D.Z);
         whitespace;
-        Put(DS2.U.S,0,3,0);
+        Put(DS2.U.S,Fore => 0,Aft => 3, Exp => 0);
         whitespace;
         Put(DS2.U.Z);
     end Put;
@@ -151,7 +147,7 @@ procedure o3_1 is
         whitespace;
         Put(DS3.B.Q);
         whitespace;
-        if DS3.O.T = True then
+        if DS3.O.T then
             Put("True ");
         else 
             Put("False ");
