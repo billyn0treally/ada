@@ -65,7 +65,7 @@ begin
         Put(" var troligtvis inte i plural från början");
     end if;
     New_Line (2);
-
+Skip_Line;
     Put("Mata in ett tecken: ");
     Get(Char);
     if iss (Char) then
