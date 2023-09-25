@@ -4,11 +4,11 @@ with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 --Krav för uppgiften:
 
---  Felaktigt definierad datatyp
+--CHECK  Felaktigt definierad datatyp
 
 --Viktigt för uppgiften:
 
---  Ordning av kodens olika delar
+--CHECK?  Ordning av kodens olika delar
 
 --CHECK  Parametrar i underprogram har felaktig mod
 
@@ -47,18 +47,22 @@ procedure o3_1 is
         S : Float;
         Z : String(1 .. 4);
     end record;
-
-    type Post_Type3_N is record
-        Y, L, Q : Character;
-        T : Boolean;
-    end record;
-
     type Post_Type2 is record
         D, U : Post_Type2_N;
     end record;
 
+    type Post_Type3_N_1 is record
+        Y, Q : Character;
+    end record;
+
+    type Post_Type3_N_2 is record
+        L : Character;
+        T : Boolean;
+    end record;
+
     type Post_Type3 is record
-        J, B, O : Post_Type3_N;
+        J, B     : Post_Type3_N_1;
+        O        : Post_Type3_N_2;
     end record;
 
     -- Tilldela posterna
