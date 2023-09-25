@@ -5,32 +5,15 @@ with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure o2 is
-    I       : Integer;
-    F       : Float;
-    S       : String (1 .. 5);
-    Bool    : Boolean;
-    Char    : Character;
-
-   function "-" (A : Integer; B : Float) return Float is
+   function "-" (A : in Integer; 
+                B : in Float) return Float is
     begin
         return Float(A) - B;
     end "-";
 
---gamla koden nedan, bytes ut av TestString
 
-    --  procedure strlenxd ( S : in out String; B : out Boolean ) is
-    --      Local_S : String(1 .. S'Length + 1);
-    --  begin
-    --      if S (S'Last) = 's' then
-    --          B := True;
-    --      else
-    --          B           := False;
-    --          S (S'Last)  := 's';
-    --          Local_S     := S & 's';
-    --      end if;
-    --  end strlenxd;
-
-    procedure TestString ( S : in out String; B : out Boolean) is 
+    procedure TestString ( S : in out String; 
+                         B : out Boolean) is 
     begin
         if S(S'last) = 's' then 
             B := True;
@@ -38,14 +21,20 @@ procedure o2 is
             B := False; 
             S(S'last) := 's';
         end if;
-        
+
+
     end TestString;
 
-    function iss (C : Character) return Boolean is
+    function iss (C : in Character)  return Boolean is
     begin
         return C = 'S' or C = 's';
     end iss;
 
+    I       : Integer;
+    F       : Float;
+    S       : String (1 .. 5);
+    Bool    : Boolean;
+    Char    : Character;
 begin
     Put("Mata in ett heltal och ett flyttal: ");
     Get(I);
@@ -65,10 +54,13 @@ begin
     else
         Put(" var troligtvis inte i plural från början");
     end if;
+    Skip_Line;
     New_Line (2);
-Skip_Line;
+
+
     Put("Mata in ett tecken: ");
     Get(Char);
+    Skip_Line;
     if iss (Char) then
         Put("Tecknet var sant") ;
     else 
