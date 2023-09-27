@@ -1,6 +1,7 @@
---mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
+--mikna021: Samarbetat med melg374, Melker Gustafsson, samma program
 with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+with Ada.Exceptions;          use Ada.Exceptions;
 
 procedure Test_Exceptions is
    
@@ -40,22 +41,30 @@ procedure Test_Exceptions is
    -- heltalsinläsningen där användaren får mata in värden tills       --
    -- korrekt värde matas in.                                          --
    ----------------------------------------------------------------------
-   procedure Get_Safe(Min, Max : in Integer; Value : out Integer) is
+      Value, Min, Max : Integer;
+      
+--   exception
+--       when Data_Error =>
+--           Put("Fel datatyp. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+
+   -- Det finns en extra whitespace före Integern vi printar ut 
+   -- men bara om Integern är positiv. Så den tar - tecknets plats
+   procedure Get_Safe(Value : out integer; Min, Max : in Integer) is
    begin
-       Put("Mata in värde ( "& Min'Image &" - " & Max'Image &"): ");
-       Get(Value);
-       if Value > Max then
-           Put("För stort värde. Mata in värde ( "& Min'Image &" - " & Max'Image &"): ");
-       elsif Value < Min then
-           Put("För litet värde. Mata in värde ( "& Min'Image &" - " & Max'Image &"): ");
-       end if;
-       New_Line;
+       Put("Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+       loop
+           Get(Value);
+           exit when Min <= Value and Value <= Max;
+           if Min >= Value then
+               Put("För litet värde. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+           elsif Max <= Value then
+               Put("För stort värde. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+           end if;
+       end loop;
    end Get_Safe;
 
    procedure Upg1 is
-      
-      Value, Min, Max : Integer;
-      
+
    begin      
       Put("Mata in Min och Max: ");
       Get(Min);
@@ -141,11 +150,10 @@ begin
 	 Get(Length);
 	 Skip_Line;
 	 
-          Put("Deez nuts");
 	 --Upg2(Length);
 	 
       elsif Choice = 3 then
-          Put("Deez nuts");
+          Put("Segmentation fault (core dumped)"); -- så det kompilerar
 	 --Upg3;
 	 
       else

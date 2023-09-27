@@ -3,11 +3,13 @@ M P W=b
 P ZX
 
 RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
 RV NO_IO
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U test_exceptions%b	test_exceptions.adb	cbae60f0 NE OO SU
+U test_exceptions%b	test_exceptions.adb	e07cf8c8 NE OO SU
 W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
@@ -61,35 +63,37 @@ D s-vauspe.ads		20230728000000 a67b2f28 system.value_u_spec%s
 D s-wchcon.ads		20230728000000 d9032363 system.wch_con%s
 D s-widuns.ads		20230728000000 866a5800 system.wid_uns%s
 D s-widthu.ads		20230728000000 b32f15e2 system.width_u%s
-D test_exceptions.adb	20230927102906 61c98807 test_exceptions%b
+D test_exceptions.adb	20230927140339 60669d4f test_exceptions%b
 G a e
-G c Z b b [test_exceptions standard 5 11 none]
+G c Z b b [test_exceptions standard 6 11 none]
 X 1 ada.ads
-16K9*Ada 20e8 48|2r6 2r31 3r6 3r31
+16K9*Ada 20e8 48|2r6 2r31 3r6 3r31 4r6 4r35
+X 3 a-except.ads
+44K13*Exceptions 295e19 48|4w10 4r39
 X 4 a-inteio.ads
 18K13*Integer_Text_IO[15|46] 48|3w10 3r35
 X 14 a-textio.ads
 58K13*Text_IO 787e16 48|2w10 2r35
 88I12*Field{integer}
-293U14*Skip_Line 48|65s7 142s10
-519U14*Put 48|25s10 45s8 48s12 50s12 60s7 67s7 140s10 144s11 148s11
-566U14*Put_Line 48|19s7 20s7 21s7 22s7 28s10 69s7 152s10
+293U14*Skip_Line 48|75s7 152s10
+519U14*Put 48|26s10 54s8 59s16 61s16 70s7 77s7 150s10 157s11
+566U14*Put_Line 48|20s7 21s7 22s7 23s7 29s10 79s7 161s10
 X 15 a-tiinio.ads
-60U14*Get 48|26s10[4|18] 46s8[4|18] 61s7[4|18] 62s7[4|18] 141s10[4|18]
-83U14*Put 48|68s7[4|18]
-85i7 Width{14|88I12} 48|68r18[4|18]
+60U14*Get 48|27s10[4|18] 56s12[4|18] 71s7[4|18] 72s7[4|18] 151s10[4|18]
+83U14*Put 48|78s7[4|18]
+85i7 Width{14|88I12} 48|78r18[4|18]
 X 48 test_exceptions.adb
-5U11*Test_Exceptions 5b11 156l5 156t20
-14V13 Menu_Selection{integer} 14b13 32l8 32t22 134s17
-16i7 N{integer} 26m14 27r20 31r14
-43U14 Get_Safe 43b14 43>23 43>28 43<46 53l8 53t16 64s7
-43i23 Min{integer} 45r33 48r56 49r22 50r56
-43i28 Max{integer} 45r52 47r19 48r75 50r75
-43i46 Value{integer} 46m12 47r11 49r14
-55U14 Upg1 55b14 70l8 70t12 137s10
-57i7 Value{integer} 64r16 68r11
-57i14 Min{integer} 61m11 64r23
-57i19 Max{integer} 62m11 64m28
-130i4 Choice{integer} 134m7 136r10 139r13 147r13
-130i12 Length{integer} 141m14
+6U11*Test_Exceptions 6b11 165l5 165t20
+15V13 Menu_Selection{integer} 15b13 33l8 33t22 144s17
+17i7 N{integer} 27m14 28r20 32r14
+44i7 Value{integer} 74m16 78r11
+44i14 Min{integer} 71m11 74r23
+44i19 Max{integer} 72m11 74r28
+52U14 Get_Safe 52b14 52<23 52>44 52>49 65l8 65t16 74s7
+52i23 Value{integer} 56m16 57r29 57r39 58r22 60r25
+52i44 Min{integer} 54r32 57r22 58r15 59r59 61r59
+52i49 Max{integer} 54r50 57r48 59r77 60r18 61r77
+67U14 Upg1 67b14 80l8 80t12 147s10
+140i4 Choice{integer} 144m7 146r10 149r13 156r13
+140i12 Length{integer} 151m14
 
