@@ -47,7 +47,7 @@ procedure o3_1 is
 
     -- Get för  Post_Type_1
     procedure Get(DS1: out Post_Type1) is
-    Ch : Character;
+        Ch : Character;
     begin
         Get(DS1.W);
         Get(Ch);

@@ -3,14 +3,6 @@ with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
---Viktigt för uppgiften:
-
---CHECK  Saknar specificerare för Put för heltal eller flyttal
-
---CHECK  Ordning av kodens olika delar
-
---CHECK  Mellanlagring av delar av din datatyp
-
 --  Skapa en Get/Put för varje datatyp, även inre
 
 --Tips:
@@ -62,29 +54,48 @@ procedure o3_2 is
         end loop;
     end Put;
 
+    -- Get Array_Type_2_N
+    procedure Get(DS2 : out Array_Type_2_N) is
+        C : Character;
+    begin
+        For J in reverse crange loop
+            Get(DS2(J));
+                if J = crange'First then
+                    exit;
+                end if;
+                Get(C);
+            end loop;
+    end Get;
+
+
     -- Get DS2
     procedure Get(DS2 : out Array_Type_2) is
         C : Character;
     begin
         for I in Boolean loop
-            for J in reverse crange loop
-                Get(DS2(I)(J));
-                if J = crange'First and I = Boolean'Last then
+                Get(DS2(I));
+                if I = Boolean'Last then
                     exit;
                 end if;
                 Get(C);
-            end loop;
         end loop;
     end Get;
+
+    -- Put Array_Type_2_N
+    procedure Put(DS2 : in Array_Type_2_N) is
+    begin
+        for J in reverse crange loop
+            Put(" ");
+            Put(DS2(J));
+        end loop;
+    end Put;
+
 
     -- Put DS2
     procedure Put(DS2 : in Array_Type_2) is
     begin
         for I in Boolean loop
-            for J in reverse crange loop
-                Put(" ");
-                Put(DS2(I)(J));
-            end loop;
+                Put(DS2(I));
         end loop;
     end Put;
 
