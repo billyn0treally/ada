@@ -3,37 +3,20 @@ M P W=b
 P ZX
 
 RN
-RV NO_DIRECT_BOOLEAN_OPERATORS
-RV NO_EXCEPTION_HANDLERS
-RV NO_EXCEPTIONS
-RV NO_FLOATING_POINT
 RV NO_IO
-RV NO_IMPLICIT_CONDITIONALS
-RV NO_RECURSION
-RV NO_STANDARD_STORAGE_POOLS
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U test_exceptions%b	test_exceptions.adb	2f0df598 NE OO SU
+U test_exceptions%b	test_exceptions.adb	cbae60f0 NE OO SU
 W ada%s			ada.ads			ada.ali
-W ada.exceptions%s	a-except.adb		a-except.ali
-W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-Z system%s		system.ads		system.ali
-Z system.atomic_operations.test_and_set%s  s-aotase.adb  s-aotase.ali
-Z system.concat_2%s	s-conca2.adb		s-conca2.ali
 Z system.concat_5%s	s-conca5.adb		s-conca5.ali
-Z system.exception_table%s  s-exctab.adb	s-exctab.ali
-Z system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
 Z system.img_int%s	s-imgint.ads		s-imgint.ali
-Z system.standard_library%s  s-stalib.adb	s-stalib.ali
-Z system.val_int%s	s-valint.ads		s-valint.ali
 
 D ada.ads		20230728000000 76789da1 ada%s
 D a-assert.ads		20230728000000 ba465f5c ada.assertions%s
 D a-except.ads		20230728000000 2a7d8d70 ada.exceptions%s
-D a-flteio.ads		20230728000000 e18a47a0 ada.float_text_io%s
 D a-inteio.ads		20230728000000 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20230728000000 40018c65 ada.io_exceptions%s
 D a-numeri.ads		20230728000000 84bea7a3 ada.numerics%s
@@ -45,25 +28,16 @@ D a-sttebu.ads		20230728000000 f1ad67a2 ada.strings.text_buffers%s
 D a-stuten.ads		20230728000000 c6ced0ae ada.strings.utf_encoding%s
 D a-tags.ads		20230728000000 9eaa38c6 ada.tags%s
 D a-textio.ads		20230728000000 5c2c6153 ada.text_io%s
-D a-tiflio.ads		20230728000000 9fe024a2 ada.text_io.float_io%s
 D a-tiinio.ads		20230728000000 e58fa6fb ada.text_io.integer_io%s
 D a-unccon.ads		20230728000000 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20230728000000 15f799c2 interfaces%s
-D i-c.ads		20230728000000 5c5a6c17 interfaces.c%s
 D i-cstrea.ads		20230728000000 e53d8b8e interfaces.c_streams%s
 D system.ads		20230728000000 426dafb8 system%s
 D s-assert.ads		20230728000000 9c4520c7 system.assertions%s
-D s-atoope.ads		20230728000000 c7637a25 system.atomic_operations%s
-D s-aotase.ads		20230728000000 90cf94ab system.atomic_operations.test_and_set%s
-D s-aotase.adb		20230728000000 e581b407 system.atomic_operations.test_and_set%b
-D s-atopri.ads		20230728000000 1b132436 system.atomic_primitives%s
 D s-casuti.ads		20230728000000 cf13d755 system.case_util%s
-D s-conca2.ads		20230728000000 b5fb73f7 system.concat_2%s
 D s-conca5.ads		20230728000000 4099d1db system.concat_5%s
 D s-crtl.ads		20230728000000 8a0692f8 system.crtl%s
 D s-exctab.ads		20230728000000 91bef6ef system.exception_table%s
-D s-fatflt.ads		20230728000000 11beb392 system.fat_flt%s
-D s-fatgen.ads		20230728000000 d28c6cfe system.fat_gen%s
 D s-ficobl.ads		20230728000000 dc5161d4 system.file_control_block%s
 D s-imagei.ads		20230728000000 c707dfd0 system.image_i%s
 D s-imgint.ads		20230728000000 d4a52a9b system.img_int%s
@@ -87,73 +61,35 @@ D s-vauspe.ads		20230728000000 a67b2f28 system.value_u_spec%s
 D s-wchcon.ads		20230728000000 d9032363 system.wch_con%s
 D s-widuns.ads		20230728000000 866a5800 system.wid_uns%s
 D s-widthu.ads		20230728000000 b32f15e2 system.width_u%s
-D test_exceptions.adb	20230918144224 4e9dd7bf test_exceptions%b
+D test_exceptions.adb	20230927102906 61c98807 test_exceptions%b
 G a e
-G c Z b b [test_exceptions standard 7 11 none]
+G c Z b b [test_exceptions standard 5 11 none]
 X 1 ada.ads
-16K9*Ada 20e8 58|2r6 2r31 3r6 3r31 4r6 4r31 5r6 5r31 47r9 59r9
-X 3 a-except.ads
-44K13*Exceptions 295e19 58|4w10 4r35
-X 4 a-flteio.ads
-20K13*Float_Text_IO[16|46] 58|5w10 5r35
-X 5 a-inteio.ads
-18K13*Integer_Text_IO[17|46] 58|3w10 3r35
-X 15 a-textio.ads
-58K13*Text_IO 787e16 58|2w10 2r35 47r13 59r13
+16K9*Ada 20e8 48|2r6 2r31 3r6 3r31
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[15|46] 48|3w10 3r35
+X 14 a-textio.ads
+58K13*Text_IO 787e16 48|2w10 2r35
 88I12*Field{integer}
-282U14*New_Line 58|117s13 159s7 175s7
-293U14*Skip_Line 58|160s7 176s7
-423U14*Get 58|47s21
-436U14*Put 58|158s7
-452U14*Look_Ahead 58|59s21
-519U14*Put 58|31s18 102s10 104s10 106s10 108s13 111s10 113s13 125s7 127s7
-. 133s15 136s15 139s15 142s15 152s7 156s7 166s7 169s7 172s7 174s7
-566U14*Put_Line 58|26s9 151s7 165s7 168s7 171s7 181s7 195s17
-X 17 a-tiinio.ads
-60U14*Get 58|28s13[5|18] 153s7[5|18] 154s7[5|18]
-83U14*Put 58|103s10[5|18] 105s10[5|18] 110s10[5|18] 115s10[5|18] 126s7[5|18]
-. 157s7[5|18]
-85i7 Width{15|88I12} 58|126r15[5|18] 157r19[5|18]
-X 58 test_exceptions.adb
-7U11*Test_Exceptions 7b11 197l13 197t28
-9R10 Date_Type 11e15 13r45 64r27 123r40
-10i9 Day{integer} 74m7 92r10 112r20 115r21
-10i14 Month{integer} 73m7 78r10 81r10 84r10 107r20 110r21
-10i21 Year{integer} 72m7 75r10 75r27 87r44 88r26 105r21
-13A10 Date_Arr_Type(9R10)<integer> 19r13 98r24
-15i5 Min{integer} 153m12 155r23
-15i10 Max{integer} 154m12 155r28
-15i15 Value{integer} 155m33 157r12
-16a5 S_1{string} 167m12 168r35
-17a5 S_2{string} 170m12 171r35
-18a5 S_3{string} 68m9 69r8 69r26 72r31 73r31 74r31 173m12 174r30
-19a5 Dates{13A10} 128m12 128r12 129r14 182r16 183m10 185r12
-21X5 Lenght_Error 44r19 194r18
-21X19 Format_Error 70r15 132r16
-21X33 Year_Error 76r15 135r16
-21X45 Month_Error 79r15 138r16
-21X58 Day_Error 93r15 141r16
-24U15 Get_Value_Safe 24b15 24>31 24>36 24<54 34l5 34t19 155s7
-24i31 Min{integer} 26r40 29r16
-24i36 Max{integer} 26r60 29r43
-24i54 Value{integer} 28m17 29r23 29r34
-37U11 Get 37b11 37<17 61l5 61t8 68s5 167s7 170s7 173s7
-37a17 Item{string} 52r24 53m13 53r19 56r21
-38e5 C{character} 47m25 49r26 53r42 59m33
-39i5 Index{integer} 49r12 50m13 52r15 53r32 54m13 54r22 56r12
-40b5 EOL{boolean} 43r12 59m36
-64U11 Get 64b11 64=16 95l5 95t8 128s7
-64r16 D{9R10} 72m5 73m5 74m5 75r8 75r25 78r8 81r8 84r8 87r42 88r24 92r8
-65i5 Bound{integer} 82m9 90m9 92r16
-66f5 F{float} 87m9 90r32
-98U11 Put 98b11 98>17 120l5 120t8 185s7
-98a17 D{13A10} 100r15 105r15 107r14 110r15 112r14 115r15 116r18
-100i10 i{integer} 103r15 105r18 107r17 110r18 112r17 115r18 116r13
-123V13 Query{9R10} 123b13 123>20 134s22 137s22 140s22 143s22 144l11 144t16
-. 183s23
-123i20 I{integer} 126r12 128r19 129r21 134r29 137r29 140r29 143r29
-149U14 Del_1 149b14 161l8 161t13 189s9
-163U14 Del_2 163b14 177l8 177t13 190s9
-179U14 Del_3 179b14 186l8 186t13 191s9
-182i11 I{integer} 183r17 183r30
+293U14*Skip_Line 48|65s7 142s10
+519U14*Put 48|25s10 45s8 48s12 50s12 60s7 67s7 140s10 144s11 148s11
+566U14*Put_Line 48|19s7 20s7 21s7 22s7 28s10 69s7 152s10
+X 15 a-tiinio.ads
+60U14*Get 48|26s10[4|18] 46s8[4|18] 61s7[4|18] 62s7[4|18] 141s10[4|18]
+83U14*Put 48|68s7[4|18]
+85i7 Width{14|88I12} 48|68r18[4|18]
+X 48 test_exceptions.adb
+5U11*Test_Exceptions 5b11 156l5 156t20
+14V13 Menu_Selection{integer} 14b13 32l8 32t22 134s17
+16i7 N{integer} 26m14 27r20 31r14
+43U14 Get_Safe 43b14 43>23 43>28 43<46 53l8 53t16 64s7
+43i23 Min{integer} 45r33 48r56 49r22 50r56
+43i28 Max{integer} 45r52 47r19 48r75 50r75
+43i46 Value{integer} 46m12 47r11 49r14
+55U14 Upg1 55b14 70l8 70t12 137s10
+57i7 Value{integer} 64r16 68r11
+57i14 Min{integer} 61m11 64r23
+57i19 Max{integer} 62m11 64m28
+130i4 Choice{integer} 134m7 136r10 139r13 147r13
+130i12 Length{integer} 141m14
 

@@ -40,6 +40,18 @@ procedure Test_Exceptions is
    -- heltalsinläsningen där användaren får mata in värden tills       --
    -- korrekt värde matas in.                                          --
    ----------------------------------------------------------------------
+   procedure Get_Safe(Min, Max : in Integer; Value : out Integer) is
+   begin
+       Put("Mata in värde ( "& Min'Image &" - " & Max'Image &"): ");
+       Get(Value);
+       if Value > Max then
+           Put("För stort värde. Mata in värde ( "& Min'Image &" - " & Max'Image &"): ");
+       elsif Value < Min then
+           Put("För litet värde. Mata in värde ( "& Min'Image &" - " & Max'Image &"): ");
+       end if;
+       New_Line;
+   end Get_Safe;
+
    procedure Upg1 is
       
       Value, Min, Max : Integer;
@@ -67,20 +79,20 @@ procedure Test_Exceptions is
    -- Get_Correct_String kasta/resa undantag vilket inte ska           --
    -- fångas här utan i huvudprogrammet.                               --
    ----------------------------------------------------------------------
-   procedure Upg2(Length : in Integer) is
-      
-      S : String(1 .. Length);
-      
-   begin      
-      Put("Mata in en sträng med exakt ");
-      Put(Length, Width => 0);
-      Put(" tecken: ");
-      
-      Get_Correct_String(S);
-      Skip_Line;
-      
-      Put_Line("Du matade in strängen " & S & ".");      
-   end Upg2;
+--   procedure Upg2(Length : in Integer) is
+--      
+--      S : String(1 .. Length);
+--      
+--   begin      
+--      Put("Mata in en sträng med exakt ");
+--      Put(Length, Width => 0);
+--      Put(" tecken: ");
+--      
+--      Get_Correct_String(S);
+--      Skip_Line;
+--      
+--      Put_Line("Du matade in strängen " & S & ".");      
+--   end Upg2;
    
    ----------------------------------------------------------------------
    -- Underprogram får menyval 3: "felhantering av datuminmatning"     --
@@ -91,19 +103,19 @@ procedure Test_Exceptions is
    -- underprogram ska fånga, skriva ut felmeddelande får och sedan    --
    -- anropa Get igen.                                                 --
    ----------------------------------------------------------------------
-   procedure Upg3 is
-      
-      Date : Date_Type;
-      
-   begin      
-      Put("Mata in ett datum: ");
-      Get(Date);
-      Skip_Line;
-      
-      Put("Du matade in ");
-      Put(Date);
-      New_Line;      
-   end Upg3;
+--   procedure Upg3 is
+--      
+--      Date : Date_Type;
+--      
+--   begin      
+--      Put("Mata in ett datum: ");
+--      Get(Date);
+--      Skip_Line;
+--      
+--      Put("Du matade in ");
+--      Put(Date);
+--      New_Line;      
+--   end Upg3;
    
    ----------------------------------------------------------------------
    -- Huvudprogram                                                     --
@@ -129,10 +141,12 @@ begin
 	 Get(Length);
 	 Skip_Line;
 	 
-	 Upg2(Length);
+          Put("Deez nuts");
+	 --Upg2(Length);
 	 
       elsif Choice = 3 then
-	 Upg3;
+          Put("Deez nuts");
+	 --Upg3;
 	 
       else
 	 Put_Line("Programmet avslutas.");
