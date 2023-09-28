@@ -32,6 +32,8 @@ procedure Test_Exceptions is
       return N;
    end Menu_Selection;
    
+Length_Error : exception;
+
    ----------------------------------------------------------------------
    -- Underprogram får menyval 1: "felhantering av heltalsinmatning"   --
    --                                                                  --
@@ -102,21 +104,46 @@ procedure Test_Exceptions is
    -- Get_Correct_String kasta/resa undantag vilket inte ska           --
    -- fångas här utan i huvudprogrammet.                               --
    ----------------------------------------------------------------------
- procedure Upg2(Length : in Integer) is
+
+
+   procedure Get_Correct_String(S : out String) is
+       C        : Character;
+       Index    : Integer := 0;
+       EOL      : Boolean := False;
+   begin
+       loop
+           if EOL then
+               raise Length_Error;
+           end if;
+           Get(C);
+           if Index = 0 and C = ' ' then
+               Index := 0;
+           elsif Index <= S'Length then
+               S (S'First + Index) := C;
+               Index := Index + 1;
+           end if;
+           if Index >= S'Length then
+               exit;
+           end if;
+           Look_Ahead(C, EOL); 
+       end loop;
+   end Get_Correct_String;
+
+   procedure Upg2(Length : in Integer) is
     
-    S : String(1 .. Length);
+       S : String(1 .. Length);
     
- begin      
-    Put("Mata in en sträng med exakt ");
-    Put(Length, Width => 0);
-    Put(" tecken: ");
-    
-    Get_Correct_String(S);
-    Skip_Line;
-    
-    Put_Line("Du matade in strängen " & S & ".");      
- end Upg2;
-   
+   begin      
+       Put("Mata in en sträng med exakt ");
+       Put(Length, Width => 0);
+       Put(" tecken: ");
+
+       Get_Correct_String(S);
+       Skip_Line;
+
+       Put_Line("Du matade in strängen " & S & ".");      
+   end Upg2;
+
    ----------------------------------------------------------------------
    -- Underprogram får menyval 3: "felhantering av datuminmatning"     --
    --                                                                  --
@@ -163,13 +190,19 @@ begin
 	 Put("Mata in en stränglängd: ");
 	 Get(Length);
 	 Skip_Line;
+     begin 
+	 Upg2(Length);
+     exception
+         when Length_Error =>
+             Put("För få inmatade tecken!");
+             New_Line;
+     end;
 	 
-	 --Upg2(Length);
-	 
-      elsif Choice = 3 then
-          Put("Segmentation fault (core dumped)"); -- så det kompilerar
-	 --Upg3;
-	 
+     elsif Choice = 3 then
+         --Upg3;
+         Put("Segmentation fault (core dumped)"); -- så det kompilerar
+         New_Line;
+
       else
 	 Put_Line("Programmet avslutas.");
 	 exit;

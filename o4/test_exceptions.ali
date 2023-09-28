@@ -7,16 +7,22 @@ RV NO_DIRECT_BOOLEAN_OPERATORS
 RV NO_EXCEPTION_HANDLERS
 RV NO_EXCEPTIONS
 RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_STANDARD_STORAGE_POOLS
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U test_exceptions%b	test_exceptions.adb	5542581a NE OO SU
+U test_exceptions%b	test_exceptions.adb	f99a2e11 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
+Z system%s		system.ads		system.ali
+Z system.atomic_operations.test_and_set%s  s-aotase.adb  s-aotase.ali
 Z system.concat_3%s	s-conca3.adb		s-conca3.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
 Z system.img_int%s	s-imgint.ads		s-imgint.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
 
 D ada.ads		20230728000000 76789da1 ada%s
 D a-assert.ads		20230728000000 ba465f5c ada.assertions%s
@@ -35,9 +41,14 @@ D a-textio.ads		20230728000000 5c2c6153 ada.text_io%s
 D a-tiinio.ads		20230728000000 e58fa6fb ada.text_io.integer_io%s
 D a-unccon.ads		20230728000000 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20230728000000 15f799c2 interfaces%s
+D i-c.ads		20230728000000 5c5a6c17 interfaces.c%s
 D i-cstrea.ads		20230728000000 e53d8b8e interfaces.c_streams%s
 D system.ads		20230728000000 426dafb8 system%s
 D s-assert.ads		20230728000000 9c4520c7 system.assertions%s
+D s-atoope.ads		20230728000000 c7637a25 system.atomic_operations%s
+D s-aotase.ads		20230728000000 90cf94ab system.atomic_operations.test_and_set%s
+D s-aotase.adb		20230728000000 e581b407 system.atomic_operations.test_and_set%b
+D s-atopri.ads		20230728000000 1b132436 system.atomic_primitives%s
 D s-casuti.ads		20230728000000 cf13d755 system.case_util%s
 D s-conca3.ads		20230728000000 8a7a19a2 system.concat_3%s
 D s-crtl.ads		20230728000000 8a0692f8 system.crtl%s
@@ -65,39 +76,52 @@ D s-vauspe.ads		20230728000000 a67b2f28 system.value_u_spec%s
 D s-wchcon.ads		20230728000000 d9032363 system.wch_con%s
 D s-widuns.ads		20230728000000 866a5800 system.wid_uns%s
 D s-widthu.ads		20230728000000 b32f15e2 system.width_u%s
-D test_exceptions.adb	20230928093419 d5583d9d test_exceptions%b
+D test_exceptions.adb	20230928102703 79804b96 test_exceptions%b
 G a e
 G c Z b b [test_exceptions standard 6 11 none]
 X 1 ada.ads
-16K9*Ada 20e8 48|2r6 2r31 3r6 3r31 4r6 4r35
+16K9*Ada 20e8 53|2r6 2r31 3r6 3r31 4r6 4r35
 X 3 a-except.ads
-44K13*Exceptions 295e19 48|4w10 4r39
+44K13*Exceptions 295e19 53|4w10 4r39
 X 4 a-inteio.ads
-18K13*Integer_Text_IO[15|46] 48|3w10 3r35
+18K13*Integer_Text_IO[15|46] 53|3w10 3r35
 X 14 a-textio.ads
-58K13*Text_IO 787e16 48|2w10 2r35
+58K13*Text_IO 787e16 53|2w10 2r35
 88I12*Field{integer}
-293U14*Skip_Line 48|75s20 88s7 165s10
-519U14*Put 48|26s10 54s8 56s8 62s20 64s20 66s20 68s20 72s20 74s20 83s7 90s7
-. 163s10 170s11
-566U14*Put_Line 48|20s7 21s7 22s7 23s7 29s10 92s7 174s10
-607X4*Data_Error 48|71r21
+282U14*New_Line 53|198s14 204s10
+293U14*Skip_Line 53|77s20 90s7 142s8 192s10
+423U14*Get 53|118s12
+452U14*Look_Ahead 53|128s12
+519U14*Put 53|26s10 56s8 58s8 64s20 66s20 68s20 70s20 74s20 76s20 85s7 92s7
+. 137s8 139s8 190s10 197s14 203s10
+566U14*Put_Line 53|20s7 21s7 22s7 23s7 29s10 94s7 144s8 207s10
+607X4*Data_Error 53|73r21
 X 15 a-tiinio.ads
-60U14*Get 48|27s10[4|18] 59s16[4|18] 84s7[4|18] 85s7[4|18] 164s10[4|18]
-83U14*Put 48|55s8[4|18] 63s20[4|18] 67s20[4|18] 73s20[4|18] 91s7[4|18]
-85i7 Width{14|88I12} 48|55r17[4|18] 63r29[4|18] 67r29[4|18] 73r29[4|18] 91r18[4|18]
-X 48 test_exceptions.adb
-6U11*Test_Exceptions 6b11 178l5 178t20
-15V13 Menu_Selection{integer} 15b13 33l8 33t22 157s17
+60U14*Get 53|27s10[4|18] 61s16[4|18] 86s7[4|18] 87s7[4|18] 191s10[4|18]
+83U14*Put 53|57s8[4|18] 65s20[4|18] 69s20[4|18] 75s20[4|18] 93s7[4|18] 138s8[4|18]
+85i7 Width{14|88I12} 53|57r17[4|18] 65r29[4|18] 69r29[4|18] 75r29[4|18] 93r18[4|18]
+. 138r20[4|18]
+X 53 test_exceptions.adb
+6U11*Test_Exceptions 6b11 211l5 211t20
+15V13 Menu_Selection{integer} 15b13 33l8 33t22 184s17
 17i7 N{integer} 27m14 28r20 32r14
-44i7 Value{integer} 87m16 91r11
-44i14 Min{integer} 84m11 87r23
-44i19 Max{integer} 85m11 87r28
-52U14 Get_Safe 52b14 52<23 52>44 52>49 78l8 78t16 87s7
-52i23 Value{integer} 59m20 60r33 60r43 61r26 65r29
-52i44 Min{integer} 55r12 60r26 61r19 63r24 67r24 73r24
-52i49 Max{integer} 56r19 60r52 64r31 65r22 68r31 74r31
-80U14 Upg1 80b14 93l8 93t12 160s10
-153i4 Choice{integer} 157m7 159r10 162r13 169r13
-153i12 Length{integer} 164m14
+35X1 Length_Error 116r22 196r15
+46i7 Value{integer} 89m16 93r11
+46i14 Min{integer} 86m11 89r23
+46i19 Max{integer} 87m11 89r28
+54U14 Get_Safe 54b14 54<23 54>44 54>49 80l8 80t16 89s7
+54i23 Value{integer} 61m20 62r33 62r43 63r26 67r29
+54i44 Min{integer} 57r12 62r26 63r19 65r24 69r24 75r24
+54i49 Max{integer} 58r19 62r52 66r31 67r22 70r31 76r31
+82U14 Upg1 82b14 95l8 95t12 187s10
+109U14 Get_Correct_String 109b14 109<33 130l8 130t26 141s8
+109a33 S{string} 121r27 122m16 122r19 125r24
+110e8 C{character} 118m16 119r29 122r39 128m23
+111i8 Index{integer} 119r15 120m16 121r18 122r29 123m16 123r25 125r15
+112b8 EOL{boolean} 115r15 128m26
+132U14 Upg2 132b14 132>19 145l8 145t12 194s10
+132i19 Length{integer} 134r24 138r12
+134a8 S{string} 141m27 144r45
+180i4 Choice{integer} 184m7 186r10 189r13 201r12
+180i12 Length{integer} 191m14 194r15
 
