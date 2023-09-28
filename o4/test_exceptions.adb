@@ -102,20 +102,20 @@ procedure Test_Exceptions is
    -- Get_Correct_String kasta/resa undantag vilket inte ska           --
    -- fångas här utan i huvudprogrammet.                               --
    ----------------------------------------------------------------------
---   procedure Upg2(Length : in Integer) is
---      
---      S : String(1 .. Length);
---      
---   begin      
---      Put("Mata in en sträng med exakt ");
---      Put(Length, Width => 0);
---      Put(" tecken: ");
---      
---      Get_Correct_String(S);
---      Skip_Line;
---      
---      Put_Line("Du matade in strängen " & S & ".");      
---   end Upg2;
+ procedure Upg2(Length : in Integer) is
+    
+    S : String(1 .. Length);
+    
+ begin      
+    Put("Mata in en sträng med exakt ");
+    Put(Length, Width => 0);
+    Put(" tecken: ");
+    
+    Get_Correct_String(S);
+    Skip_Line;
+    
+    Put_Line("Du matade in strängen " & S & ".");      
+ end Upg2;
    
    ----------------------------------------------------------------------
    -- Underprogram får menyval 3: "felhantering av datuminmatning"     --

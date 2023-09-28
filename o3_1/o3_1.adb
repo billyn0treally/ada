@@ -34,11 +34,6 @@ procedure o3_1 is
         O        : Post_Type3_N_2;
     end record;
 
-    -- Tilldela posterna
-    DS1     : Post_Type1;
-    DS2     : Post_Type2;
-    DS3     : Post_Type3;
-
     -- Procedures
 
     procedure whitespace is
@@ -155,6 +150,10 @@ procedure o3_1 is
         Put(DS3.O);
     end Put;
 
+    -- Tilldela posterna
+    DS1     : Post_Type1;
+    DS2     : Post_Type2;
+    DS3     : Post_Type3;
 begin
 
     Put_Line("För DS1:");
