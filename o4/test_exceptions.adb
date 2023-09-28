@@ -165,19 +165,26 @@ procedure Test_Exceptions is
     procedure Get (Item : out Date_Type) is
         Bound : Integer := 30;
         Month : Integer;
+        Year  : Integer;
     begin
         Get_Correct_String (S_3);
         if S_3 (5) /= '-' or S_3 (8) /= '-' then
             raise Format_Error;
         end if;
         Month := Integer'Value (S_3 (6 .. 7));
-        if Month mod 2 = 0 then
+
+        if (Month = 0 or Month > 12) then
+            raise Month_Error;
+        elsif Month mod 2 = 0 then
             Bound := Bound + 1;
         end if;
         if Integer'Value (S_3 (9 .. 10)) > Bound then
             raise Day_Error;
         end if;
-
+        Year := Integer'Value (S_3 (1 .. 4));
+        if (Year > 9_000 or Year < 1_532) then
+            raise Year_Error;
+        end if;
     end Get;
 
     procedure Put (Item : in Date_Type) is

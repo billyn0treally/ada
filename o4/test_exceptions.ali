@@ -11,7 +11,7 @@ RV NO_IMPLICIT_CONDITIONALS
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U test_exceptions%b	test_exceptions.adb	0a5a5675 NE OO SU
+U test_exceptions%b	test_exceptions.adb	deb35dd0 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -60,7 +60,7 @@ D s-valuns.ads		20210520051134 dac7b45d system.val_uns%s
 D s-valuei.ads		20210520051134 978dd0a6 system.value_i%s
 D s-valueu.ads		20210520051134 7b8fccf5 system.value_u%s
 D s-wchcon.ads		20210520051136 1b7d22d2 system.wch_con%s
-D test_exceptions.adb	20230928172056 c68a3aa8 test_exceptions%b
+D test_exceptions.adb	20230928183952 1263310d test_exceptions%b
 D unchconv.ads		20210520051136 ca2f9e18 unchecked_conversion%s
 G a e
 G c Z b b [test_exceptions standard 6 11 none]
@@ -73,35 +73,35 @@ X 3 a-inteio.ads
 X 10 a-textio.ads
 58K13*Text_IO 725e16 37|2w10 2r35
 87I12*Field{integer}
-262U14*New_Line 37|199s9
-271U14*Skip_Line 37|86s21 99s9 150s9 195s9 224s13
+262U14*New_Line 37|206s9
+271U14*Skip_Line 37|86s21 99s9 150s9 202s9 231s13
 379U14*Get 37|126s13
 404U14*Look_Ahead 37|136s13
 463U14*Put 37|26s13 65s9 67s9 73s21 75s21 77s21 79s21 83s21 85s21 94s9 101s9
-. 145s9 147s9 185s9 193s9 197s9 222s13 226s13
-506U14*Put_Line 37|20s9 21s9 22s9 23s9 29s13 103s9 152s9 240s13
+. 145s9 147s9 192s9 200s9 204s9 229s13 233s13
+506U14*Put_Line 37|20s9 21s9 22s9 23s9 29s13 103s9 152s9 247s13
 546X4*Data_Error 37|82r22
 X 11 a-tiinio.ads
-59U14*Get 37|27s13[3|18] 70s17[3|18] 95s9[3|18] 96s9[3|18] 223s13[3|18]
+59U14*Get 37|27s13[3|18] 70s17[3|18] 95s9[3|18] 96s9[3|18] 230s13[3|18]
 80U14*Put 37|66s9[3|18] 74s21[3|18] 78s21[3|18] 84s21[3|18] 102s9[3|18] 146s9[3|18]
 82i7 Width{10|87I12} 37|66r19[3|18] 74r31[3|18] 78r31[3|18] 84r31[3|18] 102r21[3|18]
 . 146r22[3|18]
 X 37 test_exceptions.adb
-6U11*Test_Exceptions 6b11 244l5 244t20
-15V14 Menu_Selection{integer} 15b14 33l9 33t23 216s19
+6U11*Test_Exceptions 6b11 251l5 251t20
+15V14 Menu_Selection{integer} 15b14 33l9 33t23 223s19
 17i9 N{integer} 27m18 28r23 32r16
-35R10 Date_Type 37e15 165r31 183r30 190r16
+35R10 Date_Type 37e15 165r31 190r30 197r16
 36i9 D{integer}
 36i12 M{integer}
 36i15 Y{integer}
 40a5 S_1{string}
 41a5 S_2{string}
-42a5 S_3{string} 169m29 170r12 170r30 173r33 177r27 185r14
+42a5 S_3{string} 170m29 171r12 171r30 174r33 181r27 184r32 192r14
 44X5 Length_Error 124r23
-44X19 Format_Error 171r19
-44X33 Year_Error
-44X45 Month_Error
-44X58 Day_Error 178r19
+44X19 Format_Error 172r19
+44X33 Year_Error 186r19
+44X45 Month_Error 177r19
+44X58 Day_Error 182r19
 55i5 Value{integer} 98m19 102r14
 55i12 Min{integer} 95m14 98r26
 55i17 Max{integer} 96m14 98r31
@@ -109,8 +109,8 @@ X 37 test_exceptions.adb
 63i25 Value{integer} 70m22 71r34 71r44 72r27 76r30
 63i46 Min{integer} 66r14 71r27 72r20 74r26 78r26 84r26
 63i51 Max{integer} 67r21 71r53 75r33 76r23 79r33 85r33
-91U15 Upg1 91b15 104l9 104t13 219s13
-117U15 Get_Correct_String 117b15 117<35 138l9 138t27 149s9 169s9
+91U15 Upg1 91b15 104l9 104t13 226s13
+117U15 Get_Correct_String 117b15 117<35 138l9 138t27 149s9 170s9
 117a35 S{string} 129r28 130m17 130r20 133r25
 118e9 C{character} 126m18 127r30 130r40 136m25
 119i9 Index{integer} 127r16 128m17 129r19 130r30 131m17 131r40 133r16
@@ -118,14 +118,15 @@ X 37 test_exceptions.adb
 140U15 Upg2 140b15 140>21 153l9 153t13
 140i21 Length{integer} 142r26 146r14
 142a9 S{string} 149m29 152r47
-165U15 Get 165b15 165<20 181l9 181t12 194s9
+165U15 Get 165b15 165<20 188l9 188t12 201s9
 165r20 Item{35R10}
-166i9 Bound{integer} 175m13 175r22 177r44
-167i9 Month{integer} 173m9 174r12
-183U15 Put 183b15 183>20 186l9 186t12 198s9
-183r20 Item{35R10}
-188U15 Upg3 188b15 200l9 200t13 235s13
-190r9 Date{35R10} 194m14 198r14
-212i5 Choice{integer} 216m9 218r12 221r15 234r15
-212i13 Length{integer} 223m18
+166i9 Bound{integer} 179m13 179r22 181r44
+167i9 Month{integer} 174m9 176r13 176r26 178r15
+168i9 Year{integer} 184m9 185r13 185r29
+190U15 Put 190b15 190>20 193l9 193t12 205s9
+190r20 Item{35R10}
+195U15 Upg3 195b15 207l9 207t13 242s13
+197r9 Date{35R10} 201m14 205r14
+219i5 Choice{integer} 223m9 225r12 228r15 241r15
+219i13 Length{integer} 230m18
 
