@@ -4,10 +4,12 @@ P ZX
 
 RN
 RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
 RV NO_IO
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U test_exceptions%b	test_exceptions.adb	e07cf8c8 NE OO SU
+U test_exceptions%b	test_exceptions.adb	bacb7ef8 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -63,7 +65,7 @@ D s-vauspe.ads		20230728000000 a67b2f28 system.value_u_spec%s
 D s-wchcon.ads		20230728000000 d9032363 system.wch_con%s
 D s-widuns.ads		20230728000000 866a5800 system.wid_uns%s
 D s-widthu.ads		20230728000000 b32f15e2 system.width_u%s
-D test_exceptions.adb	20230927140339 60669d4f test_exceptions%b
+D test_exceptions.adb	20230928083754 3ad11b7f test_exceptions%b
 G a e
 G c Z b b [test_exceptions standard 6 11 none]
 X 1 ada.ads
@@ -75,25 +77,26 @@ X 4 a-inteio.ads
 X 14 a-textio.ads
 58K13*Text_IO 787e16 48|2w10 2r35
 88I12*Field{integer}
-293U14*Skip_Line 48|75s7 152s10
-519U14*Put 48|26s10 54s8 59s16 61s16 70s7 77s7 150s10 157s11
-566U14*Put_Line 48|20s7 21s7 22s7 23s7 29s10 79s7 161s10
+293U14*Skip_Line 48|79s7 156s10
+519U14*Put 48|26s10 54s8 60s16 62s16 66s20 74s7 81s7 154s10 161s11
+566U14*Put_Line 48|20s7 21s7 22s7 23s7 29s10 83s7 165s10
+607X4*Data_Error 48|65r21
 X 15 a-tiinio.ads
-60U14*Get 48|27s10[4|18] 56s12[4|18] 71s7[4|18] 72s7[4|18] 151s10[4|18]
-83U14*Put 48|78s7[4|18]
-85i7 Width{14|88I12} 48|78r18[4|18]
+60U14*Get 48|27s10[4|18] 57s12[4|18] 75s7[4|18] 76s7[4|18] 155s10[4|18]
+83U14*Put 48|82s7[4|18]
+85i7 Width{14|88I12} 48|82r18[4|18]
 X 48 test_exceptions.adb
-6U11*Test_Exceptions 6b11 165l5 165t20
-15V13 Menu_Selection{integer} 15b13 33l8 33t22 144s17
+6U11*Test_Exceptions 6b11 169l5 169t20
+15V13 Menu_Selection{integer} 15b13 33l8 33t22 148s17
 17i7 N{integer} 27m14 28r20 32r14
-44i7 Value{integer} 74m16 78r11
-44i14 Min{integer} 71m11 74r23
-44i19 Max{integer} 72m11 74r28
-52U14 Get_Safe 52b14 52<23 52>44 52>49 65l8 65t16 74s7
-52i23 Value{integer} 56m16 57r29 57r39 58r22 60r25
-52i44 Min{integer} 54r32 57r22 58r15 59r59 61r59
-52i49 Max{integer} 54r50 57r48 59r77 60r18 61r77
-67U14 Upg1 67b14 80l8 80t12 147s10
-140i4 Choice{integer} 144m7 146r10 149r13 156r13
-140i12 Length{integer} 151m14
+44i7 Value{integer} 78m16 82r11
+44i14 Min{integer} 75m11 78r23
+44i19 Max{integer} 76m11 78r28
+52U14 Get_Safe 52b14 52<23 52>44 52>49 69l8 69t16 78s7
+52i23 Value{integer} 57m16 58r29 58r39 59r22 61r25
+52i44 Min{integer} 54r32 58r22 59r15 60r59 62r59 66r57
+52i49 Max{integer} 54r50 58r48 60r77 61r18 62r77 66r75
+71U14 Upg1 71b14 84l8 84t12 151s10
+144i4 Choice{integer} 148m7 150r10 153r13 160r13
+144i12 Length{integer} 155m14
 

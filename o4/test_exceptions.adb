@@ -53,6 +53,7 @@ procedure Test_Exceptions is
    begin
        Put("Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
        loop
+           begin 
            Get(Value);
            exit when Min <= Value and Value <= Max;
            if Min >= Value then
@@ -60,6 +61,10 @@ procedure Test_Exceptions is
            elsif Max <= Value then
                Put("För stort värde. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
            end if;
+           exception
+               when Data_Error =>
+                   Put("Fel datatyp. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+           end;
        end loop;
    end Get_Safe;
 
