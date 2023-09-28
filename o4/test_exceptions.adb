@@ -49,21 +49,22 @@ procedure Test_Exceptions is
 
    -- Det finns en extra whitespace före Integern vi printar ut 
    -- men bara om Integern är positiv. Så den tar - tecknets plats
-   procedure Get_Safe(Value : out integer; Min, Max : in Integer) is
+   procedure Get_Safe(Value : out Integer; Min, Max : in Integer) is
    begin
        Put("Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
        loop
            begin 
-           Get(Value);
-           exit when Min <= Value and Value <= Max;
-           if Min >= Value then
-               Put("För litet värde. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
-           elsif Max <= Value then
-               Put("För stort värde. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
-           end if;
+               Get(Value);
+               exit when Min <= Value and Value <= Max;
+               if Min >= Value then
+                   Put("För litet värde. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+               elsif Max <= Value then
+                   Put("För stort värde. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+               end if;
            exception
                when Data_Error =>
                    Put("Fel datatyp. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
+                   Skip_Line;
            end;
        end loop;
    end Get_Safe;
