@@ -32,7 +32,16 @@ procedure Test_Exceptions is
       return N;
    end Menu_Selection;
    
-Length_Error : exception;
+    type Date_Type is record
+        D, M, Y : Integer;
+    end record;
+
+    -- Helper strings, probably should not be global
+    S_1 : String(1 .. 5);
+    S_2 : String(2 .. 7);
+    S_3 : String(1 .. 10);
+
+Length_Error, Format_Error, Year_Error, Month_Error, Day_Error  : exception;
 
    ----------------------------------------------------------------------
    -- Underprogram får menyval 1: "felhantering av heltalsinmatning"   --
@@ -153,20 +162,35 @@ Length_Error : exception;
    -- underprogram ska fånga, skriva ut felmeddelande får och sedan    --
    -- anropa Get igen.                                                 --
    ----------------------------------------------------------------------
---   procedure Upg3 is
---      
---      Date : Date_Type;
---      
---   begin      
---      Put("Mata in ett datum: ");
---      Get(Date);
---      Skip_Line;
---      
---      Put("Du matade in ");
---      Put(Date);
---      New_Line;      
---   end Upg3;
-   
+
+   procedure Get(Item : out Date_Type) is
+       Bound : Integer := 30;
+   begin
+       Get_Correct_String(S_3);
+       if S_3(5) /= '-' or S_3(8) /= '-' then
+           raise Format_Error;
+       end if;
+   end Get;
+
+   procedure Put(Item : in Date_Type) is
+   begin
+       Put(S_3);
+   end Put;
+
+   procedure Upg3 is
+
+       Date : Date_Type;
+
+   begin      
+       Put("Mata in ett datum: ");
+       Get(Date);
+       Skip_Line;
+
+       Put("Du matade in ");
+       Put(Date);
+       New_Line;      
+   end Upg3;
+
    ----------------------------------------------------------------------
    -- Huvudprogram                                                     --
    --                                                                  --
@@ -190,18 +214,19 @@ begin
 	 Put("Mata in en stränglängd: ");
 	 Get(Length);
 	 Skip_Line;
-     begin 
-	 Upg2(Length);
-     exception
-         when Length_Error =>
-             Put("För få inmatade tecken!");
-             New_Line;
-     end;
+     --begin 
+         Put("deez");
+	-- Upg2(Length);
+    -- exception
+    --     when Length_Error =>
+    --         Put("För få inmatade tecken!");
+    --         New_Line;
+    -- end;
 	 
      elsif Choice = 3 then
-         --Upg3;
-         Put("Segmentation fault (core dumped)"); -- så det kompilerar
-         New_Line;
+         Upg3;
+         --Put("Segmentation fault (core dumped)"); -- så det kompilerar
+         --New_Line;
 
       else
 	 Put_Line("Programmet avslutas.");
