@@ -36,9 +36,9 @@ procedure Test_Exceptions is
         Y, M, D : Integer;
     end record;
 
-        S_1 : String (1 .. 5);
-        S_2 : String (2 .. 7);
-        S_3 : String (1 .. 10);
+    S_1 : String (1 .. 5);
+    S_2 : String (2 .. 7);
+    S_3 : String (1 .. 10);
 
     Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
@@ -171,19 +171,23 @@ procedure Test_Exceptions is
         Item.M := Integer'Value (S_3 (6 .. 7));
         if (Item.M = 00 or Item.M > 12) then
             raise Month_Error;
-        elsif Item.D = 31 and (Item.M = 04 or Item.M = 06 or Item.M = 09 or Item.M = 11) then
-            raise Day_Error;
+        elsif (Item.M = 04 or Item.M = 06 or Item.M = 09 or Item.M = 11) then
+            Bound := 30;
         end if;
 
         Item.Y := Integer'Value (S_3 (1 .. 4));
 
-        if Item.M = 02 and (((Item.Y mod 4 = 0) and (Item.Y mod 100 /= 0)) or (Item.Y mod 400 = 0))
+        if Item.M = 02 and
+           (((Item.Y mod 4 = 0) and (Item.Y mod 100 /= 0)) or
+            (Item.Y mod 400 = 0))
         then
             Bound := 29;
         elsif Item.M = 02 then
             Bound := 28;
         end if;
-        if Integer'Value (S_3 (9 .. 10)) > Bound or Integer'Value (S_3 (9 .. 10)) = 00 then
+        if Integer'Value (S_3 (9 .. 10)) > Bound or
+           Integer'Value (S_3 (9 .. 10)) = 00
+        then
             raise Day_Error;
         end if;
         if (Item.Y > 9_000 or Item.Y < 1_532) then
@@ -244,17 +248,17 @@ begin
 
         elsif Choice = 3 then
             begin
-            Upg3;
+                Upg3;
             exception
                 when Format_Error =>
-                    Put("Felaktigt format!");
-                when Year_Error =>
-                    Put("Felaktigt år!");
-                when Month_Error =>
-                    Put("Felaktig månad!");
-                when Day_Error =>
-                    Put("Felaktig dag!");
-        end;
+                    Put ("Felaktigt format!");
+                when Year_Error   =>
+                    Put ("Felaktigt år!");
+                when Month_Error  =>
+                    Put ("Felaktig månad!");
+                when Day_Error    =>
+                    Put ("Felaktig dag!");
+            end;
 
         else
             Put_Line ("Programmet avslutas.");
