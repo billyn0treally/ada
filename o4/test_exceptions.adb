@@ -169,10 +169,10 @@ procedure Test_Exceptions is
             raise Format_Error;
         end if;
         Item.M := Integer'Value (S_3 (6 .. 7));
-        if (Item.M = 0 or Item.M > 12) then
+        if (Item.M = 00 or Item.M > 12) then
             raise Month_Error;
         elsif Item.D = 31 and (Item.M = 04 or Item.M = 06 or Item.M = 09 or Item.M = 11) then
-            raise Month_Error;
+            raise Day_Error;
         end if;
 
         Item.Y := Integer'Value (S_3 (1 .. 4));
