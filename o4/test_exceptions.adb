@@ -178,6 +178,12 @@ procedure Test_Exceptions is
         elsif Month mod 2 = 0 then
             Bound := Bound + 1;
         end if;
+        if (Year mod 4 = 0) and ((Year mod 100 /= 0) or (Year mod 400 = 0))
+        then
+            Bound := 29;
+        else
+            Bound := 28;
+        end if;
         if Integer'Value (S_3 (9 .. 10)) > Bound then
             raise Day_Error;
         end if;
