@@ -195,8 +195,8 @@ procedure Test_Exceptions is
             end if;
         end loop;
 
-        Item.Y := Integer'Value(S(1 .. 4));
-        Item.M := Integer'Value(S(6 .. 7));
+        Item.Y := Integer'Value(S(1..4));
+        Item.M := Integer'Value(S(6..7));
         Item.D := Integer'Value(S(9..10));
 
         if (Item.Y > 9_000 or Item.Y < 1_532) then
