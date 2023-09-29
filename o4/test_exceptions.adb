@@ -172,12 +172,14 @@ procedure Test_Exceptions is
         return Leap;
     end IsLeap;
 
+    -- String length errorn kommer från Get_Correct_String
     procedure Get (Item : out Date_Type) is
         S : String (1 .. 10);
+        --Strlen : Integer := S'Length;
     begin
         Get_Correct_String (S);
 
-        if S(5) /= '-' or S(8) /= '-' then
+        if S(5) /= '-' or S(8) /= '-' or S'Length /= 10 then
             raise Format_Error;
         end if;
 
