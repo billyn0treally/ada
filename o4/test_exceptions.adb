@@ -176,6 +176,7 @@ procedure Test_Exceptions is
         S : String (1 .. 10);
     begin
         Get_Correct_String (S);
+
         if S(5) /= '-' or S(8) /= '-' then
             raise Format_Error;
         end if;
@@ -193,7 +194,6 @@ procedure Test_Exceptions is
                 raise Format_Error;
             end if;
         end loop;
-
 
         Item.Y := Integer'Value(S(1 .. 4));
         Item.M := Integer'Value(S(6 .. 7));
@@ -282,19 +282,19 @@ begin
 
         elsif Choice = 3 then
             loop
-            begin
-                Upg3;
-            exception
-                when Format_Error =>
-                    Put ("Felaktigt format! ");
-                when Year_Error   =>
-                    Put ("Felaktigt år!");
-                when Month_Error  =>
-                    Put ("Felaktig månad!");
-                when Day_Error    =>
-                    Put ("Felaktig dag!");
-            end;
-        end loop;
+                begin
+                    Upg3;
+                exception
+                    when Format_Error =>
+                        Put ("Felaktigt format! ");
+                    when Year_Error   =>
+                        Put ("Felaktigt år!");
+                    when Month_Error  =>
+                        Put ("Felaktig månad!");
+                    when Day_Error    =>
+                        Put ("Felaktig dag!");
+                end;
+            end loop;
 
         else
             Put_Line ("Programmet avslutas.");
