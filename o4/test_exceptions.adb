@@ -180,8 +180,23 @@ procedure Test_Exceptions is
             raise Format_Error;
         end if;
 
-        Item.Y := Integer'Value (S(1 .. 4));
-        Item.M := Integer'Value (S(6 .. 7));
+        for I in 1..4 loop
+            if S(I) < '0' or S(I) > '9' then
+                raise Format_Error;
+            end if;
+        end loop;
+
+        for I in 1..2 loop
+            if S(I+5) < '0' or S(I+5) > '9' then
+                raise Format_Error;
+            elsif S(I+8) < '0' or S(I+8) > '9' then
+                raise Format_Error;
+            end if;
+        end loop;
+
+
+        Item.Y := Integer'Value(S(1 .. 4));
+        Item.M := Integer'Value(S(6 .. 7));
         Item.D := Integer'Value(S(9..10));
 
         if (Item.Y > 9_000 or Item.Y < 1_532) then
@@ -266,11 +281,12 @@ begin
             -- end;
 
         elsif Choice = 3 then
+            loop
             begin
                 Upg3;
             exception
                 when Format_Error =>
-                    Put ("Felaktigt format!");
+                    Put ("Felaktigt format! ");
                 when Year_Error   =>
                     Put ("Felaktigt år!");
                 when Month_Error  =>
@@ -278,6 +294,7 @@ begin
                 when Day_Error    =>
                     Put ("Felaktig dag!");
             end;
+        end loop;
 
         else
             Put_Line ("Programmet avslutas.");
