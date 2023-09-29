@@ -36,10 +36,6 @@ procedure Test_Exceptions is
         Y, M, D : Integer;
     end record;
 
-    S_1 : String (1 .. 5);
-    S_2 : String (2 .. 7);
-    S_3 : String (1 .. 10);
-
     Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
     ----------------------------------------------------------------------
@@ -161,43 +157,66 @@ procedure Test_Exceptions is
     -- anropa Get igen.                                                 --
     ----------------------------------------------------------------------
 
-    procedure Get (Item : out Date_Type) is
-        Bound : Integer := 31;
+    function IsLeap(N : in Integer) return Boolean is
+        Leap : Boolean;
     begin
-        Get_Correct_String (S_3);
-        if S_3 (5) /= '-' or S_3 (8) /= '-' then
+        if (N mod 4) = 0 then
+            Leap := False;
+            if (N mod 100) = 0 then
+                Leap := True;
+                if (N mod 400) = 0 then
+                    Leap := False;
+                end if;
+            end if;
+        end if;
+        return Leap;
+    end IsLeap;
+
+    procedure Get (Item : out Date_Type) is
+        S : String (1 .. 10);
+    begin
+        Get_Correct_String (S);
+        if S(5) /= '-' or S(8) /= '-' then
             raise Format_Error;
         end if;
-        Item.M := Integer'Value (S_3 (6 .. 7));
-        if (Item.M = 00 or Item.M > 12) then
-            raise Month_Error;
-        elsif (Item.M = 04 or Item.M = 06 or Item.M = 09 or Item.M = 11) then
-            Bound := 30;
-        end if;
 
-        Item.Y := Integer'Value (S_3 (1 .. 4));
+        Item.Y := Integer'Value (S(1 .. 4));
+        Item.M := Integer'Value (S(6 .. 7));
+        Item.D := Integer'Value(S(9..10));
 
-        if Item.M = 02 and
-           (((Item.Y mod 4 = 0) and (Item.Y mod 100 /= 0)) or
-            (Item.Y mod 400 = 0))
-        then
-            Bound := 29;
-        elsif Item.M = 02 then
-            Bound := 28;
-        end if;
-        if Integer'Value (S_3 (9 .. 10)) > Bound or
-           Integer'Value (S_3 (9 .. 10)) = 00
-        then
-            raise Day_Error;
-        end if;
         if (Item.Y > 9_000 or Item.Y < 1_532) then
             raise Year_Error;
+
+        elsif (Item.M = 00 or Item.M > 12) then
+            raise Month_Error;
+
+        elsif Item.D > 31 or Item.D = 0 then
+            raise Day_Error;
+
+        elsif Item.D = 31 and (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11) then
+            raise Month_Error;
+
+        elsif Item.D > 29 and Item.M = 2 then
+            raise Day_Error;
+
+        elsif Item.D = 29 and Item.M = 2 and IsLeap(Item.M) = False then
+            raise Day_Error;
         end if;
     end Get;
 
     procedure Put (Item : in Date_Type) is
     begin
-        Put (S_3);
+        Put (Item.Y, Width => 1);
+        Put("-");
+        if Item.M <= 9 then
+            Put("0");
+        end if;
+        Put(Item.M, Width => 1);
+        Put("-");
+        if Item.D <= 9 then
+            Put("0");
+        end if;
+        Put(Item.D, Width => 1);
     end Put;
 
     procedure Upg3 is
