@@ -157,6 +157,7 @@ procedure Test_Exceptions is
     -- anropa Get igen.                                                 --
     ----------------------------------------------------------------------
 
+    -- Kollar om det är skottår eller inte
     function IsLeap(N : in Integer) return Boolean is
         Leap : Boolean;
     begin
@@ -273,20 +274,22 @@ begin
             Put ("Mata in en stränglängd: ");
             Get (Length);
             Skip_Line;
-            --begin
-            Put ("deez");
-            -- Upg2(Length);
-            -- exception
-            --     when Length_Error =>
-            --         Put("För få inmatade tecken!");
-            --         New_Line;
-            -- end;
+            begin
+                Put ("deez");
+                Upg2(Length);
+            exception
+                when Length_Error =>
+                    Put("För få inmatade tecken!");
+                    New_Line;
+            end;
 
         elsif Choice = 3 then
             loop
                 begin
                     Upg3;
                 exception
+                    when Length_Error =>
+                        Put ("Felaktigt format! ");
                     when Format_Error =>
                         Put ("Felaktigt format! ");
                     when Year_Error   =>
