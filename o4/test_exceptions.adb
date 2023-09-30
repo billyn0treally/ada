@@ -279,6 +279,7 @@ begin
             exception
                 when Length_Error =>
                     Put("För få inmatade tecken!");
+                    exit;
                     New_Line;
             end;
 

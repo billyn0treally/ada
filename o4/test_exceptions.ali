@@ -11,7 +11,7 @@ RV NO_IMPLICIT_CONDITIONALS
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U test_exceptions%b	test_exceptions.adb	bc153dd1 NE OO SU
+U test_exceptions%b	test_exceptions.adb	83dfa848 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -77,7 +77,7 @@ D s-vauspe.ads		20230728000000 a67b2f28 system.value_u_spec%s
 D s-wchcon.ads		20230728000000 d9032363 system.wch_con%s
 D s-widuns.ads		20230728000000 866a5800 system.wid_uns%s
 D s-widthu.ads		20230728000000 b32f15e2 system.width_u%s
-D test_exceptions.adb	20230929184443 3c0f5856 test_exceptions%b
+D test_exceptions.adb	20230930094106 03c5cdcf test_exceptions%b
 G a e
 G c Z b b [test_exceptions standard 6 11 none]
 X 1 ada.ads
@@ -94,8 +94,8 @@ X 14 a-textio.ads
 423U14*Get 53|121s13
 452U14*Look_Ahead 53|131s13
 519U14*Put 53|26s13 60s9 62s9 68s21 70s21 72s21 74s21 78s21 80s21 89s9 96s9
-. 140s9 142s9 228s9 230s13 233s9 235s13 245s9 249s9 274s13 278s17 282s21
-. 292s25 294s25 296s25 298s25 300s25
+. 140s9 142s9 228s9 230s13 233s9 235s13 245s9 249s9 274s13 281s21 292s25
+. 294s25 296s25 298s25 300s25
 566U14*Put_Line 53|20s9 21s9 22s9 23s9 29s13 98s9 147s9 305s13
 607X4*Data_Error 53|77r22
 X 15 a-tiinio.ads
@@ -113,7 +113,7 @@ X 53 test_exceptions.adb
 36i12 M{integer} 202m14 208r21 208r36 214r37 214r51 214r65 214r79 217r36
 . 220r36 220r58 229r17 232r18
 36i15 D{integer} 203m14 211r20 211r35 214r20 217r20 220r20 234r17 237r18
-39X5 Length_Error 119r23 281r22 291r26
+39X5 Length_Error 119r23 280r22 291r26
 39X19 Format_Error 184r19 189r23 195r23 197r23 293r26
 39X33 Year_Error 206r19 295r26
 39X45 Month_Error 209r19 215r19 297r26
@@ -131,7 +131,7 @@ X 53 test_exceptions.adb
 113e9 C{character} 121m18 122r30 125r40 131m25
 114i9 Index{integer} 122r16 123m17 124r19 125r30 126m17 126r40 128r16
 115b9 EOL{boolean} 118r16 131m28
-135U15 Upg2 135b15 135>21 148l9 148t13 279s17
+135U15 Upg2 135b15 135>21 148l9 148t13 278s17
 135i21 Length{integer} 137r26 141r14
 137a9 S{string} 144m29 147r47
 161V14 IsLeap{boolean} 161b14 161>21 174l9 174t15 220s46
@@ -149,5 +149,5 @@ X 53 test_exceptions.adb
 240U15 Upg3 240b15 252l9 252t13 289s21
 242r9 Date{35R10} 246m14 250r14
 264i5 Choice{integer} 268m9 270r12 273r15 286r15
-264i13 Length{integer} 275m18 279r22
+264i13 Length{integer} 275m18 278r22
 
