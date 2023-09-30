@@ -275,7 +275,6 @@ begin
             Get (Length);
             Skip_Line;
             begin
-                Put ("deez");
                 Upg2(Length);
             exception
                 when Length_Error =>
