@@ -109,6 +109,8 @@ procedure Test_Exceptions is
     -- fångas här utan i huvudprogrammet.                               --
     ----------------------------------------------------------------------
 
+    -- Den måste ignorera att man trycker Enter utan att ha matat in en sträng först
+    -- CRAAWLLLING IN MY SKIIIIIN
     procedure Get_Correct_String (S : out String) is
         C     : Character;
         Index : Integer := 0;
