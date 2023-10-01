@@ -160,7 +160,7 @@ procedure Test_Exceptions is
     ----------------------------------------------------------------------
 
     -- Kollar om det är skottår eller inte
-    function IsLeap(N : in Integer) return Boolean is
+    function IsLeap (N : in Integer) return Boolean is
         Leap : Boolean;
     begin
         if (N mod 4) = 0 then
@@ -182,27 +182,27 @@ procedure Test_Exceptions is
     begin
         Get_Correct_String (S);
 
-        if S(5) /= '-' or S(8) /= '-' or S'Length /= 10 then
+        if S (5) /= '-' or S (8) /= '-' or S'Length /= 10 then
             raise Format_Error;
         end if;
 
-        for I in 1..4 loop
-            if S(I) < '0' or S(I) > '9' then
+        for I in 1 .. 4 loop
+            if S (I) < '0' or S (I) > '9' then
                 raise Format_Error;
             end if;
         end loop;
 
-        for I in 1..2 loop
-            if S(I+5) < '0' or S(I+5) > '9' then
+        for I in 1 .. 2 loop
+            if S (I + 5) < '0' or S (I + 5) > '9' then
                 raise Format_Error;
-            elsif S(I+8) < '0' or S(I+8) > '9' then
+            elsif S (I + 8) < '0' or S (I + 8) > '9' then
                 raise Format_Error;
             end if;
         end loop;
 
-        Item.Y := Integer'Value(S(1..4));
-        Item.M := Integer'Value(S(6..7));
-        Item.D := Integer'Value(S(9..10));
+        Item.Y := Integer'Value (S (1 .. 4));
+        Item.M := Integer'Value (S (6 .. 7));
+        Item.D := Integer'Value (S (9 .. 10));
 
         if (Item.Y > 9_000 or Item.Y < 1_532) then
             raise Year_Error;
@@ -213,13 +213,15 @@ procedure Test_Exceptions is
         elsif Item.D > 31 or Item.D = 0 then
             raise Day_Error;
 
-        elsif Item.D = 31 and (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11) then
+        elsif Item.D = 31 and
+           (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11)
+        then
             raise Month_Error;
 
         elsif Item.D > 29 and Item.M = 2 then
             raise Day_Error;
 
-        elsif Item.D = 29 and Item.M = 2 and IsLeap(Item.M) = False then
+        elsif Item.D = 29 and Item.M = 2 and IsLeap (Item.M) = False then
             raise Day_Error;
         end if;
     end Get;
@@ -227,16 +229,16 @@ procedure Test_Exceptions is
     procedure Put (Item : in Date_Type) is
     begin
         Put (Item.Y, Width => 1);
-        Put("-");
+        Put ("-");
         if Item.M <= 9 then
-            Put("0");
+            Put ("0");
         end if;
-        Put(Item.M, Width => 1);
-        Put("-");
+        Put (Item.M, Width => 1);
+        Put ("-");
         if Item.D <= 9 then
-            Put("0");
+            Put ("0");
         end if;
-        Put(Item.D, Width => 1);
+        Put (Item.D, Width => 1);
     end Put;
 
     procedure Upg3 is
@@ -277,10 +279,10 @@ begin
             Get (Length);
             Skip_Line;
             begin
-                Upg2(Length);
+                Upg2 (Length);
             exception
                 when Length_Error =>
-                    Put("För få inmatade tecken!");
+                    Put ("För få inmatade tecken!");
                     exit;
                     New_Line;
             end;
@@ -295,11 +297,11 @@ begin
                     when Format_Error =>
                         Put ("Felaktigt format! ");
                     when Year_Error   =>
-                        Put ("Felaktigt år!");
+                        Put ("Felaktigt år! ");
                     when Month_Error  =>
-                        Put ("Felaktig månad!");
+                        Put ("Felaktig månad! ");
                     when Day_Error    =>
-                        Put ("Felaktig dag!");
+                        Put ("Felaktig dag! ");
                 end;
             end loop;
 
