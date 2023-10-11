@@ -128,10 +128,13 @@ procedure Test_Exceptions is
         if End_Of_Line = True then
             raise Length_Error;
         end if;
-        for I in 2 .. S'Length loop
+        for I in 2 .. S'Last loop
             Get(C);
             S(S'First+I) := C;
-            exit when End_Of_Line or C = S(S'Length);
+            exit when C = S(S'Last);
+                if End_Of_Line or C < S(S'Last) then
+                    raise Length_Error;
+                end if;
         end loop;
     end Get_Correct_String;
 
@@ -317,8 +320,8 @@ begin
             exception
                 when Length_Error =>
                     Put ("För få inmatade tecken!");
-                    exit;
                     New_Line;
+                    exit;
             end;
 
         elsif Choice = 3 then
