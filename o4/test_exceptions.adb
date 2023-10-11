@@ -138,39 +138,6 @@ procedure Test_Exceptions is
         end loop;
     end Get_Correct_String;
 
---    procedure Get_Correct_String (S : out String) is
---        C     : Character;
---        Index : Integer := 0;
---        EOL   : Boolean := False;
---    begin
-----        loop
-----            Get(C);
-----            exit when C /= ' ' or End_Of_Line;
-----            end loop;
-----            for I in 1..S'Length loop
-----            --S(S'First) := C;
-----            Get(C);
-----            S(S'First + I) :=C;
-----        end loop;
---
---        loop
---            if EOL then
---                raise Length_Error;
---            end if;
---            Get (C);
---            if Index = 0 and (C = ' ' or End_Of_Line) then
---                Index := 0;
---            elsif Index <= S'Length then
---                S (S'First + Index) := C;
---                Index := Index + 1;
---            end if;
---            if Index >= S'Length then
---                exit;
---            end if;
---            Look_Ahead (C, EOL);
---        end loop;
---    end Get_Correct_String;
-
     procedure Upg2 (Length : in Integer) is
 
         S : String (1 .. Length);
