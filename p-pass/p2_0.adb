@@ -18,7 +18,7 @@ procedure p2_0 is
         Y : Integer;
         Ftot : Float;
     begin
-        Ftot := Float'Floor(F1+F2+F3);
+        Ftot := Float'Floor(F1+F2+F3+0.5);
         Y := Integer(Ftot);
         return Y/3;
     end medel;
@@ -37,38 +37,38 @@ procedure p2_0 is
 
 begin
 
-    Put("Mata in ett tecken: ");
-    Get(Ch);
-    Put("Mata in ett heltal: ");
-    Get(I);
-    Put("Den beräknade differensen mellan ");
-    Put(Ch);
-    Put(" och ");
-    Put(I, Width => 1);
-    Put(" blir");
-    Put(diff(Ch, I));
-    Skip_Line;
-    New_Line(2);
+   -- Put("Mata in ett tecken: ");
+   -- Get(Ch);
+   -- Put("Mata in ett heltal: ");
+   -- Get(I);
+   -- Put("Den beräknade differensen mellan ");
+   -- Put(Ch);
+   -- Put(" och ");
+   -- Put(I, Width => 1);
+   -- Put(" blir");
+   -- Put(diff(Ch, I));
+   -- Skip_Line;
+   -- New_Line(2);
 
     Put("Mata in tre flyttal: ");
     Get(F1);
     Get(F2);
     Get(F3);
     Put("Medelvärdet av dessa är: ");
-    Put(medel(F1, F2, F3));
+    Put(medel(F1, F2, F3), Width => 1);
     Skip_Line;
     New_Line(2);
 
-    Put("Mata in en sträng med exakt 3 tecken: ");
-    Get(S);
-    Put("Mata in ett flyttal: ");
-    Get(F1);
-    Put("Du matade in strängen: ");
-    Put(S);
-    Put(" och flyttalet: ");
-    Put(F1,Fore => 0, Aft => 1, Exp => 0);
-    Put(" och summan blev ");
-    Put(sum(S, F1));
-    Skip_Line;
+   -- Put("Mata in en sträng med exakt 3 tecken: ");
+   -- Get(S);
+   -- Put("Mata in ett flyttal: ");
+   -- Get(F1);
+   -- Put("Du matade in strängen: ");
+   -- Put(S);
+   -- Put(" och flyttalet: ");
+   -- Put(F1,Fore => 0, Aft => 1, Exp => 0);
+   -- Put(" och summan blev ");
+   -- Put(sum(S, F1));
+   -- Skip_Line;
 
 end p2_0;

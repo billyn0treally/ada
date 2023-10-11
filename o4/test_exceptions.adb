@@ -109,30 +109,64 @@ procedure Test_Exceptions is
     -- fångas här utan i huvudprogrammet.                               --
     ----------------------------------------------------------------------
 
-    -- Den måste ignorera att man trycker Enter utan att ha matat in en sträng först
-    -- CRAAWLLLING IN MY SKIIIIIN
+    -- Entertecken ska ignoreras när de kommer innan strängen
     procedure Get_Correct_String (S : out String) is
-        C     : Character;
-        Index : Integer := 0;
-        EOL   : Boolean := False;
+        C : Character;
     begin
         loop
-            if EOL then
-                raise Length_Error;
-            end if;
             Get (C);
-            if Index = 0 and C = ' ' then
-                Index := 0;
-            elsif Index <= S'Length then
-                S (S'First + Index) := C;
-                Index               := Index + 1;
-            end if;
-            if Index >= S'Length then
+            if not (C = ' ' or End_Of_Line) then
                 exit;
             end if;
-            Look_Ahead (C, EOL);
+        end loop;
+        S (S'First) := C;
+        Get (C);
+        if End_Of_Line = True then
+            raise Length_Error;
+        end if;
+        S (S'First + 1) := C;
+        if End_Of_Line = True then
+            raise Length_Error;
+        end if;
+        for I in 2 .. S'Length loop
+            Get(C);
+            S(S'First+I) := C;
+            exit when End_Of_Line;
         end loop;
     end Get_Correct_String;
+
+--    procedure Get_Correct_String (S : out String) is
+--        C     : Character;
+--        Index : Integer := 0;
+--        EOL   : Boolean := False;
+--    begin
+----        loop
+----            Get(C);
+----            exit when C /= ' ' or End_Of_Line;
+----            end loop;
+----            for I in 1..S'Length loop
+----            --S(S'First) := C;
+----            Get(C);
+----            S(S'First + I) :=C;
+----        end loop;
+--
+--        loop
+--            if EOL then
+--                raise Length_Error;
+--            end if;
+--            Get (C);
+--            if Index = 0 and (C = ' ' or End_Of_Line) then
+--                Index := 0;
+--            elsif Index <= S'Length then
+--                S (S'First + Index) := C;
+--                Index := Index + 1;
+--            end if;
+--            if Index >= S'Length then
+--                exit;
+--            end if;
+--            Look_Ahead (C, EOL);
+--        end loop;
+--    end Get_Correct_String;
 
     procedure Upg2 (Length : in Integer) is
 
@@ -214,7 +248,7 @@ procedure Test_Exceptions is
             raise Day_Error;
 
         elsif Item.D = 31 and
-           (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11)
+            (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11)
         then
             raise Month_Error;
 
