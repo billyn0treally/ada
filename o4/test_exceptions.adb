@@ -219,7 +219,7 @@ procedure Test_Exceptions is
         elsif Item.D = 31 and
             (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11)
         then
-            raise Month_Error;
+            raise Day_Error;
 
         elsif Item.D > 29 and Item.M = 2 then
             raise Day_Error;
