@@ -291,7 +291,7 @@ begin
             end;
 
         elsif Choice = 3 then
-            --loop
+            loop
                 begin
                     Upg3;
                 exception
@@ -305,8 +305,9 @@ begin
                         Put ("Felaktig månad! ");
                     when Day_Error    =>
                         Put ("Felaktig dag! ");
+                        exit;
                 end;
-            --end loop;
+            end loop;
 
         else
             Put_Line ("Programmet avslutas.");
