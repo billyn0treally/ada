@@ -77,7 +77,7 @@ D s-vauspe.ads		20230728000000 a67b2f28 system.value_u_spec%s
 D s-wchcon.ads		20230728000000 d9032363 system.wch_con%s
 D s-widuns.ads		20230728000000 866a5800 system.wid_uns%s
 D s-widthu.ads		20230728000000 b32f15e2 system.width_u%s
-D test_exceptions.adb	20231011111958 1571ad8a test_exceptions%b
+D test_exceptions.adb	20231011112828 1571ad8a test_exceptions%b
 G a e
 G c Z b b [test_exceptions standard 6 11 none]
 X 1 ada.ads
