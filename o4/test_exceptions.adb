@@ -132,7 +132,7 @@ procedure Test_Exceptions is
             Get(C);
             S(S'First+I) := C;
             exit when C = S(S'Last);
-                if End_Of_Line or C < S(S'Last) then
+                if End_Of_Line then --or C < S(S'Last)
                     raise Length_Error;
                 end if;
         end loop;
@@ -182,7 +182,6 @@ procedure Test_Exceptions is
     -- String length errorn kommer från Get_Correct_String
     procedure Get (Item : out Date_Type) is
         S : String (1 .. 10);
-        --Strlen : Integer := S'Length;
     begin
         Get_Correct_String (S);
 
@@ -292,7 +291,7 @@ begin
             end;
 
         elsif Choice = 3 then
-            loop
+            --loop
                 begin
                     Upg3;
                 exception
@@ -307,7 +306,7 @@ begin
                     when Day_Error    =>
                         Put ("Felaktig dag! ");
                 end;
-            end loop;
+            --end loop;
 
         else
             Put_Line ("Programmet avslutas.");
