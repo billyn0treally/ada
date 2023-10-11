@@ -294,6 +294,7 @@ begin
             loop
                 begin
                     Upg3;
+                    exit;
                 exception
                     when Length_Error =>
                         Put ("Felaktigt format! ");
@@ -305,7 +306,6 @@ begin
                         Put ("Felaktig månad! ");
                     when Day_Error    =>
                         Put ("Felaktig dag! ");
-                        exit;
                 end;
             end loop;
 
