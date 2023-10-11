@@ -131,7 +131,7 @@ procedure Test_Exceptions is
         for I in 2 .. S'Length loop
             Get(C);
             S(S'First+I) := C;
-            exit when End_Of_Line;
+            exit when End_Of_Line or C = S(S'Length);
         end loop;
     end Get_Correct_String;
 
