@@ -114,25 +114,19 @@ procedure Test_Exceptions is
         C : Character;
     begin
         loop
-            Get (C);
+            Get(C);
             if not (C = ' ' or End_Of_Line) then
                 exit;
             end if;
         end loop;
+
         S(S'First) := C;
-        -- Get (C);
-        -- if End_Of_Line then
-        --     raise Length_Error;
-        -- end if;
-        -- S (S'First + 1) := C;
-        -- if End_Of_Line then
-        --     raise Length_Error;
-        -- end if;
+
         for I in 1 .. S'Last loop
             Get(C);
             S(S'First+I) := C;
             exit when C = S(S'Last);
-            if End_Of_Line then --or C < S(S'Last) 
+            if End_Of_Line then
                 raise Length_Error;
             end if;
         end loop;
