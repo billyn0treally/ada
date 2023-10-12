@@ -120,6 +120,7 @@ procedure Test_Exceptions is
             elsif End_Of_Line then
                 raise Length_Error;
             end if;
+        end loop;
         S(S'First) := C;
        -- Get (C);
        -- if End_Of_Line then
@@ -129,7 +130,6 @@ procedure Test_Exceptions is
        -- if End_Of_Line then
        --     raise Length_Error;
        -- end if;
-        end loop;
         for I in 1 .. S'Last loop
             Get(C);
             S(S'First+I) := C;
