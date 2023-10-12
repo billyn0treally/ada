@@ -117,17 +117,19 @@ procedure Test_Exceptions is
             Get (C);
             if not (C = ' ' or End_Of_Line) then
                 exit;
+            elsif End_Of_Line then
+                raise Length_Error;
             end if;
-        end loop;
         S (S'First) := C;
         Get (C);
-        if End_Of_Line = True then
+        if End_Of_Line then
             raise Length_Error;
         end if;
         S (S'First + 1) := C;
-        if End_Of_Line = True then
+        if End_Of_Line then
             raise Length_Error;
         end if;
+        end loop;
         for I in 2 .. S'Last loop
             Get(C);
             S(S'First+I) := C;
