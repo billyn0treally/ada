@@ -132,7 +132,7 @@ procedure Test_Exceptions is
             Get(C);
             S(S'First+I) := C;
             exit when C = S(S'Last);
-            if End_Of_Line or C < S(S'Last) then 
+            if End_Of_Line then --or C < S(S'Last) 
                 raise Length_Error;
             end if;
         end loop;
