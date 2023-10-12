@@ -120,14 +120,14 @@ procedure Test_Exceptions is
             end if;
         end loop;
         S(S'First) := C;
-       -- Get (C);
-       -- if End_Of_Line then
-       --     raise Length_Error;
-       -- end if;
-       -- S (S'First + 1) := C;
-       -- if End_Of_Line then
-       --     raise Length_Error;
-       -- end if;
+        -- Get (C);
+        -- if End_Of_Line then
+        --     raise Length_Error;
+        -- end if;
+        -- S (S'First + 1) := C;
+        -- if End_Of_Line then
+        --     raise Length_Error;
+        -- end if;
         for I in 1 .. S'Last loop
             Get(C);
             S(S'First+I) := C;
@@ -165,24 +165,24 @@ procedure Test_Exceptions is
 
     -- Kollar om det är skottår eller inte
     function IsLeap (N : in Integer) return Boolean is
---        Leap : Boolean;
+        --        Leap : Boolean;
     begin
         if (N mod 4 = 0 and N mod 100 /= 0) or (N mod 400 = 0) then
             return True;
         else
             return False;
         end if;
---
---        if (N mod 4) = 0 then
---            Leap := False;
---            if (N mod 100) = 0 then
---                Leap := True;
---                if (N mod 400) = 0 then
---                    Leap := False;
---                end if;
---            end if;
---        end if;
---        return Leap;
+        --
+        --        if (N mod 4) = 0 then
+        --            Leap := False;
+        --            if (N mod 100) = 0 then
+        --                Leap := True;
+        --                if (N mod 400) = 0 then
+        --                    Leap := False;
+        --                end if;
+        --            end if;
+        --        end if;
+        --        return Leap;
     end IsLeap;
 
     -- String length errorn kommer från Get_Correct_String
