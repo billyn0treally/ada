@@ -5,6 +5,25 @@ with Ada.Exceptions;      use Ada.Exceptions;
 
 procedure Test_Exceptions is
 
+
+--Krav för uppgiften:
+--
+--  Program skall ej vara längre än ca 20 rader
+--
+--Viktigt för uppgiften:
+--
+--  Ordning av kodens olika delar
+--
+--  Parameterlistor stil
+--
+--  Duplicering av kod
+--
+--  Kodduplicering vid utskrift av dag/månad
+--
+--Viktigt för framtiden:
+--
+--  Kodduplicering vid indexhantering
+
     ----------------------------------------------------------------------
     -- Underprogram får att skriva ut meny och hantera menyval          --
     --                                                                  --
@@ -111,26 +130,57 @@ procedure Test_Exceptions is
 
     -- Entertecken ska ignoreras när de kommer innan strängen
     procedure Get_Correct_String (S : out String) is
-        C : Character;
+        C            : Character;
+        GotCharacter : Boolean := False;
     begin
         loop
-            Get(C);
-            if not (C = ' ' or End_Of_Line) then
+            Get (C);
+            if C = ' ' then
+                null;
+            elsif C /= ' ' and not End_Of_Line then
+                GotCharacter := True;
                 exit;
+            elsif C /= ' ' and End_Of_Line then
+                raise Length_Error;
             end if;
         end loop;
 
-        S(S'First) := C;
+        if not GotCharacter then
+            Get (C);
+        end if;
 
-        for I in 1 .. S'Last loop
-            Get(C);
-            S(S'First+I) := C;
-            exit when C = S(S'Last);
+        S (S'First) := C;
+
+        for I in S'First + 1 .. S'Last loop
+            Get (C);
+            S (I) := C;
+            exit when I = S'Last;
             if End_Of_Line then
                 raise Length_Error;
             end if;
         end loop;
-    end Get_Correct_String;
+    end Get_Correct_String; 
+    --    procedure Get_Correct_String (S : out String) is
+    --        C : Character;
+    --    begin
+    --        loop
+    --            Get(C);
+    --            if not (C = ' ' or End_Of_Line) then
+    --                exit;
+    --            end if;
+    --        end loop;
+    --
+    --        S(S'First) := C;
+    --
+    --        for I in 1 .. S'Last loop
+    --            Get(C);
+    --            S(S'First+I) := C;
+    --            exit when C = S(S'Last);
+    --            if End_Of_Line then
+    --                raise Length_Error;
+    --            end if;
+    --        end loop;
+    --    end Get_Correct_String;
 
     procedure Upg2 (Length : in Integer) is
 
@@ -228,6 +278,10 @@ procedure Test_Exceptions is
             raise Day_Error;
         end if;
     end Get;
+
+--    not_10 = bool
+
+ --   return "0"*not_10 +Item.M
 
     procedure Put (Item : in Date_Type) is
     begin
