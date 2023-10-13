@@ -160,28 +160,7 @@ procedure Test_Exceptions is
             end if;
         end loop;
     end Get_Correct_String; 
-    --    procedure Get_Correct_String (S : out String) is
-    --        C : Character;
-    --    begin
-    --        loop
-    --            Get(C);
-    --            if not (C = ' ' or End_Of_Line) then
-    --                exit;
-    --            end if;
-    --        end loop;
-    --
-    --        S(S'First) := C;
-    --
-    --        for I in 1 .. S'Last loop
-    --            Get(C);
-    --            S(S'First+I) := C;
-    --            exit when C = S(S'Last);
-    --            if End_Of_Line then
-    --                raise Length_Error;
-    --            end if;
-    --        end loop;
-    --    end Get_Correct_String;
-
+    
     procedure Upg2 (Length : in Integer) is
 
         S : String (1 .. Length);
@@ -209,24 +188,12 @@ procedure Test_Exceptions is
 
     -- Kollar om det är skottår eller inte
     function IsLeap (N : in Integer) return Boolean is
-        --        Leap : Boolean;
     begin
         if (N mod 4 = 0 and N mod 100 /= 0) or (N mod 400 = 0) then
             return True;
         else
             return False;
         end if;
-        --
-        --        if (N mod 4) = 0 then
-        --            Leap := False;
-        --            if (N mod 100) = 0 then
-        --                Leap := True;
-        --                if (N mod 400) = 0 then
-        --                    Leap := False;
-        --                end if;
-        --            end if;
-        --        end if;
-        --        return Leap;
     end IsLeap;
 
     -- String length errorn kommer från Get_Correct_String
