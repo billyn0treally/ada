@@ -22,29 +22,29 @@ begin
    Put(Previous_Date(Date_1));
    New_Line;
    
-  -- Put("Mata in Datum 2: ");
-  -- Get(Date_2);
-   
-  -- Put("Datum 1 > Datum 2? ");
-  -- if Date_1 > Date_2 then
-  --    Put_Line("Ja.");
-  -- else
-  --    Put_Line("Nej.");
-  -- end if;
-   
-  -- Put("Datum 1 < Datum 2? ");
-  -- if Date_1 < Date_2 then
-  --    Put_Line("Ja.");
-  -- else
-  --    Put_Line("Nej.");
-  -- end if;
-   
-  -- Put("Datum 1 = Datum 2? ");
-  -- if Date_1 = Date_2 then
-  --    Put_Line("Ja.");
-  -- else
-  --    Put_Line("Nej.");
-  -- end if;
+   Put("Mata in Datum 2: ");
+   Get(Date_2);
+  
+   Put("Datum 1 > Datum 2? ");
+   if Date_1 > Date_2 then
+      Put_Line("Ja.");
+   else
+      Put_Line("Nej.");
+   end if;
+  
+   Put("Datum 1 < Datum 2? ");
+   if Date_1 < Date_2 then
+      Put_Line("Ja.");
+   else
+      Put_Line("Nej.");
+   end if;
+  
+   Put("Datum 1 = Datum 2? ");
+   if Date_1 = Date_2 then
+      Put_Line("Ja.");
+   else
+      Put_Line("Nej.");
+   end if;
    
 exception
    when Format_Error =>

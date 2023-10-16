@@ -171,8 +171,16 @@ end Next_Date;
 
 function Previous_Date (D : in Date_Type) return Date_Type is
     Previous : Date_Type;
+    --deez : Date_Type := Previous.M -1;
 begin
-    Previous := D;
+    --Previous := D;
+    Previous.D := Previous.D -1;
+    --Previous.M := Previous.M -1;
+    --Last_Day(Previous);
+
+    --Previous.Y := Previous.Y -1;
+    --Previous.M := 12;
+    --Previous.D := 31;
     if Previous.D = 01 and Previous.M /= 01 then
         Last_Day(Previous);
     elsif Previous.D = 01 and Previous.M = 01 then
@@ -186,8 +194,8 @@ begin
     --    else
     --        Previous.D := 28;
     --    end if;
-    else 
-        Previous.D := Previous.D - 1;
+   -- else 
+   --     Previous.D := Previous.D - 1;
     end if;
 
     return Previous;
@@ -202,5 +210,28 @@ begin
     end if;
 end "=";
 
+function ">" (L, R : in Date_Type) return Boolean is
+begin
+    if (L<R) = False and (L=R) = False then
+        return True;
+    else
+        return False;
+    end if;
+end ">";
+
+function "<" (L, R : in Date_Type) return Boolean is
+    Low : Date_Type;
+    Tmp : Date_Type;
+begin
+    Low.Y := 1535; Low.M := 1; Low.D :=1;
+    Tmp := R;
+    while Tmp /= Low loop
+        Tmp := Previous_Date(Tmp);
+        if L = Tmp then
+            return True;
+            end if;
+        end loop;
+        return False;
+end "<";
 end date;
 
