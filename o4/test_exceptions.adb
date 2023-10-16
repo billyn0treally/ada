@@ -8,7 +8,7 @@ procedure Test_Exceptions is
 
 --Krav för uppgiften:
 --
---  Program skall ej vara längre än ca 20 rader
+--CHECK  Program skall ej vara längre än ca 20 rader
 --
 --Viktigt för uppgiften:
 --
@@ -196,13 +196,10 @@ procedure Test_Exceptions is
         end if;
     end IsLeap;
 
-    -- String length errorn kommer från Get_Correct_String
-    procedure Get (Item : out Date_Type) is
-        S : String (1 .. 10);
+    -- Kontrollera formatering på användarens indata
+    procedure CheckFmt (S : in String) is
     begin
-        Get_Correct_String (S);
-
-        if S (5) /= '-' or S (8) /= '-' or S'Length /= 10 then
+        if S(5) /= '-' or S(8) /= '-' or S'Length /= 10 then
             raise Format_Error;
         end if;
 
@@ -219,7 +216,15 @@ procedure Test_Exceptions is
                 raise Format_Error;
             end if;
         end loop;
+    end CheckFmt;
 
+    procedure Get (Item : out Date_Type) is
+        S : String (1 .. 10);
+    begin
+        Get_Correct_String (S);
+        CheckFmt(S);
+
+        -- Assign Int values to string's chars
         Item.Y := Integer'Value (S (1 .. 4));
         Item.M := Integer'Value (S (6 .. 7));
         Item.D := Integer'Value (S (9 .. 10));

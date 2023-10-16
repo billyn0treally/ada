@@ -1,7 +1,7 @@
 with Ada.Text_IO;                       use Ada.Text_IO;
 with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
-with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
+--with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure p2_0 is
 
@@ -13,21 +13,24 @@ procedure p2_0 is
         return Integer'Value(X) - I;
     end diff;
 
-    -- Medelvärde
+    --Medelvärde
     function medel (F1, F2, F3 : in Float) return Integer is
-        Y : Integer;
         Ftot : Float;
     begin
-        Ftot := Float'Floor(F1+F2+F3+0.5);
-        Y := Integer(Ftot);
-        return Y/3;
+        Ftot := (F1 + F2 + F3) / 3.0;
+        return Integer(Ftot + 0.5);
     end medel;
 
+    --procedure medel (F1, F2, F3 : Float; I : out Integer) is
+    --begin
+    --    Medel := Integer((F1 + F2 + F3) / 3.0 + 0.5);
+    --end Medel;
+
     -- Summa
-    function sum (S : in String; F1 : in Float) return Float is
+    function "+" (S : in String; F1 : in Float) return Float is
     begin
         return (Float'Value(S) + F1);
-    end sum;
+    end "+";
 
     -- Huvudprogram
     Ch  : Character;
@@ -59,16 +62,16 @@ begin
     Skip_Line;
     New_Line(2);
 
-   -- Put("Mata in en sträng med exakt 3 tecken: ");
-   -- Get(S);
-   -- Put("Mata in ett flyttal: ");
-   -- Get(F1);
-   -- Put("Du matade in strängen: ");
-   -- Put(S);
-   -- Put(" och flyttalet: ");
-   -- Put(F1,Fore => 0, Aft => 1, Exp => 0);
-   -- Put(" och summan blev ");
-   -- Put(sum(S, F1));
-   -- Skip_Line;
+    Put("Mata in en sträng med exakt 3 tecken: ");
+    Get(S);
+    Put("Mata in ett flyttal: ");
+    Get(F1);
+    Put("Du matade in strängen: ");
+    Put(S);
+    Put(" och flyttalet: ");
+    Put(F1,Fore => 0, Aft => 1, Exp => 0);
+    Put(" och summan blev ");
+    Put(S + F1, Fore => 0, Aft => 1, Exp => 0);
+    Skip_Line;
 
 end p2_0;
