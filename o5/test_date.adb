@@ -18,9 +18,9 @@ begin
    Put(Next_Date(Date_1));
    New_Line;
    
-  -- Put("Föregående dag: ");
-  -- Put(Previous_Date(Date_1));
-  -- New_Line;
+   Put("Föregående dag: ");
+   Put(Previous_Date(Date_1));
+   New_Line;
    
   -- Put("Mata in Datum 2: ");
   -- Get(Date_2);
