@@ -170,15 +170,15 @@ package body date is
 end Next_Date;
 
 function Previous_Date (D : in Date_Type) return Date_Type is
-    D : Date_Type;
+    Previous : Date_Type;
 begin
-    D := D;
-    if D.D = 01 and D.M /= 01 then
-        Last_Day(D.M - 1);
-    elsif D.D = 01 and D.M = 01 then
-        D.M := 12;
-        D.Y := D.Y - 1;
-        Last_Day(D);
+    Previous := D;
+    if Previous.D = 01 and Previous.M /= 01 then
+        Last_Day(Previous);
+    elsif Previous.D = 01 and Previous.M = 01 then
+        Previous.M := 12;
+        Previous.Y := Previous.Y - 1;
+        Last_Day(Previous);
     --elsif Previous.D = 01 and Previous.M = 3 then
     --    Previous.M := 02;
     --    if IsLeap(Previous.Y-1) then
@@ -187,10 +187,10 @@ begin
     --        Previous.D := 28;
     --    end if;
     else 
-        D.D := D.D - 1;
+        Previous.D := Previous.D - 1;
     end if;
 
-    return D;
+    return Previous;
 end Previous_Date;
 
 function "=" (L,R : in Date_Type) return Boolean is
