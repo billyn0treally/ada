@@ -5,7 +5,6 @@ with Ada.Exceptions;      use Ada.Exceptions;
 
 procedure Test_Exceptions is
 
-
 --Krav för uppgiften:
 --
 --CHECK  Program skall ej vara längre än ca 20 rader
