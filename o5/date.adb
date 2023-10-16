@@ -166,37 +166,31 @@ package body date is
     begin
         Next := D;
         Next.D:= D.D + 1;
-        --Last_Day(Next);
---        if DayCheck(Next) = True then
---            return Next;
---        else Next := D;
---        end if;
---
---    Next.Day := 1;
---    Next.Month := Next.Month +1;
---    if MonthCheck (Next) = False then
---        return Next;
---    else 
---        Next := D;
---    end if;
---
---    Next.Day := 1;
---    Next.Month := 1;
---    Next.Year := Next.Year +1;
     return Next;
 end Next_Date;
 
 function Previous_Date (D : in Date_Type) return Date_Type is
-    Previous : Date_Type;
+    D : Date_Type;
 begin
-    Previous := D;
-    if  Previous.D = 1 then
-        Last_Day(Previous);
-    else
-        Previous.D:= D.D - 1;
+    D := D;
+    if D.D = 01 and D.M /= 01 then
+        Last_Day(D.M - 1);
+    elsif D.D = 01 and D.M = 01 then
+        D.M := 12;
+        D.Y := D.Y - 1;
+        Last_Day(D);
+    --elsif Previous.D = 01 and Previous.M = 3 then
+    --    Previous.M := 02;
+    --    if IsLeap(Previous.Y-1) then
+    --        Previous.D := 29;
+    --    else
+    --        Previous.D := 28;
+    --    end if;
+    else 
+        D.D := D.D - 1;
     end if;
 
-    return Previous;
+    return D;
 end Previous_Date;
 
 function "=" (L,R : in Date_Type) return Boolean is
