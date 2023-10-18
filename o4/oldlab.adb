@@ -2,196 +2,314 @@
 with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Exceptions;      use Ada.Exceptions;
-with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 procedure Test_Exceptions is
 
+    ----------------------------------------------------------------------
+    -- Underprogram får att skriva ut meny och hantera menyval          --
+    --                                                                  --
+    -- Underprogrammet skriver ut de menyval som finns tillgängliga.    --
+    -- Användaren får mata in menyval tills denne matat in ett          --
+    -- korrekt menyval.                                                 --
+    ----------------------------------------------------------------------
+    function Menu_Selection return Integer is
+
+        N : Integer;
+
+    begin
+        Put_Line ("1. Felkontrollerad heltalsinläsning");
+        Put_Line ("2. Längdkontrollerad stränginläsning");
+        Put_Line ("3. Felkontrollerad datuminläsning");
+        Put_Line ("4. Avsluta programmet");
+
+        loop
+            Put ("Mata in N: ");
+            Get (N);
+            exit when N in 1 .. 4;
+            Put_Line ("Felaktigt N, mata in igen!");
+        end loop;
+
+        return N;
+    end Menu_Selection;
+
+    Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
+
+    Value, Min, Max : Integer;
+
     type Date_Type is record
-        Day, Month, Year : Integer;
+        Y, M, D : Integer;
     end record;
 
-    type Date_Arr_Type is array (1 .. 3) of Date_Type;
+    ----------------------------------------------------------------------
+    -- Underprogram får menyval 1: "felhantering av heltalsinmatning"   --
+    --                                                                  --
+    -- Underprogrammet låter användaren mata in ett intervall angivet   --
+    -- med två heltal Min och Max. Get_Safe anropas                     --
+    -- sedan med detta intervall och sköter felhanteringen av           --
+    -- heltalsinläsningen där användaren får mata in värden tills       --
+    -- korrekt värde matas in.                                          --
+    ----------------------------------------------------------------------
 
-    Min, Max, Value : Integer;
-    S_1 : String(1 .. 5);
-    S_2 : String(2 .. 7);
-    S_3 : String(1 .. 10);
-    Dates : Date_Arr_Type;
-
-    Lenght_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
-
-    -- Part One
-    procedure Get_Value_Safe (Min, Max : in Integer; Value : out Integer) is
+    procedure Get_Safe (Value : out Integer; Min, Max : in Integer) is
     begin
-        Put_Line ("Mata in värde (" & Min'Image & " - " & Max'Image & "): ");
+        Put ("Mata in värde (");
+        Put (Min, Width => 0);
+        Put (" -" & Max'Image & "): ");
         loop
-            Get(Value);
-            if Min <= Value and  Value <= Max then
-                exit;
-            else Put("Testa igen: ");
-        end if;
-    end loop;
-end Get_Value_Safe;
+            begin
+                Get (Value);
+                exit when Min <= Value and Value <= Max;
+                if Min >= Value then
+                    Put ("För litet värde. Mata in värde (");
+                    Put (Min, Width => 0);
+                    Put (" -" & Max'Image & "): ");
+                elsif Max <= Value then
+                    Put ("För stort värde. Mata in värde (");
+                    Put (Min, Width => 0);
+                    Put (" -" & Max'Image & "): ");
+                end if;
+            exception
+                when Data_Error =>
+                    Put ("Fel datatyp. Mata in värde (");
+                    Put (Min, Width => 0);
+                    Put (" -" & Max'Image & "): ");
+                    Skip_Line;
+            end;
+        end loop;
+    end Get_Safe;
 
--- Part Two
-procedure Get ( Item : out String) is
-    C        : Character;
-    Index    : Integer := 0;
-    EOL      : Boolean := False;
+    procedure Upg1 is
+
+    begin
+        Put ("Mata in Min och Max: ");
+        Get (Min);
+        Get (Max);
+
+        Get_Safe (Value, Min, Max);
+        Skip_Line;
+
+        Put ("Du matade in heltalet ");
+        Put (Value, Width => 0);
+        Put_Line (".");
+    end Upg1;
+
+    ----------------------------------------------------------------------
+    -- Underprogram får menyval 2: "felhantering av stränginmatning"    --
+    --                                                                  --
+    -- Underprogrammet skapar en sträng som är lika lång som parametern --
+    -- Length. Underprogrammet skickar denna sträng till                --
+    -- Get_Correct_String där felhanteringen av stränginmatningen sker. --
+    -- Om användaren matar in en får kort strÃ¤ng kommer                 --
+    -- Get_Correct_String kasta/resa undantag vilket inte ska           --
+    -- fångas här utan i huvudprogrammet.                               --
+    ----------------------------------------------------------------------
+
+    -- Entertecken ska ignoreras när de kommer innan strängen
+    procedure Get_Correct_String (S : out String) is
+        C            : Character;
+        GotCharacter : Boolean := False;
+    begin
+        loop
+            Get (C);
+            if C = ' ' then
+                null;
+            elsif C /= ' ' and not End_Of_Line then
+                GotCharacter := True;
+                exit;
+            elsif C /= ' ' and End_Of_Line then
+                raise Length_Error;
+            end if;
+        end loop;
+
+        if not GotCharacter then
+            Get (C);
+        end if;
+
+        S (S'First) := C;
+
+        for I in S'First + 1 .. S'Last loop
+            Get (C);
+            S (I) := C;
+            --exit when I = S'Last;
+            if End_Of_Line then
+                raise Length_Error;
+            end if;
+        end loop;
+    exception
+        when Length_Error =>
+            Put ("För få inmatade tecken!");
+    end Get_Correct_String; 
+
+    procedure Upg2 (Length : in Integer) is
+
+        S : String (1 .. Length);
+
+    begin
+        Put ("Mata in en sträng med exakt ");
+        Put (Length, Width => 0);
+        Put (" tecken: ");
+
+        Get_Correct_String (S);
+        Skip_Line;
+
+        Put_Line ("Du matade in strängen " & S & ".");
+    end Upg2;
+
+    ----------------------------------------------------------------------
+    -- Underprogram får menyval 3: "felhantering av datuminmatning"     --
+    --                                                                  --
+    -- Underprogrammet anropar Get som i sin tur kommer läsa in och     --
+    -- kontrollera ett datums format och rimlighet. Om datumet är       --
+    -- felaktigt kommer Get kasta/resa undantag vilket detta            --
+    -- underprogram ska fånga, skriva ut felmeddelande får och sedan    --
+    -- anropa Get igen.                                                 --
+    ----------------------------------------------------------------------
+
+    -- Kollar om det är skottår eller inte
+    function IsLeap (N : in Integer) return Boolean is
+    begin
+        if (N mod 4 = 0 and N mod 100 /= 0) or (N mod 400 = 0) then
+            return True;
+        else
+            return False;
+        end if;
+    end IsLeap;
+
+    -- Kontrollera formatering på användarens indata
+    procedure CheckFmt (S : in String) is
+    begin
+        if S(5) /= '-' or S(8) /= '-' or S'Length /= 10 then
+            raise Format_Error;
+        end if;
+
+        for I in 1 .. 4 loop
+            if S (I) < '0' or S (I) > '9' then
+                raise Format_Error;
+            end if;
+        end loop;
+
+        for I in 1 .. 2 loop
+            if S (I + 5) < '0' or S (I + 5) > '9' then
+                raise Format_Error;
+            elsif S (I + 8) < '0' or S (I + 8) > '9' then
+                raise Format_Error;
+            end if;
+        end loop;
+    end CheckFmt;
+
+    procedure Get (Item : out Date_Type) is
+        S : String (1 .. 10);
+    begin
+        Get_Correct_String (S);
+        CheckFmt(S);
+
+        -- Assign Int values to string's chars
+        Item.Y := Integer'Value (S (1 .. 4));
+        Item.M := Integer'Value (S (6 .. 7));
+        Item.D := Integer'Value (S (9 .. 10));
+
+        if (Item.Y > 9_000 or Item.Y < 1_532) then
+            raise Year_Error;
+
+        elsif (Item.M = 00 or Item.M > 12) then
+            raise Month_Error;
+
+        elsif Item.D > 31 or Item.D = 0 then
+            raise Day_Error;
+
+        elsif Item.D = 31 and
+            (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11)
+        then
+            raise Day_Error;
+
+        elsif Item.D > 29 and Item.M = 2 then
+            raise Day_Error;
+
+        elsif Item.D = 29 and Item.M = 2 and IsLeap (Item.Y) = False then
+            raise Day_Error;
+        end if;
+
+    exception
+        when Length_Error =>
+            Put ("Felaktigt format! ");
+        when Format_Error =>
+            Put ("Felaktigt format! ");
+        when Year_Error   =>
+            Put ("Felaktigt år! ");
+        when Month_Error  =>
+            Put ("Felaktig månad! ");
+        when Day_Error    =>
+            Put ("Felaktig dag! ");
+
+    end Get;
+
+    --    not_10 = bool
+
+    --   return "0"*not_10 +Item.M
+
+    procedure Put (Item : in Date_Type) is
+    begin
+        Put (Item.Y, Width => 1);
+        Put ("-");
+        if Item.M <= 9 then
+            Put ("0");
+        end if;
+        Put (Item.M, Width => 1);
+        Put ("-");
+        if Item.D <= 9 then
+            Put ("0");
+        end if;
+        Put (Item.D, Width => 1);
+    end Put;
+
+    procedure Upg3 is
+
+        Date : Date_Type;
+
+    begin
+        Put ("Mata in ett datum: ");
+        Get (Date);
+        Skip_Line;
+
+        Put ("Du matade in ");
+        Put (Date);
+        New_Line;
+    end Upg3;
+
+    ----------------------------------------------------------------------
+    -- Huvudprogram                                                     --
+    --                                                                  --
+    -- Huvudprogrammet skriver ut och låter användaren välja val i en   --
+    -- meny via underprogrammet Menu_Selection. Beroende på vilket      --
+    -- menyval användaren valt kommer olika underprogram anropas.       --
+    -- Observera att får menyval 2 kommer användaren få mata in längden --
+    -- av en sträng vilket skickas vidare till underporgrammet Upg2 där --
+    -- strängen i sig skapas.                                           --
+    ----------------------------------------------------------------------
+
+    Choice, Length : Integer;
+
+
 begin
     loop
-        if EOL then
-            raise Lenght_Error;
-        end if;  
+        Choice := Menu_Selection;
 
-        Ada.Text_IO.Get(C);
+        if Choice = 1 then
+            Upg1;
 
-        if Index = 0 and C = ' ' then
-            Index := 0;
+        elsif Choice = 2 then
+            Put ("Mata in en stränglängd: ");
+            Get (Length);
+            Skip_Line;
 
-        elsif Index <= Item'Length then
-            Item (Item'First + Index) := C;
-            Index := Index + 1;
-        end if;
-        if Index >= Item'Length then
+            Upg2 (Length);
+
+        elsif Choice = 3 then
+            Upg3;
+
+        else
+            Put_Line ("Programmet avslutas.");
             exit;
         end if;
-        Ada.Text_IO.Look_Ahead (C, EOL); 
     end loop;
-end Get;
-
--- Part Three
-procedure Get (D : in out Date_Type) is
-    Bound   : Integer := 30;
-    F       : Float;
-begin
-    Get(S_3);
-    if S_3 (5) /= '-' or S_3 (8) /= '-' then
-        raise Format_Error;
-    end if;
-    D.Year  := Integer'Value (S_3 (1 .. 4));
-    D.Month := Integer'Value (S_3 (6 .. 7));
-    D.Day   := Integer'Value (S_3 (9 .. 10));
-    if D.Year < 1532 or D.Year > 9000 then
-        raise Year_Error;
-    end if;
-    if D.Month > 12 then
-        raise Month_Error;
-    end if;
-    if D.Month mod 2 = 0 then
-        Bound := 31;
-    end if;
-    if D.Month = 2 then
-        -- Ex: 1992 % 4 = 0 -> 1*0/3 = 0.0 -> Ceil(0.0) = 0
-        -- Ex: 1995 % 4 = 3 -> 1*3/6 = 0.5 -> Ceil(0.5) = 1
-        F := Float'Ceiling(1.0 * (Float (D.Year mod 4)) / 
-        (3.0 + (Float (D.Year mod 4))));
-        -- 29 - 1 -> Not Leap-Year, 29 - 0 -> Leap-Year   
-        Bound := 29 - Integer (F);
-    end if;
-    if D.Day > Bound then
-        raise Day_Error;
-    end if;
-end Get;
-
--- Output whole date array and insert zeros where needed
-procedure Put ( D : in Date_Arr_Type ) is
-begin
-    for  i in D'Range loop
-
-         Put ("Datum nummer ");
-         Put (I, 0);
-         Put (": ");
-         Put (D (I).Year, 0);
-         Put ("-");
-         if (D (I).Month / 10) < 1 then
-            Put ("0");
-         end if;
-         Put (D (I).Month, 0);
-         Put ("-");
-         if (D (I).Day / 10) < 1 then
-            Put ("0");
-         end if;
-         Put (D (I).Day, 0);
-         if I /= D'Last then
-            New_Line;
-         end if;
-      end loop;
-end Put;
-
-	-- Prompts for user-input which then is checked for errors. Part of Del_3
-   function Query (I : Integer) return Date_Type is
-   begin
-      Put ("Mata in datum ");
-      Put (I, Width => 0);
-      Put (": ");
-      Get (Dates (I));
-      return Dates (I);
-
-      exception
-          when Format_Error =>
-              Put ("Felaktigt format! ");
-              return Query (I);
-          when Year_Error =>
-              Put ("Felaktigt år! ");
-              return Query (I);
-          when Month_Error =>
-              Put ("Felaktig månad! ");
-              return Query (I);
-          when Day_Error =>
-              Put ("Felaktig dag! ");
-              return Query (I);
-      end Query;
-
--- partition main program into subroutines too 
-
-	-- Part one of the assignement
-   procedure Del_1 is
-   begin
-      Put_Line ("Del 1:");
-      Put ("Mata in Min och Max: ");
-      Get (Min);
-      Get (Max);
-      Get_Value_Safe (Min, Max, Value);
-      Put ("Du matade in heltalet ");
-      Put (Value, Width => 0);
-      Put ('.');
-      New_Line (2);
-      Skip_Line;
-   end Del_1;
-
-   procedure Del_2 is
-   begin
-      Put_Line ("Del 2:");
-      Put ("Mata in en sträng på exakt 5 tecken: ");
-      Get (S_1);
-      Put_Line ("Du matade in " & S_1);
-      Put ("Mata in en sträng  på exakt 6 tecken: ");
-      Get (S_2);
-      Put_Line ("Du matade in " & S_2);
-      Put ("Mata in en sträng på exakt 10 tecken: ");
-      Get (S_3);
-      Put ("Du matade in " & S_3);
-      New_Line (2);
-      Skip_Line;
-   end Del_2;
-
-   procedure Del_3 is
-   begin
-      Put_Line ("Del 3:");
-      for I in Dates'Range loop
-         Dates (I) := Query (I); 
-      end loop;
-      Put (Dates);
-   end Del_3;
-
-    begin
-        Del_1;
-        Del_2;
-        Del_3;
-
-        exception
-            when Lenght_Error =>
-                Put_Line ("För få inmatade tecken! ");
-
-        end Test_Exceptions;
+end Test_Exceptions;

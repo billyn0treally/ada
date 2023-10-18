@@ -5,7 +5,6 @@ with Ada.Exceptions;      use Ada.Exceptions;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 package body date is
-    -- DEL A
 
     -- Kollar om det är skottår eller inte
     function IsLeap (N : in Integer) return Boolean is
@@ -38,19 +37,6 @@ package body date is
             end if;
         end loop;
     end CheckFmt;
-
---    procedure DateCheck (D : in Date_Type) is
---    begin
---        if D.Y< 100 or D.Y>= 10000 then
---            raise Format_Error;
---        elsif D.Y< 1532 or D.Y> 9000 then
---            raise Year_Error;
---        elsif MonthCheck(D) = False then
---            raise Month_Error;
---        elsif DayCheck(D) = False then
---            raise Day_Error;
---        end if;
---    end DateCheck;
 
     procedure Get_Correct_String (S : out String) is
         C            : Character;
@@ -132,22 +118,17 @@ package body date is
         Put (D.D, Width => 1);
     end Put;
 
--- DEL B
-
-    function IsLast (D : in out Date_Type) return Boolean is
+    procedure Last_Day (D : in out Date_Type) is
     begin
-        if D.D = 30 and (D.M= 4 or D.M= 6 or D.M= 9 or D.M= 11) then
-            return True;
-        elsif D.D = 29 and (D.M= 2 and IsLeap(D.Y)) = True then
-            return True; 
-        elsif D.D = 28 and (D.M= 2 and IsLeap(D.Y)) = False then
-            return True;
-        elsif D.D = 31 then
-            return True;
-        else
-            return False;
+        if D.M= 4 or D.M= 6 or D.M= 9 or D.M= 11 then
+            D.D:= 30;
+        elsif D.M= 2 and IsLeap(D.Y) = True then
+            D.D:= 29;
+        elsif D.M= 2 and IsLeap(D.Y) = False then
+            D.D:= 28;
+        else D.D:= 31;
         end if;
-    end IsLast;
+    end Last_Day;
 
     function ValidDay (D : in Date_Type) return Boolean is 
     begin
@@ -178,18 +159,6 @@ package body date is
         end if;
 
     end ValidMonth;
-
-   procedure Last_Day (D : in out Date_Type) is
-    begin
-        if D.M= 4 or D.M= 6 or D.M= 9 or D.M= 11 then
-            D.D:= 30;
-        elsif D.M= 2 and IsLeap(D.Y) = True then
-            D.D:= 29;
-        elsif D.M= 2 and IsLeap(D.Y) = False then
-            D.D:= 28;
-        else D.D:= 31;
-        end if;
-    end Last_Day;
 
     function Next_Date (D : in Date_Type) return Date_Type is
         next : Date_Type;
