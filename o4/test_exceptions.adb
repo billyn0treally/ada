@@ -5,6 +5,22 @@ with Ada.Exceptions;      use Ada.Exceptions;
 
 procedure Test_Exceptions is
 
+--Krav för uppgiften:
+--
+--Viktigt för uppgiften:
+--
+--  Ordning av kodens olika delar
+--
+--  Parameterlistor stil
+--
+--  Duplicering av kod
+--
+--  Kodduplicering vid utskrift av dag/månad
+--
+--Viktigt för framtiden:
+--
+--  Kodduplicering vid indexhantering
+
     ----------------------------------------------------------------------
     -- Underprogram får att skriva ut meny och hantera menyval          --
     --                                                                  --
@@ -135,7 +151,7 @@ procedure Test_Exceptions is
         for I in S'First + 1 .. S'Last loop
             Get (C);
             S (I) := C;
-            --exit when I = S'Last;
+            exit when I = S'Last;
             if End_Of_Line then
                 raise Length_Error;
             end if;
