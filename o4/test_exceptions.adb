@@ -32,7 +32,13 @@ procedure Test_Exceptions is
         return N;
     end Menu_Selection;
 
+    Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
+    Value, Min, Max : Integer;
+
+    type Date_Type is record
+        Y, M, D : Integer;
+    end record;
 
     ----------------------------------------------------------------------
     -- Underprogram får menyval 1: "felhantering av heltalsinmatning"   --
@@ -130,7 +136,7 @@ procedure Test_Exceptions is
             end if;
         end loop;
     exception
-        when Length_Error2 =>
+        when Length_Error =>
             Put ("För få inmatade tecken!");
     end Get_Correct_String; 
 
@@ -281,14 +287,8 @@ procedure Test_Exceptions is
     -- strängen i sig skapas.                                           --
     ----------------------------------------------------------------------
 
-    type Date_Type is record
-        Y, M, D : Integer;
-    end record;
-
     Choice, Length : Integer;
-    Value, Min, Max : Integer;
 
-    Length_Error2, Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
 begin
     loop
