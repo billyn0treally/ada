@@ -149,7 +149,37 @@ package body date is
         end if;
     end IsLast;
 
-    procedure Last_Day (D : in out Date_Type) is
+    function ValidDay (D : in Date_Type) return Boolean is 
+    begin
+
+        if D.D > 31 or D.D <= 00 then
+            return False;
+
+        elsif D.D = 31 and(D.M = 4 or D.M = 6 or D.M = 9 or D.M = 11) then
+            return False; 
+
+        elsif D.D > 29 and D.M = 2 then 
+            return False;
+
+        elsif D.D = 29 and D.M = 2 and IsLeap(D.Y) = False then
+            return False;
+        else
+            return True;
+        end if;
+
+    end ValidDay;
+
+    function ValidMonth (D: in Date_Type) return Boolean is
+    begin
+        if D.M <= 0 or D.M > 12 then
+            return False;
+        else 
+            return True;
+        end if;
+
+    end ValidMonth;
+
+   procedure Last_Day (D : in out Date_Type) is
     begin
         if D.M= 4 or D.M= 6 or D.M= 9 or D.M= 11 then
             D.D:= 30;
@@ -162,44 +192,55 @@ package body date is
     end Last_Day;
 
     function Next_Date (D : in Date_Type) return Date_Type is
-        Next : Date_Type;
+        next : Date_Type;
     begin
-        Next := D;
-        Next.D:= D.D + 1;
-    return Next;
-end Next_Date;
+        next := D;
+        next.D:= D.D + 1;
+        if ValidDay(next) then
+            return next;
+        else
+            next := D;
+        end if;
 
-function Previous_Date (D : in Date_Type) return Date_Type is
-    Previous : Date_Type;
-    --deez : Date_Type := Previous.M -1;
-begin
-    --Previous := D;
-    Previous.D := Previous.D -1;
-    --Previous.M := Previous.M -1;
-    --Last_Day(Previous);
+        next.D := 1;
+        next.M := next.M + 1;
+        if ValidMonth(next) then
+            return next;
+        else next := D;
+        end if;
 
-    --Previous.Y := Previous.Y -1;
-    --Previous.M := 12;
-    --Previous.D := 31;
-    if Previous.D = 01 and Previous.M /= 01 then
-        Last_Day(Previous);
-    elsif Previous.D = 01 and Previous.M = 01 then
-        Previous.M := 12;
-        Previous.Y := Previous.Y - 1;
-        Last_Day(Previous);
-    --elsif Previous.D = 01 and Previous.M = 3 then
-    --    Previous.M := 02;
-    --    if IsLeap(Previous.Y-1) then
-    --        Previous.D := 29;
-    --    else
-    --        Previous.D := 28;
-    --    end if;
-   -- else 
-   --     Previous.D := Previous.D - 1;
-    end if;
+        next.D := 1;
+        next.M := 1;
+        next.Y := next.Y + 1;
 
-    return Previous;
-end Previous_Date;
+        return next;
+    end Next_Date;
+
+    function Previous_Date (D : in Date_Type) return Date_Type is
+        prev : Date_Type;
+    begin
+        prev := D;
+        prev.D := prev.D - 1;
+        if ValidDay(prev) then
+            return prev;
+        else
+            prev := D;
+        end if;
+
+        prev.M := prev.M - 1;
+        Last_Day(prev);
+        if ValidMonth(prev) then
+            return prev;
+        else 
+            prev := D;
+        end if;
+
+        prev.Y := prev.Y - 1;
+        prev.M := 12;
+        prev.D := 31;
+
+        return prev;
+    end Previous_Date;
 
 function "=" (L,R : in Date_Type) return Boolean is
 begin

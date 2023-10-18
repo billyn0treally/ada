@@ -5,24 +5,6 @@ with Ada.Exceptions;      use Ada.Exceptions;
 
 procedure Test_Exceptions is
 
---Krav för uppgiften:
---
---CHECK  Program skall ej vara längre än ca 20 rader
---
---Viktigt för uppgiften:
---
---  Ordning av kodens olika delar
---
---  Parameterlistor stil
---
---  Duplicering av kod
---
---  Kodduplicering vid utskrift av dag/månad
---
---Viktigt för framtiden:
---
---  Kodduplicering vid indexhantering
-
     ----------------------------------------------------------------------
     -- Underprogram får att skriva ut meny och hantera menyval          --
     --                                                                  --
@@ -50,11 +32,7 @@ procedure Test_Exceptions is
         return N;
     end Menu_Selection;
 
-    type Date_Type is record
-        Y, M, D : Integer;
-    end record;
 
-    Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
     ----------------------------------------------------------------------
     -- Underprogram får menyval 1: "felhantering av heltalsinmatning"   --
@@ -65,14 +43,7 @@ procedure Test_Exceptions is
     -- heltalsinläsningen där användaren får mata in värden tills       --
     -- korrekt värde matas in.                                          --
     ----------------------------------------------------------------------
-    Value, Min, Max : Integer;
 
-    --   exception
-    --       when Data_Error =>
-    --           Put("Fel datatyp. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
-
-    -- Det finns en extra whitespace före Integern vi printar ut
-    -- men bara om Integern är positiv. Så den tar - tecknets plats
     procedure Get_Safe (Value : out Integer; Min, Max : in Integer) is
     begin
         Put ("Mata in värde (");
@@ -153,13 +124,16 @@ procedure Test_Exceptions is
         for I in S'First + 1 .. S'Last loop
             Get (C);
             S (I) := C;
-            exit when I = S'Last;
+            --exit when I = S'Last;
             if End_Of_Line then
                 raise Length_Error;
             end if;
         end loop;
+    exception
+        when Length_Error2 =>
+            Put ("För få inmatade tecken!");
     end Get_Correct_String; 
-    
+
     procedure Upg2 (Length : in Integer) is
 
         S : String (1 .. Length);
@@ -248,11 +222,24 @@ procedure Test_Exceptions is
         elsif Item.D = 29 and Item.M = 2 and IsLeap (Item.Y) = False then
             raise Day_Error;
         end if;
+
+    exception
+        when Length_Error =>
+            Put ("Felaktigt format! ");
+        when Format_Error =>
+            Put ("Felaktigt format! ");
+        when Year_Error   =>
+            Put ("Felaktigt år! ");
+        when Month_Error  =>
+            Put ("Felaktig månad! ");
+        when Day_Error    =>
+            Put ("Felaktig dag! ");
+
     end Get;
 
---    not_10 = bool
+    --    not_10 = bool
 
- --   return "0"*not_10 +Item.M
+    --   return "0"*not_10 +Item.M
 
     procedure Put (Item : in Date_Type) is
     begin
@@ -293,7 +280,15 @@ procedure Test_Exceptions is
     -- av en sträng vilket skickas vidare till underporgrammet Upg2 där --
     -- strängen i sig skapas.                                           --
     ----------------------------------------------------------------------
+
+    type Date_Type is record
+        Y, M, D : Integer;
+    end record;
+
     Choice, Length : Integer;
+    Value, Min, Max : Integer;
+
+    Length_Error2, Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
 begin
     loop
@@ -306,33 +301,11 @@ begin
             Put ("Mata in en stränglängd: ");
             Get (Length);
             Skip_Line;
-            begin
-                Upg2 (Length);
-            exception
-                when Length_Error =>
-                    Put ("För få inmatade tecken!");
-                    New_Line;
-                    exit;
-            end;
+
+            Upg2 (Length);
 
         elsif Choice = 3 then
-            loop
-                begin
-                    Upg3;
-                    exit;
-                exception
-                    when Length_Error =>
-                        Put ("Felaktigt format! ");
-                    when Format_Error =>
-                        Put ("Felaktigt format! ");
-                    when Year_Error   =>
-                        Put ("Felaktigt år! ");
-                    when Month_Error  =>
-                        Put ("Felaktig månad! ");
-                    when Day_Error    =>
-                        Put ("Felaktig dag! ");
-                end;
-            end loop;
+            Upg3;
 
         else
             Put_Line ("Programmet avslutas.");
