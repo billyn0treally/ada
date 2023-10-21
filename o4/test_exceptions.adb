@@ -7,6 +7,8 @@ procedure Test_Exceptions is
 
 --Krav för uppgiften:
 --
+--  Program skall ej vara längre än ca 20 rader
+--
 --Viktigt för uppgiften:
 --
 --  Ordning av kodens olika delar
@@ -17,9 +19,12 @@ procedure Test_Exceptions is
 --
 --  Kodduplicering vid utskrift av dag/månad
 --
+--  Onaturligt eller felaktigt formulerade if-satser
+--
 --Viktigt för framtiden:
 --
 --  Kodduplicering vid indexhantering
+    --  exiti for-loopar
 
     ----------------------------------------------------------------------
     -- Underprogram får att skriva ut meny och hantera menyval          --
