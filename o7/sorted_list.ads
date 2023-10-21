@@ -5,23 +5,23 @@ package sorted_list is
 
     type List_Type is private;
 
-    function Empty(LT : in List_Type) return Boolean;
-    --function Member(LT : in List_Type; Key : in Integer) return Boolean;
-    --function Length(LT : in List_Type) return Integer;
+    function Empty(List : in List_Type) return Boolean;
+    --function Member(List : in List_Type; Key : in Integer) return Boolean;
+    --function Length(List : in List_Type) return Integer;
 
-    procedure Insert(LT : in out List_Type; I : in Integer);
-    procedure Put(LT : in List_Type);
-    --procedure Remove(LT : in out List_Type; Key : in Integer);
-    --procedure Delete(LT : in out List_Type);
+    procedure Insert(List : in out List_Type; I : in Integer);
+    procedure Put(List : in List_Type);
+    --procedure Remove(List : in out List_Type; Key : in Integer);
+    --procedure Delete(List : in out List_Type);
 
     private 
 
-    type Ptr;
+    type Node;
 
     type List_Type is
-        access Ptr;
+        access Node;
 
-        type Ptr is record
+        type Node is record
             Data : Integer;
             Next : List_Type;
         end record;
