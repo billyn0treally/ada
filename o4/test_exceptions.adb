@@ -342,7 +342,6 @@ begin
                         Put ("Felaktig dag! ");
                 end;
             end loop;
-
         else
             Put_Line ("Programmet avslutas.");
             exit;
