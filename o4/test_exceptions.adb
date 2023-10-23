@@ -11,20 +11,27 @@ procedure Test_Exceptions is
 --
 --Viktigt för uppgiften:
 --
---  Ordning av kodens olika delar
+--CHECK?  Ordning av kodens olika delar
 --
---  Parameterlistor stil
+--CHECK  Parameterlistor stil
 --
 --  Duplicering av kod
 --
---  Kodduplicering vid utskrift av dag/månad
+--CHECK  Kodduplicering vid utskrift av dag/månad
 --
---  Onaturligt eller felaktigt formulerade if-satser
+--CHECK  Onaturligt eller felaktigt formulerade if-satser
 --
 --Viktigt för framtiden:
 --
 --  Kodduplicering vid indexhantering
     --  exiti for-loopar
+
+    Length_Error, Format_Error, Year_Error, 
+         Month_Error, Day_Error : exception;
+
+    type Date_Type is record
+        Y, M, D : Integer;
+    end record;
 
     ----------------------------------------------------------------------
     -- Underprogram får att skriva ut meny och hantera menyval          --
@@ -53,12 +60,6 @@ procedure Test_Exceptions is
         return N;
     end Menu_Selection;
 
-    type Date_Type is record
-        Y, M, D : Integer;
-    end record;
-
-    Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
-
     ----------------------------------------------------------------------
     -- Underprogram får menyval 1: "felhantering av heltalsinmatning"   --
     --                                                                  --
@@ -70,13 +71,8 @@ procedure Test_Exceptions is
     ----------------------------------------------------------------------
     Value, Min, Max : Integer;
 
-    --   exception
-    --       when Data_Error =>
-    --           Put("Fel datatyp. Mata in värde ("& Min'Image &" -" & Max'Image &"): ");
-
-    -- Det finns en extra whitespace före Integern vi printar ut
-    -- men bara om Integern är positiv. Så den tar - tecknets plats
-    procedure Get_Safe (Value : out Integer; Min, Max : in Integer) is
+    procedure Get_Safe (Value : out Integer; 
+                        Min, Max : in Integer) is
     begin
         Put ("Mata in värde (");
         Put (Min, Width => 0);
@@ -84,12 +80,13 @@ procedure Test_Exceptions is
         loop
             begin
                 Get (Value);
-                exit when Min <= Value and Value <= Max;
+                exit when (Min <= Value) and (Value <= Max);
                 if Min >= Value then
                     Put ("För litet värde. Mata in värde (");
                     Put (Min, Width => 0);
                     Put (" -" & Max'Image & "): ");
-                elsif Max <= Value then
+                --elsif Max <= Value then
+                else
                     Put ("För stort värde. Mata in värde (");
                     Put (Min, Width => 0);
                     Put (" -" & Max'Image & "): ");
@@ -201,20 +198,20 @@ procedure Test_Exceptions is
     -- Kontrollera formatering på användarens indata
     procedure CheckFmt (S : in String) is
     begin
-        if S(5) /= '-' or S(8) /= '-' or S'Length /= 10 then
+        if (S(5) /= '-') or (S(8) /= '-') or (S'Length /= 10) then
             raise Format_Error;
         end if;
 
         for I in 1 .. 4 loop
-            if S (I) < '0' or S (I) > '9' then
+            if (S(I) < '0') or (S(I) > '9') then
                 raise Format_Error;
             end if;
         end loop;
 
         for I in 1 .. 2 loop
-            if S (I + 5) < '0' or S (I + 5) > '9' then
+            if (S(I + 5) < '0') or (S(I + 5) > '9') then
                 raise Format_Error;
-            elsif S (I + 8) < '0' or S (I + 8) > '9' then
+            elsif (S(I + 8) < '0') or (S(I + 8) > '9') then
                 raise Format_Error;
             end if;
         end loop;
@@ -253,22 +250,31 @@ procedure Test_Exceptions is
         end if;
     end Get;
 
---    not_10 = bool
+-- branchless?
+-- not_10 = bool
+-- return "0"*not_10 +Item.M
 
- --   return "0"*not_10 +Item.M
+    procedure DoubleDigit (Item : in Date_Type) is
+    begin
+        if (Item.M <= 9) or (Item.D <= 9) then
+            Put("0");
+        end if;
+    end DoubleDigit;
 
     procedure Put (Item : in Date_Type) is
     begin
         Put (Item.Y, Width => 1);
         Put ("-");
-        if Item.M <= 9 then
-            Put ("0");
-        end if;
+        DoubleDigit(Item);
+        --if Item.M <= 9 then
+        --    Put ("0");
+        --end if;
         Put (Item.M, Width => 1);
         Put ("-");
-        if Item.D <= 9 then
-            Put ("0");
-        end if;
+        DoubleDigit(Item);
+        --if Item.D <= 9 then
+        --    Put ("0");
+        --end if;
         Put (Item.D, Width => 1);
     end Put;
 
