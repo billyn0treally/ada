@@ -254,24 +254,29 @@ procedure Test_Exceptions is
 -- not_10 = bool
 -- return "0"*not_10 +Item.M
 
-    procedure DoubleDigit (Item : in Date_Type) is
-    begin
-        if (Item.M <= 9) or (Item.D <= 9) then
-            Put("0");
-        end if;
-    end DoubleDigit;
+    --procedure DoubleDigit (Item : in Date_Type) is
+    --    --Month : Item.M;
+    --    --Day   : Item.D;
+    --begin
+    --    if Item.M <= 9 then
+    --        Put("0");
+    --    end if;
+    --    --if Item.D <= 9 then
+    --    --    Put("0");
+    --    --end if;
+    --end DoubleDigit;
 
     procedure Put (Item : in Date_Type) is
     begin
         Put (Item.Y, Width => 1);
         Put ("-");
-        DoubleDigit(Item);
-        --if Item.M <= 9 then
-        --    Put ("0");
-        --end if;
+        --DoubleDigit(Item);
+        if Item.M <= 9 then
+            Put ("0");
+        end if;
         Put (Item.M, Width => 1);
         Put ("-");
-        DoubleDigit(Item);
+        --DoubleDigit(Item);
         --if Item.D <= 9 then
         --    Put ("0");
         --end if;
