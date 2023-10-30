@@ -5,26 +5,16 @@ with Ada.Exceptions;      use Ada.Exceptions;
 
 procedure Test_Exceptions is
 
---Krav för uppgiften:
---
---  Program skall ej vara längre än ca 20 rader
---
 --Viktigt för uppgiften:
 --
---CHECK?  Ordning av kodens olika delar
+--CHECH/2  Duplicering av kod (Utksrifterna i Get_Safe, kontrollerna i CheckFmt)
 --
---CHECK  Parameterlistor stil
+--  Parameterlistor stil
 --
---  Duplicering av kod
+--  Onaturligt eller felaktigt formulerade if-satser
 --
---CHECK  Kodduplicering vid utskrift av dag/månad
---
---CHECK  Onaturligt eller felaktigt formulerade if-satser
---
---Viktigt för framtiden:
---
---  Kodduplicering vid indexhantering
-    --  exiti for-loopar
+--  Saknad/felaktig kontroll av End_Of_Line (Om man vill läsa in en
+--  sträng som 1 tecken långt så kastas fel vid inmatning av 'a')
 
     Length_Error, Format_Error, Year_Error, 
          Month_Error, Day_Error : exception;
@@ -71,31 +61,32 @@ procedure Test_Exceptions is
     ----------------------------------------------------------------------
     Value, Min, Max : Integer;
 
+    procedure PutTheRest (Min, Max : in Integer) is
+    begin
+        Put (Min, Width => 0);
+        Put (" -" & Max'Image & "): ");
+    end PutTheRest;
+
     procedure Get_Safe (Value : out Integer; 
                         Min, Max : in Integer) is
     begin
         Put ("Mata in värde (");
-        Put (Min, Width => 0);
-        Put (" -" & Max'Image & "): ");
+        PutTheRest(Min, Max);
         loop
             begin
                 Get (Value);
                 exit when (Min <= Value) and (Value <= Max);
                 if Min >= Value then
                     Put ("För litet värde. Mata in värde (");
-                    Put (Min, Width => 0);
-                    Put (" -" & Max'Image & "): ");
-                --elsif Max <= Value then
+                    PutTheRest(Min, Max);
                 else
                     Put ("För stort värde. Mata in värde (");
-                    Put (Min, Width => 0);
-                    Put (" -" & Max'Image & "): ");
+                    PutTheRest(Min, Max);
                 end if;
             exception
                 when Data_Error =>
                     Put ("Fel datatyp. Mata in värde (");
-                    Put (Min, Width => 0);
-                    Put (" -" & Max'Image & "): ");
+                    PutTheRest(Min, Max);
                     Skip_Line;
             end;
         end loop;
@@ -127,7 +118,6 @@ procedure Test_Exceptions is
     -- fångas här utan i huvudprogrammet.                               --
     ----------------------------------------------------------------------
 
-    -- Entertecken ska ignoreras när de kommer innan strängen
     procedure Get_Correct_String (S : out String) is
         C            : Character;
         GotCharacter : Boolean := False;
@@ -195,6 +185,7 @@ procedure Test_Exceptions is
         end if;
     end IsLeap;
 
+    -- Duplicering fix
     -- Kontrollera formatering på användarens indata
     procedure CheckFmt (S : in String) is
     begin
@@ -250,10 +241,6 @@ procedure Test_Exceptions is
         end if;
     end Get;
 
--- branchless?
--- not_10 = bool
--- return "0"*not_10 +Item.M
-
     procedure DoubleDigit (Item : in Integer) is
     begin
         if Item <= 9 then
@@ -266,15 +253,9 @@ procedure Test_Exceptions is
         Put (Item.Y, Width => 1);
         Put ("-");
         DoubleDigit(Item.M);
-        --if Item.M <= 9 then
-        --    Put ("0");
-        --end if;
         Put (Item.M, Width => 1);
         Put ("-");
         DoubleDigit(Item.D);
-        --if Item.D <= 9 then
-        --    Put ("0");
-        --end if;
         Put (Item.D, Width => 1);
     end Put;
 
