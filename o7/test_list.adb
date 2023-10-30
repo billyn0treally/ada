@@ -23,47 +23,47 @@ begin
    end if;
    Put_Line("tom.");
    
---   Put("Mata in ett värde: ");
---   Get(Value);
---   Put("Listan innehåller ");
---   if not Member(List, Value) then
---      Put("inte ");
---   end if;
---   Put("värdet ");
---   Put(Value, Width => 0);
---   Put_Line(".");
---   
---   Put("Mata in ett till värde: ");
---   Get(Value);
---   Put("Listan innehåller ");
---   if not Member(List, Value) then
---      Put("inte ");
---   end if;
---   Put("värdet ");
---   Put(Value, Width => 0);
---   Put_Line(".");
---   
---   Put("Mata in ett värde att ta bort: ");
---   Get(Value);
---   Remove(List, Value);
---   Put("Listan innehåller elementen");
---   Put(List);
---   New_Line;
+   Put("Mata in ett värde: ");
+   Get(Value);
+   Put("Listan innehåller ");
+   if not Member(List, Value) then
+      Put("inte ");
+   end if;
+   Put("värdet ");
+   Put(Value, Width => 0);
+   Put_Line(".");
    
---   Put("Listan innehåller nu ");
---   Put(Length(List), Width => 0);
---   Put_Line(" element.");
+   Put("Mata in ett till värde: ");
+   Get(Value);
+   Put("Listan innehåller ");
+   if not Member(List, Value) then
+      Put("inte ");
+   end if;
+   Put("värdet ");
+   Put(Value, Width => 0);
+   Put_Line(".");
    
---   Put_Line("Rensar listan.");
---   Delete(List);
+   Put("Mata in ett värde att ta bort: ");
+   Get(Value);
+   Remove(List, Value);
+   Put("Listan innehåller elementen");
+   Put(List);
+   New_Line;
+ 
+   Put("Listan innehåller nu ");
+   Put(Length(List), Width => 0);
+   Put_Line(" element.");
+ 
+   Put_Line("Rensar listan.");
+   Delete(List);
    
    Put("Listan innehåller elementen");
    Put(List);
    New_Line;
    
---   Put("Listan innehåller nu ");
---   Put(Length(List), Width => 0);
---   Put_Line(" element.");
+   Put("Listan innehåller nu ");
+   Put(Length(List), Width => 0);
+   Put_Line(" element.");
    
 exception
    when No_Such_Element_Error =>

@@ -6,13 +6,18 @@ package sorted_list is
     type List_Type is private;
 
     function Empty(List : in List_Type) return Boolean;
-    --function Member(List : in List_Type; Key : in Integer) return Boolean;
-    --function Length(List : in List_Type) return Integer;
 
     procedure Insert(List : in out List_Type; I : in Integer);
+
     procedure Put(List : in List_Type);
-    --procedure Remove(List : in out List_Type; Key : in Integer);
-    --procedure Delete(List : in out List_Type);
+
+    function Member(List : in List_Type; Key : in Integer) return Boolean;
+
+    procedure Remove(List : in out List_Type; Key : in Integer);
+
+    procedure Delete(List : in out List_Type);
+
+    function Length(List : in List_Type) return Integer;
 
     private 
 
