@@ -4,18 +4,6 @@ with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Exceptions;      use Ada.Exceptions;
 
 procedure Test_Exceptions is
-
---Viktigt för uppgiften:
---
---CHECH/2  Duplicering av kod (Utksrifterna i Get_Safe, kontrollerna i CheckFmt)
---
---  Parameterlistor stil
---
---  Onaturligt eller felaktigt formulerade if-satser
---
---  Saknad/felaktig kontroll av End_Of_Line (Om man vill läsa in en
---  sträng som 1 tecken långt så kastas fel vid inmatning av 'a')
-
     Length_Error, Format_Error, Year_Error, 
          Month_Error, Day_Error : exception;
 
