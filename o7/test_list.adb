@@ -1,7 +1,7 @@
 --mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
-with Sorted_list;         use sorted_list;
+with sorted_list;         use sorted_list;
 
 procedure Test_List is
    Value: Integer;
