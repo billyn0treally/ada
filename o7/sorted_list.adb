@@ -1,8 +1,12 @@
 --mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Text_IO;         use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+-- Från sida 131 i boken
+with Ada.Unchecked_Deallocation;
 
 package body sorted_list is
+
+   procedure Free is new Ada.Unchecked_Deallocation(Node, List_Type);
 
     function Empty(List : in List_Type) return Boolean is
     begin
@@ -30,6 +34,9 @@ package body sorted_list is
             List := new Node;
             List.Data := I;
             List.Next := tmp;
+        elsif I = list.Data then
+            return;
+        else insert(List.Next, I);
         end if;
     end Insert;
 
