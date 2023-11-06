@@ -66,11 +66,12 @@ procedure Test_Exceptions is
                 exit when (Min <= Value) and (Value <= Max);
                 if Min >= Value then
                     Put ("För litet värde. Mata in värde (");
-                    PutTheRest(Min, Max);
+                    --PutTheRest(Min, Max);
                 else
                     Put ("För stort värde. Mata in värde (");
-                    PutTheRest(Min, Max);
+                    --PutTheRest(Min, Max);
                 end if;
+                    PutTheRest(Min, Max);
             exception
                 when Data_Error =>
                     Put ("Fel datatyp. Mata in värde (");
@@ -122,9 +123,9 @@ procedure Test_Exceptions is
             end if;
         end loop;
 
-        if not GotCharacter then
-            Get (C);
-        end if;
+        --if not GotCharacter then
+        --    Get (C);
+        --end if;
 
         S (S'First) := C;
 
