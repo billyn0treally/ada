@@ -64,13 +64,17 @@ procedure Test_Exceptions is
             begin
                 Get (Value);
                 exit when (Min <= Value) and (Value <= Max);
+                Put("För ");
                 if Min >= Value then
-                    Put ("För litet värde. Mata in värde (");
+                    Put("litet ");
+                    --Put ("För litet värde. Mata in värde (");
                     --PutTheRest(Min, Max);
                 else
-                    Put ("För stort värde. Mata in värde (");
+                    Put("stort ");
+                    --Put ("För stort värde. Mata in värde (");
                     --PutTheRest(Min, Max);
                 end if;
+                Put("värde. Mata in värde (");
                 PutTheRest(Min, Max);
             exception
                 when Data_Error =>
