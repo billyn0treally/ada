@@ -55,8 +55,8 @@ procedure Test_Exceptions is
         Put (" -" & Max'Image & "): ");
     end PutTheRest;
 
-    procedure Get_Safe (Value : out Integer; 
-        Min, Max : in Integer) is
+    procedure Get_Safe (Value    :    out Integer; 
+                        Min, Max : in     Integer) is
     begin
         Put ("Mata in värde (");
         PutTheRest(Min, Max);
@@ -232,6 +232,9 @@ procedure Test_Exceptions is
         elsif Item.D = 29 and Item.M = 2 and IsLeap (Item.Y) = False then
             raise Day_Error;
         end if;
+    exception
+        when Format_Error =>
+            raise Length_Error;
     end Get;
 
     procedure DoubleDigit (Item : in Integer) is
@@ -303,6 +306,7 @@ begin
                 begin
                     Upg3;
                     exit;
+                    -- Flytta dom här till uppgift 3 delen
                 exception
                     when Length_Error =>
                         Put ("Felaktigt format! ");
