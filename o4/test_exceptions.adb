@@ -5,7 +5,7 @@ with Ada.Exceptions;      use Ada.Exceptions;
 
 procedure Test_Exceptions is
     Length_Error, Format_Error, Year_Error, 
-         Month_Error, Day_Error : exception;
+    Month_Error, Day_Error : exception;
 
     type Date_Type is record
         Y, M, D : Integer;
@@ -56,7 +56,7 @@ procedure Test_Exceptions is
     end PutTheRest;
 
     procedure Get_Safe (Value : out Integer; 
-                        Min, Max : in Integer) is
+        Min, Max : in Integer) is
     begin
         Put ("Mata in värde (");
         PutTheRest(Min, Max);
@@ -64,14 +64,16 @@ procedure Test_Exceptions is
             begin
                 Get (Value);
                 exit when (Min <= Value) and (Value <= Max);
+                Put ("För ");
                 if Min >= Value then
-                    Put ("För litet värde. Mata in värde (");
-                    --PutTheRest(Min, Max);
+                    Put("litet ");
+                    --Put ("För litet värde. Mata in värde (");
                 else
-                    Put ("För stort värde. Mata in värde (");
-                    --PutTheRest(Min, Max);
+                    Put("stort ");
+                    --Put ("För stort värde. Mata in värde (");
                 end if;
-                    PutTheRest(Min, Max);
+                Put("värde. Mata in värde(");
+                PutTheRest(Min, Max);
             exception
                 when Data_Error =>
                     Put ("Fel datatyp. Mata in värde (");
@@ -119,7 +121,7 @@ procedure Test_Exceptions is
                 GotCharacter := True;
                 exit;
             elsif C /= ' ' and End_Of_Line then
-                raise Length_Error;
+                raise Format_Error;
             end if;
         end loop;
 
@@ -138,7 +140,7 @@ procedure Test_Exceptions is
             end if;
         end loop;
     end Get_Correct_String; 
-    
+
     procedure Upg2 (Length : in Integer) is
 
         S : String (1 .. Length);
