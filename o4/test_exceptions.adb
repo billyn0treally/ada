@@ -66,8 +66,10 @@ procedure Test_Exceptions is
                 exit when (Min <= Value) and (Value <= Max);
                 if Min >= Value then
                     Put ("För litet värde. Mata in värde (");
+                    --PutTheRest(Min, Max);
                 else
                     Put ("För stort värde. Mata in värde (");
+                    --PutTheRest(Min, Max);
                 end if;
                 PutTheRest(Min, Max);
             exception
@@ -117,7 +119,7 @@ procedure Test_Exceptions is
                 GotCharacter := True;
                 exit;
             elsif C /= ' ' and End_Of_Line then
-                raise Format_Error;
+                raise Length_Error;
             end if;
         end loop;
 
