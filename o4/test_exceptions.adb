@@ -72,7 +72,7 @@ procedure Test_Exceptions is
                     Put("stort ");
                     --Put ("För stort värde. Mata in värde (");
                 end if;
-                Put("värde. Mata in värde(");
+                Put("värde. Mata in värde (");
                 PutTheRest(Min, Max);
             exception
                 when Data_Error =>
