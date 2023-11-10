@@ -67,11 +67,9 @@ procedure Test_Exceptions is
                 Put("För ");
                 if Min >= Value then
                     Put("litet ");
-                    --Put ("För litet värde. Mata in värde (");
                     --PutTheRest(Min, Max);
                 else
                     Put("stort ");
-                    --Put ("För stort värde. Mata in värde (");
                     --PutTheRest(Min, Max);
                 end if;
                 Put("värde. Mata in värde (");
@@ -127,10 +125,6 @@ procedure Test_Exceptions is
             end if;
         end loop;
 
-        --if not GotCharacter then
-        --    Get (C);
-        --end if;
-
         S (S'First) := C;
 
         for I in S'First + 1 .. S'Last loop
@@ -178,7 +172,6 @@ procedure Test_Exceptions is
         end if;
     end IsLeap;
 
-    -- Duplicering fix
     -- Kontrollera formatering på användarens indata
     procedure CheckFmt (S : in String) is
     begin
@@ -260,6 +253,8 @@ procedure Test_Exceptions is
         Date : Date_Type;
 
     begin
+        loop
+            begin
         Put ("Mata in ett datum: ");
         Get (Date);
         Skip_Line;
@@ -267,6 +262,22 @@ procedure Test_Exceptions is
         Put ("Du matade in ");
         Put (Date);
         New_Line;
+        exit;
+
+    exception
+        when Length_Error =>
+            Put ("Felaktigt format! ");
+        when Format_Error =>
+            Put ("Felaktigt format! ");
+        when Year_Error   =>
+            Put ("Felaktigt år! ");
+        when Month_Error  =>
+            Put ("Felaktig månad! ");
+        when Day_Error    =>
+            Put ("Felaktig dag! ");
+
+    end;
+    end loop;
     end Upg3;
 
     ----------------------------------------------------------------------
@@ -302,24 +313,26 @@ begin
             end;
 
         elsif Choice = 3 then
-            loop
-                begin
+            --loop
+                --begin
                     Upg3;
-                    exit;
+                    --exit;
                     -- Flytta dom här till uppgift 3 delen
-                exception
-                    when Length_Error =>
-                        Put ("Felaktigt format! ");
-                    when Format_Error =>
-                        Put ("Felaktigt format! ");
-                    when Year_Error   =>
-                        Put ("Felaktigt år! ");
-                    when Month_Error  =>
-                        Put ("Felaktig månad! ");
-                    when Day_Error    =>
-                        Put ("Felaktig dag! ");
-                end;
-            end loop;
+
+                --exception
+                --    when Length_Error =>
+                --        Put ("Felaktigt format! ");
+                --    when Format_Error =>
+                --        Put ("Felaktigt format! ");
+                --    when Year_Error   =>
+                --        Put ("Felaktigt år! ");
+                --    when Month_Error  =>
+                --        Put ("Felaktig månad! ");
+                --    when Day_Error    =>
+                --        Put ("Felaktig dag! ");
+
+                --end;
+            --end loop;
         else
             Put_Line ("Programmet avslutas.");
             exit;
