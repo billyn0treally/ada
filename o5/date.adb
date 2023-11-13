@@ -181,7 +181,9 @@ package body date is
         next.D := 1;
         next.M := 1;
         next.Y := next.Y + 1;
-
+      if next.Y > 9000 then
+          raise Year_Error;
+      end if;
         return next;
     end Next_Date;
 
