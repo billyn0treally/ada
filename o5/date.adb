@@ -207,7 +207,9 @@ package body date is
         prev.Y := prev.Y - 1;
         prev.M := 12;
         prev.D := 31;
-
+       if prev.Y < 1532 then
+       raise Year_Error;
+       end if;
         return prev;
     end Previous_Date;
 
