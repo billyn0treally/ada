@@ -5,6 +5,19 @@ with Ada.Exceptions;      use Ada.Exceptions;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 package body date is
+   Days_In_Month : constant Days_In_Month_Map :=
+      (1  => 31, -- Januari
+       2  => 28, -- Februari (för skottår behöver en extra kontroll)
+       3  => 31, -- Mars
+       4  => 30, -- April
+       5  => 31, -- Maj
+       6  => 30, -- Juni
+       7  => 31, -- Juli
+       8  => 31, -- Augusti
+       9  => 30, -- September
+       10 => 31, -- Oktober
+       11 => 30, -- November
+       12 => 31); -- December
 
     -- Kollar om det är skottår eller inte
     function IsLeap (N : in Integer) return Boolean is
@@ -19,9 +32,12 @@ package body date is
     -- Kontrollera formatering på användarens indata
     procedure CheckFmt (S : in String) is
     begin
+     
         if S(5) /= '-' or S(8) /= '-' or S'Length /= 10 then
             raise Format_Error;
-        end if;
+         elsif S'Length /= 10 then
+             raise Format_Error;
+         end if;
 
         for I in 1 .. 4 loop
             if S (I) < '0' or S (I) > '9' then
@@ -50,7 +66,7 @@ package body date is
                 GotCharacter := True;
                 exit;
             elsif C /= ' ' and End_Of_Line then
-                raise Length_Error;
+                raise Format_Error;
             end if;
         end loop;
 
@@ -61,7 +77,7 @@ package body date is
             S (I) := C;
             exit when I = S'Last;
             if End_Of_Line then
-                raise Length_Error;
+                raise Format_Error;
             end if;
         end loop;
     end Get_Correct_String; 
@@ -97,9 +113,6 @@ package body date is
         elsif Item.D = 29 and Item.M = 2 and IsLeap (Item.Y) = False then
             raise Day_Error;
         end if;
-    exception
-        when Format_Error =>
-            raise Length_Error;
     end Get;
 
     procedure DoubleDigit (Item : in Integer) is
@@ -122,35 +135,32 @@ package body date is
 
     procedure Last_Day (D : in out Date_Type) is
     begin
-        if D.M= 4 or D.M= 6 or D.M= 9 or D.M= 11 then
-            D.D:= 30;
-        elsif D.M= 2 and IsLeap(D.Y) = True then
-            D.D:= 29;
-        elsif D.M= 2 and IsLeap(D.Y) = False then
-            D.D:= 28;
-        else D.D:= 31;
+        if D.M =2 and IsLeap(D.Y)then
+        D.D := 29;
+        else
+         D.D := Integer (Days_In_Month (Month_Type (D.M)));
         end if;
     end Last_Day;
 
-    function ValidDay (D : in Date_Type) return Boolean is 
-    begin
+   function ValidDay (D : in Date_Type) return Boolean is
+       Max_Day : Day_Type;
+   begin
+      
+       if D.M = 2 and IsLeap (D.Y) then
+           Max_Day := 29;
+       else
+           Max_Day := Days_In_Month (Month_Type (D.M));
+       end if;
 
-        if D.D > 31 or D.D <= 00 then
-            return False;
+    
+       if D.D < 1 or D.D > Integer (Max_Day) then
+           return False;
+       else
+           return True;
+       end if;
+   end ValidDay;
 
-        elsif D.D = 31 and(D.M = 4 or D.M = 6 or D.M = 9 or D.M = 11) then
-            return False; 
 
-        elsif D.D > 29 and D.M = 2 then 
-            return False;
-
-        elsif D.D = 29 and D.M = 2 and IsLeap(D.Y) = False then
-            return False;
-        else
-            return True;
-        end if;
-
-    end ValidDay;
 
     function ValidMonth (D: in Date_Type) return Boolean is
     begin
@@ -189,33 +199,37 @@ package body date is
         return next;
     end Next_Date;
 
-    function Previous_Date (D : in Date_Type) return Date_Type is
-        prev : Date_Type;
-    begin
-        prev := D;
-        prev.D := prev.D - 1;
-        if ValidDay(prev) then
-            return prev;
-        else
-            prev := D;
-        end if;
-
-        prev.M := prev.M - 1;
-        Last_Day(prev);
-        if ValidMonth(prev) then
-            return prev;
-        else 
-            prev := D;
-        end if;
-
-        prev.Y := prev.Y - 1;
-        prev.M := 12;
-        prev.D := 31;
-       if prev.Y < 1532 then
-       raise Year_Error;
+   function Previous_Date (D : in Date_Type) return Date_Type is
+       prev : Date_Type;
+   begin
+       prev := D;
+       if prev.D > 1 then
+          
+           prev.D := prev.D - 1;
+       else
+        
+           if prev.M > 1 then
+               prev.M := prev.M - 1;
+           else
+           
+               prev.M := 12;
+               prev.Y := prev.Y - 1;
+               if prev.Y < 1 then
+                   raise Year_Error; 
+               end if;
+           end if;
+        
+         prev.D := Integer (Days_In_Month (Month_Type (prev.M))); 
+           if prev.M = 2 and IsLeap (prev.Y) then
+               prev.D := 29; 
+           end if;
        end if;
-        return prev;
-    end Previous_Date;
+      if prev.Y < 1532 then
+          raise Year_Error;
+      end if;
+       return prev;
+   end Previous_Date;
+
 
 function "=" (L,R : in Date_Type) return Boolean is
 begin
