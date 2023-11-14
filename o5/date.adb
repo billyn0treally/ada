@@ -54,10 +54,6 @@ package body date is
             end if;
         end loop;
 
-        if not GotCharacter then
-            Get (C);
-        end if;
-
         S (S'First) := C;
 
         for I in S'First + 1 .. S'Last loop
@@ -69,53 +65,59 @@ package body date is
             end if;
         end loop;
     end Get_Correct_String; 
- 
-    procedure Get (D : out Date_Type) is
+
+    procedure Get (Item : out Date_Type) is
         S : String (1 .. 10);
     begin
         Get_Correct_String (S);
         CheckFmt(S);
 
         -- Assign Int values to string's chars
-        D.Y := Integer'Value (S (1 .. 4));
-        D.M := Integer'Value (S (6 .. 7));
-        D.D := Integer'Value (S (9 .. 10));
+        Item.Y := Integer'Value (S (1 .. 4));
+        Item.M := Integer'Value (S (6 .. 7));
+        Item.D := Integer'Value (S (9 .. 10));
 
-        if (D.Y > 9_000 or D.Y < 1_532) then
+        if (Item.Y > 9_000 or Item.Y < 1_532) then
             raise Year_Error;
 
-        elsif (D.M = 00 or D.M > 12) then
+        elsif (Item.M = 00 or Item.M > 12) then
             raise Month_Error;
 
-        elsif D.D > 31 or D.D = 0 then
+        elsif Item.D > 31 or Item.D = 0 then
             raise Day_Error;
 
-        elsif D.D = 31 and
-            (D.M = 4 or D.M = 6 or D.M = 9 or D.M = 11)
+        elsif Item.D = 31 and
+            (Item.M = 4 or Item.M = 6 or Item.M = 9 or Item.M = 11)
         then
             raise Day_Error;
 
-        elsif D.D > 29 and D.M = 2 then
+        elsif Item.D > 29 and Item.M = 2 then
             raise Day_Error;
 
-        elsif D.D = 29 and D.M = 2 and IsLeap (D.Y) = False then
+        elsif Item.D = 29 and Item.M = 2 and IsLeap (Item.Y) = False then
             raise Day_Error;
         end if;
+    exception
+        when Format_Error =>
+            raise Length_Error;
     end Get;
 
-    procedure Put (D : in Date_Type) is
+    procedure DoubleDigit (Item : in Integer) is
     begin
-        Put (D.Y, Width => 1);
-        Put ("-");
-        if D.M <= 9 then
-            Put ("0");
+        if Item <= 9 then
+            Put('0');
         end if;
-        Put (D.M, Width => 1);
+    end DoubleDigit;
+
+    procedure Put (Item : in Date_Type) is
+    begin
+        Put (Item.Y, Width => 1);
         Put ("-");
-        if D.D <= 9 then
-            Put ("0");
-        end if;
-        Put (D.D, Width => 1);
+        DoubleDigit(Item.M);
+        Put (Item.M, Width => 1);
+        Put ("-");
+        DoubleDigit(Item.D);
+        Put (Item.D, Width => 1);
     end Put;
 
     procedure Last_Day (D : in out Date_Type) is

@@ -30,7 +30,6 @@ procedure p2_0 is
     function add (C : in Character) return Float is
         Sum : Float;
     begin
-
         Sum := 32.7 + Float(Character'Pos(C));
         --Sum := Round(Sum);
         return Sum;
