@@ -27,6 +27,16 @@ procedure p2_0 is
 
     end mul;
 
+    function add (C : in Character) return Float is
+        Sum : Float;
+    begin
+
+        Sum := 32.7 + Float(Character'Pos(C));
+        --Sum := Round(Sum);
+        return Sum;
+
+    end add;
+
     S : String(1..3);
     N : Integer;
     F : Float;
@@ -46,11 +56,16 @@ begin
     Put((S-N), Fore => 0, Aft => 1, Exp => 0);
     New_Line(2);
     Skip_Line;
+
     mul(F, S);
+    New_Line(2);
+    Skip_Line;
 
-
-
-
-
+    Put("Mata in ett tecken: ");
+    Get (C);
+    Put("summan av ");
+    Put(C);
+    Put(" och 32.7 blir ");
+    Put(add(C),Fore => 0, Aft => 1, Exp => 0);
 
 end p2_0;
