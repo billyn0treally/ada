@@ -5,6 +5,9 @@ with Ada.Exceptions;      use Ada.Exceptions;
 with Ada.Float_Text_IO;   use Ada.Float_Text_IO;
 
 package body date is
+
+    Length_Error : exception;
+
     Days_In_Month : constant Days_In_Month_Map :=
        (1  => 31, -- Januari
         2  => 28, -- Februari (för skottår behöver en extra kontroll)
@@ -60,9 +63,9 @@ package body date is
     begin
         loop
             Get (C);
-            if C = ' ' then
-                null;
-            elsif C /= ' ' and not End_Of_Line then
+            --if C = ' ' then
+            --    null;
+            if C /= ' ' and not End_Of_Line then
                 GotCharacter := True;
                 exit;
             elsif C /= ' ' and End_Of_Line then

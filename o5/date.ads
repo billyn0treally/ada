@@ -16,7 +16,7 @@ package date is
     function ">"(L, R: in Date_Type) return Boolean;
     function "="(L, R: in Date_Type) return Boolean;
 
-    Length_Error, Format_Error, Year_Error, Month_Error, Day_Error : exception;
+    Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
     private
     type Date_Type is record
