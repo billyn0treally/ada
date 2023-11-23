@@ -1,124 +1,73 @@
---mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 with Ada.Text_IO; use Ada.Text_IO;
-with Ada.Float_Text_IO; use Ada.Float_Text_IO;
-with Ada.Integer_Text_IO; use Ada.Integer_Text_IO; 
 
-procedure TangentbordInput is
-   
-   Heltal : Integer;
-   Flyttal : Float;
-   Tecken : Character;
-   Strang : String (1..5);
+procedure p30 is
+   -- Define an enumeration for the row labels
+   type Row_Labels is ('B', 'C', 'D', 'E');
 
-   
+   -- Define an integer range for the column labels
+   subtype Col_Labels is Integer range 5 .. 7;
+
+   type QA_Record is record
+      Q : String (1 .. 3);  -- Three characters for the question
+      A : Character;        -- One character for the answer
+   end record;
+
+   -- Declare the array type using the enumeration and subtype for indices
+   type T is array (Row_Labels, Col_Labels) of QA_Record;
+
+   procedure Get (Item : out QA_Record) is
+      Dummy : Character;
+   begin
+      -- Read each character for the question
+      for I in Item.Q'Range loop
+         Get (Item.Q (I));
+      end loop;
+
+      -- Read and discard the space
+      Get (Dummy);
+
+      -- Check if the space is indeed a space character
+      if Dummy /= ' ' then
+         Put_Line ("Error: Space expected between question and answer.");
+      end if;
+
+      -- Read the answer character
+      Get (Item.A);
+   end Get;
+
+   procedure Put (Item : in QA_Record) is
+   begin
+      Put (Item.Q);
+      Put (" ");
+      Put (Item.A);
+   end Put;
+
+   procedure Get (Matrix : out T) is
+   begin
+      for Row in Row_Labels loop
+         for Col in reverse Col_Labels loop
+            Get (Matrix (Row, Col));
+         end loop;
+      end loop;
+   end Get;
+
+   procedure Put (Matrix : in T) is
+   begin
+      for Row in Row_Labels loop
+         for Col in reverse Col_Labels loop
+            Put (Matrix (Row, Col));
+         end loop;
+
+      end loop;
+   end Put;
+
+   My_T : T;
+
 begin
-   Put("Skriv in ett heltal: ");
-   Get (Heltal);
+   -- Input and output for the entire matrix 'T'
+   Put ("Mata in datamängd för hela matrisen: ");
+   Get (My_T);
    Skip_Line;
-   Put("Du skrev in talet: ");
-   Put(Heltal, Width=> 0);
-   New_Line(2);
-   Put("Skriv in fem heltal: ");
-   Get(Heltal);
-   Put("Du skrev in talen: ");
-   Put(Heltal, Width =>0); 
-   Put(" ");
-   Get(Heltal);
-   Put(Heltal, Width =>0); 
-   Put(" ");
-   Get(Heltal);
-   Put(Heltal, Width =>0); 
-   Put(" ");
-   Get(Heltal);
-   Put(Heltal, Width =>0); 
-   Put(" ");
-   Get(Heltal);
-   Put(Heltal, Width =>0); 
-  
-   Skip_Line;  
-   New_Line(2);
-   Put("Skriv in ett flyttal: ");
-   Get(Flyttal);
-   
-   Put("Du skrev in flyttalet: ");
-   Put(Flyttal, Fore=> 0, Aft =>3, Exp =>0);
-   Skip_Line;
-   
-   New_Line(2);
-   Put("Skriv in ett heltal och ett flyttal: ");
-   Get(Heltal) ;
-   Get(Flyttal);
-   Put("Du skrev in heltalet: ");
-   Put(Heltal, Width =>9); 
-   New_Line;
-   Put("Du skrev in flyttalet:");
-   Put(Flyttal, Fore=> 4, Aft =>4, Exp =>0);
-   Skip_Line;
-   New_Line(2);
-   Put("Skriv in ett tecken: ");
-   Get(Tecken);
-   Put("Du skrev in tecknet: ");
-   Put(Tecken);
-   Skip_Line;
-   New_Line(2);
-   Put("Skriv in en sträng med 5 tecken: ");
-   Get(Strang);
-   Put("Du skrev in strängen: ");
-   Put(Strang);
-   Skip_Line;
-   New_Line(2);
-   Put("Skriv in en sträng med 3 tecken: ");
-   Get(Strang(1..3));
-   Put("Du skrev in strängen: ");
-   Put(Strang(1..3));
-   Skip_Line;
-   
-   New_Line(2);
-   Put("Skriv in ett heltal och en sträng med 5 tecken: ");
-   Get(Heltal);
-   Get(Tecken);
-   Get(Strang);
-   Put("Du skrev in talet |");
-   Put(Heltal, 0);
-   Put("|");
-   Put(" och strängen |");
-   Put(Strang(1..5));
-   Put("|.");
-   Skip_Line;
-   New_Line(2);
-   Put("Skriv in en sträng med 3 tecken och ett flyttal: ");
-   Get(Strang(1..3));
-   Get(Flyttal);
-   Put("Du skrev in """);
-   Put(Flyttal,2,3,0);
-   Put(""" och ");
-   Put("""");
-   Put(Strang(1..3));
-   Put(""".");
-   Skip_Line;
-   New_Line(2);
-   
-   Put("Skriv in en sträng som är maximalt 5 tecken: ");
-   Get_Line(Strang, Heltal);
-     if Heltal = 5 then
-      Skip_Line;
-   end if;
-   Put("Du skrev in strängen: ");
-   Put(Strang(1..Heltal));
-   New_Line(2);
-   
-   Put("Skriv in en sträng som är maximalt 5 tecken: ");
-   Get_Line(Strang,Heltal);
-   if Heltal = 5 then
-      Skip_Line;
-   end if;
-   Put("Du skrev in strängen: ");
-   Put(Strang(1..Heltal));
-   
-
-   
-end TangentbordInput;
-
-   
-   
-   
+   Put ("Inmatad datamängd för hela matrisen: ");
+   Put (My_T);
+end p30;
