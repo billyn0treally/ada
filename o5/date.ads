@@ -1,6 +1,8 @@
 --mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 package date is
 
+    Format_Error, Year_Error, Month_Error, Day_Error : exception;
+
     type Date_Type is private;
     procedure Get(Item : out Date_Type);
     procedure Put(Item : in Date_Type);
@@ -12,7 +14,6 @@ package date is
     function ">"(L, R: in Date_Type) return Boolean;
     function "="(L, R: in Date_Type) return Boolean;
 
-    Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
     private
     type Date_Type is record
@@ -23,6 +24,7 @@ package date is
     --type Day_Type;
     --type Days_In_Month_Map;
 
+    -- i adb
     type Month_Type is range 1 .. 12;
     type Day_Type is range 1 .. 31;
     type Days_In_Month_Map is array (Month_Type) of Day_Type;

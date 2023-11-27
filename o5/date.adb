@@ -96,7 +96,7 @@ package body date is
         Item.D := Integer'Value (S (9 .. 10));
 
         --if (Item.Y > 9_000 or Item.Y < 1_532) then
-        if Item.Y not in 1_532 .. 9_000 then
+        if Item.Y not in 1532 .. 9000 then
             raise Year_Error;
 
         --elsif (Item.M = 00 or Item.M > 12) then
