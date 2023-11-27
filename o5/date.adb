@@ -63,8 +63,6 @@ package body date is
     begin
         loop
             Get (C);
-            --if C = ' ' then
-            --    null;
             if C /= ' ' and not End_Of_Line then
                 GotCharacter := True;
                 exit;
@@ -97,13 +95,16 @@ package body date is
         Item.M := Integer'Value (S (6 .. 7));
         Item.D := Integer'Value (S (9 .. 10));
 
-        if (Item.Y > 9_000 or Item.Y < 1_532) then
+        --if (Item.Y > 9_000 or Item.Y < 1_532) then
+        if Item.Y not in 1_532 .. 9_000 then
             raise Year_Error;
 
-        elsif (Item.M = 00 or Item.M > 12) then
+        --elsif (Item.M = 00 or Item.M > 12) then
+        elsif Item.M not in 01 .. 12 then
             raise Month_Error;
 
-        elsif Item.D > 31 or Item.D = 0 then
+        --elsif Item.D > 31 or Item.D = 0 then
+        elsif Item.D not in 01 .. 31 then
             raise Day_Error;
 
         elsif Item.D = 31 and
@@ -254,7 +255,7 @@ package body date is
         Low : Date_Type;
         Tmp : Date_Type;
     begin
-        Low.Y := 1_535;
+        Low.Y := 1_532;
         Low.M := 1;
         Low.D := 1;
         Tmp   := R;

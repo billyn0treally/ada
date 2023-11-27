@@ -2,10 +2,6 @@
 package date is
 
     type Date_Type is private;
-    type Month_Type is private;
-    type Day_Type is private;
-    type Days_In_Month_Map is private;
-
     procedure Get(Item : out Date_Type);
     procedure Put(Item : in Date_Type);
 
@@ -22,6 +18,10 @@ package date is
     type Date_Type is record
         Y, M, D: Integer;
     end record;
+
+    --type Month_Type;
+    --type Day_Type;
+    --type Days_In_Month_Map;
 
     type Month_Type is range 1 .. 12;
     type Day_Type is range 1 .. 31;
