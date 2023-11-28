@@ -8,23 +8,21 @@ procedure p2_0 is
     begin
     Put("Mata in ett heltal: ");
     Get(N);
-    Skip_Line;
     Put("Mata in ett flyttal: ");
     Get(F);
-    Skip_Line;
     Result := Float(N) + F;
     end sum;
 
     function "/" (C : in Character; S : in String) return Float is
         kvot : Float;
     begin
-        kvot := Float((Character'Pos(C) - Character'Pos('0'))) / Float'Value(S);
+        kvot := Float'Floor(Float((Character'Pos(C) - Character'Pos('0'))) / Float'Value(S));
         return kvot;
     end "/";
 
     function mul (N : in Integer) return Float is
     begin
-        return Float(N) * 32.7;
+        return Float'Rounding(Float(N) * 32.7);
     end mul;
 
     S : String(1..3);
@@ -48,7 +46,7 @@ begin
     Get(C);
     Put("Mata in en sträng: ");
     Get(S);
-    Put("Den beräknade kvoten av ");
+    Put("Den beräknade kvoten mellan ");
     Put(C);
     Put(" och ");
     Put(S);
