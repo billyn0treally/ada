@@ -58,7 +58,7 @@ begin
 
     Put("Mata in ett heltal: ");
     Get (N);
-    Put("differensen mellan ");
+    Put("produkten av ");
     Put(C);
     Put(" och 32.7 blir ");
     Put(mul(N), Fore => 0, Aft => 1, Exp => 0);
