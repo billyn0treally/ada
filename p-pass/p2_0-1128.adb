@@ -59,7 +59,7 @@ begin
     Put("Mata in ett heltal: ");
     Get (N);
     Put("produkten av ");
-    Put(N);
+    Put(N, Width => 1);
     Put(" och 32.7 blir ");
     Put(mul(N), Fore => 0, Aft => 1, Exp => 0);
     New_Line(2);
