@@ -8,6 +8,10 @@ package body date is
 
     Length_Error : exception;
 
+    type Month_Type is range 1 .. 12;
+    type Day_Type is range 1 .. 31;
+    type Days_In_Month_Map is array (Month_Type) of Day_Type;
+
     Days_In_Month : constant Days_In_Month_Map :=
        (1  => 31, -- Januari
         2  => 28, -- Februari (för skottår behöver en extra kontroll)
@@ -125,6 +129,7 @@ package body date is
         if Item <= 9 then
             Put ('0');
         end if;
+        Put (Item, Width => 1);
     end DoubleDigit;
 
     procedure Put (Item : in Date_Type) is
@@ -132,10 +137,10 @@ package body date is
         Put (Item.Y, Width => 1);
         Put ("-");
         DoubleDigit (Item.M);
-        Put (Item.M, Width => 1);
+        --Put (Item.M, Width => 1);
         Put ("-");
         DoubleDigit (Item.D);
-        Put (Item.D, Width => 1);
+        --Put (Item.D, Width => 1);
     end Put;
 
     procedure Last_Day (D : in out Date_Type) is

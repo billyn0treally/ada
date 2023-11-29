@@ -20,13 +20,4 @@ package date is
         Y, M, D: Integer;
     end record;
 
-    --type Month_Type;
-    --type Day_Type;
-    --type Days_In_Month_Map;
-
-    -- i adb
-    type Month_Type is range 1 .. 12;
-    type Day_Type is range 1 .. 31;
-    type Days_In_Month_Map is array (Month_Type) of Day_Type;
-
 end date;
