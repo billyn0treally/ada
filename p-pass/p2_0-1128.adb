@@ -22,7 +22,7 @@ procedure p2_0 is
 
     function mul (N : in Integer) return Float is
     begin
-        return Float'Rounding(Float(N) * 32.7);
+        return Float'Ceiling((Float(N) * 32.7));
     end mul;
 
     S : String(1..3);
