@@ -1,8 +1,6 @@
 --mikna021: Samarbetat med melgu374, Melker Gustafsson, samma program
 package date is
 
-    Format_Error, Year_Error, Month_Error, Day_Error : exception;
-
     type Date_Type is private;
 
     procedure Get(Item : out Date_Type);
@@ -15,6 +13,7 @@ package date is
     function ">"(L, R: in Date_Type) return Boolean;
     function "<"(L, R: in Date_Type) return Boolean;
 
+    Format_Error, Year_Error, Month_Error, Day_Error : exception;
 
     private
     type Date_Type is record
