@@ -2,6 +2,8 @@ with Ada.Text_IO;                       use Ada.Text_IO;
 with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 
+    --N : Integer range 10 .. 99;
+
 procedure p2_0 is
 
     procedure sum (N : in out Integer ; F : in out Float ; Result : out Float ) is
