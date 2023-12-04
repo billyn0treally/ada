@@ -16,11 +16,13 @@ procedure o20 is
 
     function cat (N1, N2 : in Integer) return String is
     begin
+        return Integer'Image(N1) & Integer'Image(N2);
     end cat;
 
     S : String(1..3);
     N : Integer;
-    N1, N2 : Integer;
+    --N1, N2 : Integer;
+    N1, N2 : Integer range 10 .. 99;
     --F : Float;
     F1, F2, F3 : Float;
     C : Character;
@@ -28,26 +30,32 @@ procedure o20 is
 
 begin
 
-    Put("Mata in ett tecken: ");
-    Get(C);
-    Put("Mata in ett flyttal: ");
-    Get(F1);
-    Put("Den beräknade kvoten mellan ");
-    Put(C);
-    Put(" och ");
-    Put(F1, Fore => 0, Aft => 1, Exp => 0);
-    Put(" blir ");
-    Put(C/F1, Width => 0); -- Fore => 0, Aft => 1, Exp => 0);
-    New_Line(2);
-    Skip_Line;
+    --Put("Mata in ett tecken: ");
+    --Get(C);
+    --Put("Mata in ett flyttal: ");
+    --Get(F1);
+    --Put("Den beräknade kvoten mellan ");
+    --Put(C);
+    --Put(" och ");
+    --Put(F1, Fore => 0, Aft => 1, Exp => 0);
+    --Put(" blir ");
+    --Put(C/F1, Width => 0); -- Fore => 0, Aft => 1, Exp => 0);
+    --New_Line(2);
+    --Skip_Line;
 
-    Put("Mata in längden: ");
-    Get(F1);
-    Put("Den beräknade arean blev: ");
-    radie(F1, F2);
-    Put(F2, Fore => 0, Aft => 1, Exp => 0);
-    --Put(radie(F1, F2)); --, Fore => 0, Aft => 1, Exp => 0);
-    New_Line(2);
-    Skip_Line;
+    --Put("Mata in längden: ");
+    --Get(F1);
+    --Put("Den beräknade arean blev: ");
+    --radie(F1, F2);
+    --Put(F2, Fore => 0, Aft => 1, Exp => 0);
+    ----Put(radie(F1, F2)); --, Fore => 0, Aft => 1, Exp => 0);
+    --New_Line(2);
+    --Skip_Line;
+
+    Put("Mata in N1: ");
+    Get(N1);
+    Put("Mata in N2: ");
+    Get(N2);
+    Put(cat(N1, N2));
 
 end o20;

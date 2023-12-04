@@ -12,7 +12,7 @@ procedure p2_0 is
     end "-";
 
 
-    procedure mul (F : in out Float ; S : in out String ) is
+    procedure diff (F : in out Float ; S : in out String ) is
     begin
     Put("Mata in ett flyttal: ");
     Get(F);
