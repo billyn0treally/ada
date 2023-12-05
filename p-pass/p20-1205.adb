@@ -30,7 +30,6 @@ procedure p20 is
     S : String(1..3);
     N : Integer;
     F1, F2, F3 : Float;
-    --C : Character;
     Result : Float;
 
 begin
