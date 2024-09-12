@@ -1,0 +1,34 @@
+with Ada.Text_IO;                       use Ada.Text_IO;
+with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
+with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
+
+procedure p2_0 is
+
+    function "x" (F : in Float ; S : in String) return Integer is
+        --N : Float;
+    begin
+        return Integer(Integer'Value(S) * N);
+        --return F;
+    end "x";
+
+    S : String(1..3);
+    N : Integer;
+    F : Float;
+    C : Character;
+
+begin
+
+    Put("Mata in ett flyttal: ");
+    Get(F);
+    Put("Mata in en sträng: ");
+    Get(S);
+    Put("Den beräknade produkten av ");
+    Put(F);
+    Put(" och ");
+    Put(S);
+    Put(" blir ");
+    Put((FxS), Fore => 0, Aft => 1, Exp => 0);
+    New_Line(2);
+    Skip_Line;
+
+end p2_0;
