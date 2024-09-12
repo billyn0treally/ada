@@ -4,7 +4,7 @@ anges.
 Vad är en O-uppgift?
   [ ] En uppgift som skall göras i kursen där man normalt sett arbetar ensam
       (oftast det som kan jämställas med en "labserie" i andra kurser)
-  [ ] En uppgift som skall göras i kursen där man normalt sett arbetar i grupp
+  [X] En uppgift som skall göras i kursen där man normalt sett arbetar i grupp
       om 2 (oftast det som kan jämställas med en "labserie" i andra kurser)
   [X] Generellt sett en uppgift som är till för att man skall lära sig något
       för att senare kunna bli examinerad och få betyg i kursen
@@ -24,7 +24,7 @@ Var hittar jag information om vilka uppgifter som ingår i kursen?
 
 Hur vet jag vilken/vilka uppgifter som går att "skicka in" för "bedömning"
 just nu?
-  [ ] Man ser på färgen på uppgifterna i kurskartan
+  [X] Man ser på färgen på uppgifterna i kurskartan
   [X] När jag "hovrar" med muspekaren på uppgiftens ruta i kurskartan står det
       att uppgift är "upplåst"
   [ ] Det finns ingen sådan information
@@ -64,11 +64,11 @@ Sätt respektive rolls siffra vid rätt påstående:
   1. Examinator         [4] Kontaktas vid frågor om utebliven LADOK-rapportering
   2. Kursledare         [2] Kontaktas vid frågor om strul med SC och kurskarta
   3. Kursassistent      [1] Kontaktas vid frågor om problem med assistent
-  4. Kursadministratör  [1] Kontaktas vid frågor om programmering och rättning
-  5. Din assistent      [3] Kontaktas vid frågor om förlängd tid under P-pass
-  6. Helpdesk           [2] Kontaktas vid frågor om ThinLinc, VPN och
+  4. Kursadministratör  [5] Kontaktas vid frågor om programmering och rättning
+  5. Din assistent      [2] Kontaktas vid frågor om förlängd tid under P-pass
+  6. Helpdesk           [6] Kontaktas vid frågor om ThinLinc, VPN och
                             2-stegsautentisering
-                        [2] Kontaktas vid frågor om diverse saker
+                        [5] Kontaktas vid frågor om diverse saker
 
 [X] Jag har läst och förstått att kopiering eller användande av andras program
     kan leda till disciplinnämndsärende och att det i kursen är meningen att
