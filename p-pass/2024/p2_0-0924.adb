@@ -62,5 +62,6 @@ begin
     Put("32.7");
     Put(" blir ");
     Put((F), Fore => 0, Aft => 1, Exp => 0);
-    --Skip_Line;
+    New_Line(2);
+    Skip_Line;
 end p2_0;

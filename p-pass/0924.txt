@@ -1,0 +1,108 @@
+======================================================================
+              Ada.P2.0 - Underprogram och problemlösning
+======================================================================
+Skapa ett program som löser följande 3 deluppgifter i samma program!
+
+Ditt program skall sen fungera som körexemplet visar.
+Krav för uppgiften finns på hemsidan.
+
+======================================================================
+
+Deluppgift 1:
+-------------
+Skriv ett underprogram som från huvudprogrammet tar in ett flyttal och ett
+tecken, programmet skall dividera flyttalet med tecknet och skicka tillbaka
+resultatet i flyttalsform avrundat till närmaste heltal uppåt.
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 2:
+-------------
+Skriv ett underprogram som från huvudprogrammet tar in ett heltal (endast en
+parameter i parameterlistan). Denna parameter fås från huvudprogrammet och
+motsvarar radien (R) av en cirkel.
+
+Underprogrammet skall sedan beräkna arean av cirkeln och skicka tillbaka
+resultatet till huvudprogrammet i heltalsform (endast typomvandling).
+
+Formeln som används för beräkning av area: R * R * 3.14
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 3:
+-------------
+Skriv ett underprogram som har exakt två parametrar, en sträng med exakt 3
+tecken och ett flyttal. Underprogrammet skall ta emot det första datat,
+subtrahera talet med 32.7 och sedan skicka tillbaka det i flyttalsform till
+huvudprogrammet via den andra parametern.
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+======================================================================
+
+Körexempel 1:
+-------------
+Mata in ett flyttal: -21.8
+Mata in ett tecken: 2
+Den beräknade kvoten mellan -21.8 och 2 blir -10.0
+
+Mata in längden: 120
+Den beräknade arean blev: 45216
+
+Mata in en sträng: 120
+differensen mellan 120 och 32.7 blir 87.3
+
+
+Körexempel 2:
+-------------
+Mata in ett flyttal: -21.8
+Mata in ett tecken: 6
+Den beräknade kvoten mellan -21.8 och 6 blir -3.0
+
+Mata in längden:  83
+Den beräknade arean blev: 21631
+
+Mata in en sträng: -67
+differensen mellan -67 och 32.7 blir -99.7
+
+
+Körexempel 3:
+-------------
+Mata in ett flyttal: 421.3
+Mata in ett tecken: 2
+Den beräknade kvoten mellan 421.3 och 2 blir 211.0
+
+Mata in längden: 0
+Den beräknade arean blev: 0
+
+Mata in en sträng: 0.0
+differensen mellan 0.0 och 32.7 blir -32.7
+
+
+Körexempel 4:
+-------------
+Mata in ett flyttal: 421.3
+Mata in ett tecken: 6
+Den beräknade kvoten mellan 421.3 och 6 blir 71.0
+
+Mata in längden: 120
+Den beräknade arean blev: 45216
+
+Mata in en sträng: 120
+differensen mellan 120 och 32.7 blir 87.3
+
