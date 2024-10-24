@@ -6,7 +6,7 @@ procedure p20 is
 
     function "*" (S : in String ; C : in Character) return Integer is
     begin
-        return (Character'Pos(C) - Character'Pos('0')) * Integer'Value(S);
+        return (Character'Pos(C) - Character'Pos('0')) * Integer(Float'Value(S));
     end "*";
 
     procedure mul (S : out String ; F : out Float ; N : out Integer) is
