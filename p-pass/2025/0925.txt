@@ -1,0 +1,120 @@
+======================================================================
+              Ada.P2.0 - Underprogram och problemlösning
+======================================================================
+Skapa ett program som löser följande 3 deluppgifter i samma program!
+
+Ditt program skall sen fungera som körexemplet visar.
+Krav för uppgiften finns på hemsidan.
+
+======================================================================
+
+Deluppgift 1:
+-------------
+Skriv ett underprogram som har två eller tre parametrar.
+
+Den första parametern är ett heltal och den andra är ett heltal.
+
+Underprogrammet skall läsa in dessa två värden från tangentbordet och sedan
+skicka tillbaka dessa värden till huvudprogrammet. Alla ledtexter som behövs
+för inläsningen skall skrivas ut i underprogrammet.
+
+Dessutom skall underprogrammet beräkna summan av dessa (de två tal som finns i
+de första två parametrarna) och skicka tillbaka resultatet (i heltalsform) till
+huvudprogrammet.
+
+Vi antar att det som användaren matar in innehåller värden som går att tolka
+som tal, oavsett datatyp vi matar in data till, eller att de åtministone går
+att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 2:
+-------------
+Skriv ett underprogram som från huvudprogrammet tar in ett flyttal (endast en
+parameter i parameterlistan). Denna parameter fås från huvudprogrammet och
+motsvarar radien (R) av en cirkel.
+
+Underprogrammet skall sedan beräkna arean av cirkeln och skicka tillbaka
+resultatet till huvudprogrammet i flyttalsform.
+
+Formeln som används för beräkning av area: R * R * 3.14
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 3:
+-------------
+Skapa ett underprogram som från huvudprogrammet tar in ett tecken och en sträng
+med exakt 3 tecken och skickar tillbaka resultatet då dessa multipliceras.
+Resultatet skall skickas i flyttalsform (endast typomvandling).
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+======================================================================
+
+Körexempel 1:
+-------------
+Mata in ett heltal: 120
+Mata in ett heltal: 120
+Du matade in heltalet: 120 och heltalet: 120 och summan blev         240
+
+Mata in längden: -21.8
+Den beräknade arean blev: 1492.3
+
+Mata in ett tecken: 2
+Mata in en sträng: 120
+Den beräknade produkten av 2 och 120 blir 240.0
+
+
+Körexempel 2:
+-------------
+Mata in ett heltal: 120
+Mata in ett heltal: -83
+Du matade in heltalet: 120 och heltalet: -83 och summan blev          37
+
+Mata in längden: 421.3
+Den beräknade arean blev: 557330.2
+
+Mata in ett tecken: 2
+Mata in en sträng: -67
+Den beräknade produkten av 2 och -67 blir -134.0
+
+
+Körexempel 3:
+-------------
+Mata in ett heltal: -83
+Mata in ett heltal: 120
+Du matade in heltalet: -83 och heltalet: 120 och summan blev          37
+
+Mata in längden: 0.0
+Den beräknade arean blev: 0.0
+
+Mata in ett tecken: 6
+Mata in en sträng: 120
+Den beräknade produkten av 6 och 120 blir 720.0
+
+
+Körexempel 4:
+-------------
+Mata in ett heltal: -83
+Mata in ett heltal: -83
+Du matade in heltalet: -83 och heltalet: -83 och summan blev        -166
+
+Mata in längden: -21.8
+Den beräknade arean blev: 1492.3
+
+Mata in ett tecken: 6
+Mata in en sträng: -67
+Den beräknade produkten av 6 och -67 blir -402.0
+
