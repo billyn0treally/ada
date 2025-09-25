@@ -22,7 +22,7 @@ procedure p20 is
     function "*" (S : in String ; C : in Character) return Float is
         F : Float;
     begin
-        F := Float(Integer'Value(S) * (Character'Pos(C)-Character'Pos('0')));
+        F := (Float'Value(S) * Float((Character'Pos(C)-Character'Pos('0'))));
         return F;
     end "*";
 

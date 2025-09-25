@@ -7,13 +7,13 @@ RV NO_FLOATING_POINT
 RV NO_IO
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U p20%b			p20-0925.adb		0d647b79 NE OO SU IL
+U p20%b			p20-0925.adb		42f4d97e NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-Z system.val_int%s	s-valint.ads		s-valint.ali
+Z system.val_flt%s	s-valflt.ads		s-valflt.ali
 
 D ada.ads		20250808000000 76789da1 ada%s
 D a-except.ads		20250808000000 e7970cd9 ada.exceptions%s
@@ -31,12 +31,13 @@ D a-tiinio.ads		20250808000000 76699c8f ada.text_io.integer_io%s
 D a-unccon.ads		20250808000000 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20250808000000 9111f9c1 interfaces%s
 D i-cstrea.ads		20250808000000 ffd01b9d interfaces.c_streams%s
-D p20-0925.adb		20250925154948 2e4af2a3 p20%b
+D p20-0925.adb		20250925155651 61da50a4 p20%b
 D system.ads		20250808000000 14286b0f system%s
 D s-crtl.ads		20250808000000 beb39b9e system.crtl%s
 D s-exctab.ads		20250808000000 91bef6ef system.exception_table%s
 D s-ficobl.ads		20250808000000 dc5161d4 system.file_control_block%s
 D s-parame.ads		20250808000000 3597fc11 system.parameters%s
+D s-powflt.ads		20250808000000 a51ab9b8 system.powten_flt%s
 D s-putima.ads		20250808000000 17291fe4 system.put_images%s
 D s-secsta.ads		20250808000000 578279f5 system.secondary_stack%s
 D s-soflin.ads		20250808000000 5d88fdea system.soft_links%s
@@ -45,15 +46,8 @@ D s-stalib.ads		20250808000000 1c9580f6 system.standard_library%s
 D s-stoele.ads		20250808000000 ccded4e8 system.storage_elements%s
 D s-traent.ads		20250808000000 c81cbf8c system.traceback_entries%s
 D s-unstyp.ads		20250808000000 fa2a7f59 system.unsigned_types%s
-D s-valint.ads		20250808000000 8bab724f system.val_int%s
-D s-valspe.ads		20250808000000 f810d31c system.val_spec%s
-D s-valuns.ads		20250808000000 f7ddb71d system.val_uns%s
-D s-valuei.ads		20250808000000 d9377ca5 system.value_i%s
-D s-vaispe.ads		20250808000000 8280550e system.value_i_spec%s
-D s-valueu.ads		20250808000000 a38d32a6 system.value_u%s
-D s-vauspe.ads		20250808000000 89269ba5 system.value_u_spec%s
-D s-vs_int.ads		20250808000000 06b6b724 system.vs_int%s
-D s-vs_uns.ads		20250808000000 e7f47a27 system.vs_uns%s
+D s-valflt.ads		20250808000000 78fc9326 system.val_flt%s
+D s-valrea.ads		20250808000000 f0598c00 system.val_real%s
 D s-wchcon.ads		20250808000000 d9032363 system.wch_con%s
 G a e
 G c Z b b [p20 standard 5 11 none]
@@ -92,8 +86,8 @@ X 17 p20-0925.adb
 17V14 radie{float} 17b14 17>21 20l9 20t14 51s10
 17f21 F1{float} 19r17 19r22
 22V15 "*"{float} 22b15 22>19 22>35 27l10 27t12 64s11
-22a19 S{string} 25r34
-22e35 C{character} 25r54
+22a19 S{string} 25r27
+22e35 C{character} 25r53
 23f9 F{float} 25m9 26r16
 30a5 S{string} 58m9 62r9 64r10
 31e5 C{character} 56m9 60r9 64r12
