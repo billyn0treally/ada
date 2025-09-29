@@ -5,7 +5,7 @@ with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 procedure p20 is
 
 
-    procedure sum (N1 : in out Integer ; N2 : in out Integer ; Result : out Integer ) is
+    procedure sum (N1 : out Integer ; N2 : out Integer ; Result : out Integer ) is
     begin
     Put("Mata in ett heltal: ");
     Get(N1);

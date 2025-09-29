@@ -7,7 +7,7 @@ RV NO_FLOATING_POINT
 RV NO_IO
 RV NO_DYNAMIC_SIZED_OBJECTS
 
-U p20%b			p20-0925.adb		42f4d97e NE OO SU IL
+U p20%b			p20-0925.adb		f666e7d6 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -31,7 +31,7 @@ D a-tiinio.ads		20250808000000 76699c8f ada.text_io.integer_io%s
 D a-unccon.ads		20250808000000 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20250808000000 9111f9c1 interfaces%s
 D i-cstrea.ads		20250808000000 ffd01b9d interfaces.c_streams%s
-D p20-0925.adb		20250925155651 61da50a4 p20%b
+D p20-0925.adb		20250928140002 d5486e0c p20%b
 D system.ads		20250808000000 14286b0f system%s
 D s-crtl.ads		20250808000000 beb39b9e system.crtl%s
 D s-exctab.ads		20250808000000 91bef6ef system.exception_table%s
@@ -79,10 +79,10 @@ X 13 a-tiinio.ads
 87i7 Width{11|89I12} 17|39r13[4|18] 41r13[4|18]
 X 17 p20-0925.adb
 5U11*p20 5b11 68l5 68t8
-8U15 sum 8b15 8=20 8=42 8<64 15l9 15t12 37s5
+8U15 sum 8b15 8<20 8<39 8<58 15l9 15t12 37s5
 8i20 N1{integer} 11m9 14r15
-8i42 N2{integer} 13m9 14r20
-8i64 Result{integer} 14m5
+8i39 N2{integer} 13m9 14r20
+8i58 Result{integer} 14m5
 17V14 radie{float} 17b14 17>21 20l9 20t14 51s10
 17f21 F1{float} 19r17 19r22
 22V15 "*"{float} 22b15 22>19 22>35 27l10 27t12 64s11
@@ -91,8 +91,8 @@ X 17 p20-0925.adb
 23f9 F{float} 25m9 26r16
 30a5 S{string} 58m9 62r9 64r10
 31e5 C{character} 56m9 60r9 64r12
-32i5 N1{integer} 37m9 37r9 39r9
-32i9 N2{integer} 37m13 37r13 41r9
+32i5 N1{integer} 37m9 39r9
+32i9 N2{integer} 37m13 41r9
 32i13 Result{integer} 37m17 43r9
 33f5 F1{float} 48m9 51r16
 
