@@ -1,0 +1,113 @@
+======================================================================
+              Ada.P2.0 - Underprogram och problemlösning
+======================================================================
+Skapa ett program som löser följande 3 deluppgifter i samma program!
+
+Ditt program skall sen fungera som körexemplet visar.
+Krav för uppgiften finns på hemsidan.
+
+======================================================================
+
+Deluppgift 1:
+-------------
+Skriv ett underprogram som har två parametrar. Båda parametrarna är flyttal och
+fås från huvudprogrammet. Underprogrammet skall ta ut det största värdet av de
+två talen.
+
+Resultatet skall skickas tillbaka i flyttalsform avrundat till närmaste heltal
+uppåt.
+
+OBS! Det är ok med "fullständig uppräkning" i detta underprogram.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 2:
+-------------
+Skapa ett underprogram som från huvudprogrammet tar in en sträng med exakt 3
+tecken och ett tecken och skickar tillbaka summan av dessa. Resultatet skall
+skickas i flyttalsform avrundat till närmaste heltal.
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 3:
+-------------
+Skriv ett underprogram som har två parametrar. Första parametern är en sträng
+med exakt 3 tecken och skickas in från huvudprogrammet. Denna parameter
+motsvarar radien (R) av en cirkel.
+
+Underprogrammet skall sedan beräkna arean av cirkeln och skicka tillbaka
+resultatet till huvudprogrammet via den andra parametern i heltalsform.
+
+Formeln som används för beräkning av area: R * R * 3.14
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+======================================================================
+
+Körexempel 1:
+-------------
+Mata in två flyttal: -21.8
+-21.8
+Det största värdet av dessa är: -21.0
+
+Mata in en sträng: 120
+Mata in ett tecken: 2
+Den beräknade summan av 120 och 2 blir 122.0
+
+Mata in längden: 120
+Den beräknade arean blev: 45216
+
+
+Körexempel 2:
+-------------
+Mata in två flyttal: -21.8
+421.3
+Det största värdet av dessa är: 422.0
+
+Mata in en sträng: 120
+Mata in ett tecken: 6
+Den beräknade summan av 120 och 6 blir 126.0
+
+Mata in längden: -67
+Den beräknade arean blev: 14095
+
+
+Körexempel 3:
+-------------
+Mata in två flyttal: -21.8
+0.0
+Det största värdet av dessa är: 0.0
+
+Mata in en sträng: -67
+Mata in ett tecken: 2
+Den beräknade summan av -67 och 2 blir -65.0
+
+Mata in längden: 0.0
+Den beräknade arean blev: 0
+
+
+Körexempel 4:
+-------------
+Mata in två flyttal: 421.3
+-21.8
+Det största värdet av dessa är: 422.0
+
+Mata in en sträng: -67
+Mata in ett tecken: 6
+Den beräknade summan av -67 och 6 blir -61.0
+
+Mata in längden: 120
+Den beräknade arean blev: 45216
+
