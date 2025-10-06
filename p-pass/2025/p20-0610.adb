@@ -2,10 +2,6 @@ with Ada.Text_IO;                       use Ada.Text_IO;
 with Ada.Integer_Text_IO;               use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO;                 use Ada.Float_Text_IO;
 
--- 1 - fn
--- proc
--- operator
-
 procedure p20 is
 
     function add ( C : in Character) return Float is
@@ -66,10 +62,7 @@ begin
     Put(" och ");
     Put((N1), Width => 0); 
     Put(" blir ");
-    --Put((F1-N1), Fore => 0, Aft => 1, Exp => 0);
     Put((F1-N1), Width => 0);
     Skip_Line;
-
-
 
 end p20;
