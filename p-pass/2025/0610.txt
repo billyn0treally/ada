@@ -1,0 +1,116 @@
+======================================================================
+              Ada.P2.0 - Underprogram och problemlösning
+======================================================================
+Skapa ett program som löser följande 3 deluppgifter i samma program!
+
+Ditt program skall sen fungera som körexemplet visar.
+Krav för uppgiften finns på hemsidan.
+
+======================================================================
+
+Deluppgift 1:
+-------------
+Skriv ett underprogram som från huvudprogrammet tar in ett tecken (endast en
+parameter i parameterlistan). Underprogrammet skall addera tecknet med 32.7 och
+skicka tillbaka det i flyttalsform avrundat till närmaste heltal uppåt till
+huvudprogrammet.
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 2:
+-------------
+Skriv ett underprogram som har två eller tre parametrar.
+
+Den första parametern är en sträng och den andra är ett flyttal.
+
+Underprogrammet skall läsa in dessa två värden från tangentbordet och sedan
+skicka tillbaka dessa värden till huvudprogrammet. Alla ledtexter som behövs
+för inläsningen skall skrivas ut i underprogrammet.
+
+Dessutom skall underprogrammet beräkna kvoten mellan dessa (de två tal som
+finns i de första två parametrarna) och skicka tillbaka resultatet (i
+flyttalsform) till huvudprogrammet.
+
+Vi antar att det som användaren matar in innehåller värden som går att tolka
+som tal, oavsett datatyp vi matar in data till, eller att de åtministone går
+att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 3:
+-------------
+Skapa ett underprogram som från huvudprogrammet tar in ett flyttal och ett
+heltal och skickar tillbaka resultatet då dessa subtraheras. Resultatet skall
+skickas i heltalsform avrundat uppåt.
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+======================================================================
+
+Körexempel 1:
+-------------
+Mata in ett tecken: 2
+summan av 2 och 32.7 blir 35.0
+
+Mata in en sträng med exakt 3 tecken: 120
+Mata in ett flyttal: -21.8
+Du matade in strängen: 120 och flyttalet: -21.8 och kvoten blev -5.50459E+00
+
+Mata in ett flyttal: -21.8
+Mata in ett heltal: 120
+Den beräknade differensen mellan -21.8 och 120 blir -141
+
+
+Körexempel 2:
+-------------
+Mata in ett tecken: 6
+summan av 6 och 32.7 blir 39.0
+
+Mata in en sträng med exakt 3 tecken: 120
+Mata in ett flyttal: 421.3
+Du matade in strängen: 120 och flyttalet: 421.3 och kvoten blev  2.84833E-01
+
+Mata in ett flyttal: -21.8
+Mata in ett heltal: -83
+Den beräknade differensen mellan -21.8 och -83 blir 62
+
+
+Körexempel 3:
+-------------
+Mata in ett tecken: 0
+summan av 0 och 32.7 blir 33.0
+
+Mata in en sträng med exakt 3 tecken: -67
+Mata in ett flyttal: -21.8
+Du matade in strängen: -67 och flyttalet: -21.8 och kvoten blev  3.07339E+00
+
+Mata in ett flyttal: 421.3
+Mata in ett heltal: 120
+Den beräknade differensen mellan 421.3 och 120 blir 302
+
+
+Körexempel 4:
+-------------
+Mata in ett tecken: 2
+summan av 2 och 32.7 blir 35.0
+
+Mata in en sträng med exakt 3 tecken: -67
+Mata in ett flyttal: 421.3
+Du matade in strängen: -67 och flyttalet: 421.3 och kvoten blev -1.59032E-01
+
+Mata in ett flyttal: 421.3
+Mata in ett heltal: -83
+Den beräknade differensen mellan 421.3 och -83 blir 505
+
