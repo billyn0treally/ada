@@ -5,14 +5,16 @@ P ZX
 RN
 RV NO_FLOATING_POINT
 RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
 
-U p20%b			p20-0610.adb		87901a0e NE OO SU IL
+U p20%b			p20-0610.adb		3f2e1a6f NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 Z system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
+Z system.val_flt%s	s-valflt.ads		s-valflt.ali
 
 D ada.ads		20250808000000 76789da1 ada%s
 D a-except.ads		20250808000000 e7970cd9 ada.exceptions%s
@@ -30,7 +32,7 @@ D a-tiinio.ads		20250808000000 76699c8f ada.text_io.integer_io%s
 D a-unccon.ads		20250808000000 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20250808000000 9111f9c1 interfaces%s
 D i-cstrea.ads		20250808000000 ffd01b9d interfaces.c_streams%s
-D p20-0610.adb		20251006153704 a4be93d4 p20%b
+D p20-0610.adb		20251006154605 1c0093b5 p20%b
 D system.ads		20250808000000 14286b0f system%s
 D s-crtl.ads		20250808000000 beb39b9e system.crtl%s
 D s-exctab.ads		20250808000000 91bef6ef system.exception_table%s
@@ -38,6 +40,7 @@ D s-fatflt.ads		20250808000000 11beb392 system.fat_flt%s
 D s-fatgen.ads		20250808000000 d28c6cfe system.fat_gen%s
 D s-ficobl.ads		20250808000000 dc5161d4 system.file_control_block%s
 D s-parame.ads		20250808000000 3597fc11 system.parameters%s
+D s-powflt.ads		20250808000000 a51ab9b8 system.powten_flt%s
 D s-putima.ads		20250808000000 17291fe4 system.put_images%s
 D s-secsta.ads		20250808000000 578279f5 system.secondary_stack%s
 D s-soflin.ads		20250808000000 5d88fdea system.soft_links%s
@@ -46,6 +49,8 @@ D s-stalib.ads		20250808000000 1c9580f6 system.standard_library%s
 D s-stoele.ads		20250808000000 ccded4e8 system.storage_elements%s
 D s-traent.ads		20250808000000 c81cbf8c system.traceback_entries%s
 D s-unstyp.ads		20250808000000 fa2a7f59 system.unsigned_types%s
+D s-valflt.ads		20250808000000 78fc9326 system.val_flt%s
+D s-valrea.ads		20250808000000 f0598c00 system.val_real%s
 D s-wchcon.ads		20250808000000 d9032363 system.wch_con%s
 G a e
 G c Z b b [p20 standard 9 11 none]
@@ -58,31 +63,40 @@ X 4 a-inteio.ads
 X 11 a-textio.ads
 58K13*Text_IO 785e16 17|1w10 1r49
 89I12*Field{integer}
-284U14*New_Line 17|36s5
-295U14*Skip_Line 17|37s5 50s5
-419U14*Get 17|31s5
-433U14*Put 17|33s5
-515U14*Put 17|30s5 32s5 34s5 39s5 41s5 43s5 45s5 47s5
+284U14*New_Line 17|47s5 57s5
+295U14*Skip_Line 17|48s5 58s5 71s5
+419U14*Get 17|42s5
+433U14*Put 17|44s5
+501U14*Get 17|21s5
+515U14*Put 17|20s5 22s5 41s5 43s5 45s5 51s5 52s5 53s5 55s5 60s5 62s5 64s5
+. 66s5 68s5
 X 12 a-tiflio.ads
-64U14*Get 17|40s5[3|20]
-88U14*Put 17|35s5[3|20] 44s5[3|20]
-90i7 Fore{11|89I12} 17|35r19[3|20] 44r15[3|20]
-91i7 Aft{11|89I12} 17|35r30[3|20] 44r26[3|20]
-92i7 Exp{11|89I12} 17|35r40[3|20] 44r36[3|20]
+64U14*Get 17|23s5[3|20] 61s5[3|20]
+88U14*Put 17|46s5[3|20] 54s5[3|20] 56s5[3|20] 65s5[3|20]
+90i7 Fore{11|89I12} 17|46r19[3|20] 54r15[3|20] 65r15[3|20]
+91i7 Aft{11|89I12} 17|46r30[3|20] 54r26[3|20] 65r26[3|20]
+92i7 Exp{11|89I12} 17|46r40[3|20] 54r36[3|20] 65r36[3|20]
 X 13 a-tiinio.ads
-62U14*Get 17|42s5[4|18]
-85U14*Put 17|46s5[4|18] 49s5[4|18]
-87i7 Width{11|89I12} 17|46r15[4|18] 49r18[4|18]
+62U14*Get 17|63s5[4|18]
+85U14*Put 17|67s5[4|18] 70s5[4|18]
+87i7 Width{11|89I12} 17|67r15[4|18] 70r18[4|18]
 X 17 p20-0610.adb
-9U11*p20 9b11 54l5 54t8
-11V14 add{float} 11b14 11>20 16l9 16t12 35s10
+9U11*p20 9b11 75l5 75t8
+11V14 add{float} 11b14 11>20 16l9 16t12 46s10
 11e20 C{character} 14r49
 12f9 F{float} 14m9 15r16
-18V15 "-"{integer} 18b15 18>19 18>35 23l10 23t12 49s12
-18f19 F1{float} 21r36
-18i35 N1{integer} 21r43
-19i9 N{integer} 21m9 22r16
-25e5 C{character} 31m9 33r9 35r14
-26f5 F1{float} 40m9 44r10 49r10
-27i5 N1{integer} 42m9 46r10 49r13
+18U15 kvot 18b15 18<21 18<38 18<55 25l9 25t13 50s5
+18a21 S{string} 21m9 24r27
+18f38 F2{float} 23m9 24r32
+18f55 Result{float} 24m5
+28V15 "-"{integer} 28b15 28>19 28>35 33l10 33t12 70s12
+28f19 F1{float} 31r36
+28i35 N1{integer} 31r43
+29i9 N{integer} 31m9 32r16
+35a5 S{string} 50m10 52r9
+36e5 C{character} 42m9 44r9 46r14
+37f5 F1{float} 61m9 65r10 70r10
+37f9 F2{float} 50m13 54r10
+37f13 Result{float} 50m17 56r9
+38i5 N1{integer} 63m9 67r10 70r13
 

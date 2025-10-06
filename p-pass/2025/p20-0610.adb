@@ -15,13 +15,13 @@ procedure p20 is
         return F;
     end add;
 
-    procedure kvot (S : out String ; F2 : out Float ; Result : out Integer ) is
+    procedure kvot (S : out String ; F2 : out Float ; Result : out Float ) is
     begin
-    Put("Mata in ett heltal: ");
-    Get(N1);
-    Put("Mata in ett heltal: ");
-    Get(N2);
-    Result := N1 + N2;
+    Put("Mata in en sträng med exakt 3 tecken: ");
+    Get(S);
+    Put("Mata in ett flyttal: ");
+    Get(F2);
+    Result := Float'Value(S) / F2;
     end kvot;
 
 
@@ -34,7 +34,7 @@ procedure p20 is
 
     S : String(1..3);
     C : Character;
-    F1, F2 : Float;
+    F1, F2, Result : Float;
     N1 : Integer;
 
 begin
@@ -44,6 +44,16 @@ begin
     Put(C);
     Put(" och 32.7 blir ");
     Put((add(C)), Fore => 0, Aft => 1, Exp => 0);
+    New_Line(2);
+    Skip_Line;
+
+    kvot(S, F2, Result);
+    Put("Du matade in strängen: ");
+    Put(S);
+    Put(" och flyttalet: ");
+    Put((F2), Fore => 0, Aft => 1, Exp => 0);
+    Put(" och kvoten blev ");
+    Put(Result);
     New_Line(2);
     Skip_Line;
 
