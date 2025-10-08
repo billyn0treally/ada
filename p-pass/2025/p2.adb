@@ -24,13 +24,11 @@ procedure p2 is
     end "/";
 
     function median (F1, F2, F3 : in Float) return Integer is
-        --N : Integer;
     begin
         if F1 <= F2 and F2 <= F3 then
             return Integer(Float'Rounding(F2));
         elsif F2 <= F1 and F1 <= F3 then
             return Integer(Float'Rounding(F1));
-        --elsif F3 < F1 and F3 > F2 then
         else
             return Integer(Float'Rounding(F3));
         end if;
@@ -38,10 +36,10 @@ procedure p2 is
     end median;
 
 
-F1, F2, F3 : Float;
-N1, Result : Integer;
-S : String(1..3);
-C : Character;
+    F1, F2, F3 : Float;
+    N1, Result : Integer;
+    S : String(1..3);
+    C : Character;
 begin
 
     sub(C, S, Result);
