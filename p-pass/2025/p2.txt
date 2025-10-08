@@ -1,0 +1,124 @@
+======================================================================
+               Ada.P2 - Underprogram och problemlösning
+======================================================================
+Skapa ett program som löser följande 3 deluppgifter i samma program!
+
+Ditt program skall sen fungera som körexemplet visar.
+Krav för uppgiften finns på hemsidan.
+
+======================================================================
+
+Deluppgift 1:
+-------------
+Skriv ett underprogram som har två eller tre parametrar.
+
+Den första parametern är ett tecken och den andra är en sträng.
+
+Underprogrammet skall läsa in dessa två värden från tangentbordet och sedan
+skicka tillbaka dessa värden till huvudprogrammet. Alla ledtexter som behövs
+för inläsningen skall skrivas ut i underprogrammet.
+
+Dessutom skall underprogrammet beräkna resultatet då dessa subtraheras (de två
+tal som finns i de första två parametrarna) och skicka tillbaka resultatet (i
+heltalsform avrundat till närmaste heltal) till huvudprogrammet.
+
+Vi antar att det som användaren matar in innehåller värden som går att tolka
+som tal, oavsett datatyp vi matar in data till, eller att de åtministone går
+att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 2:
+-------------
+Skriv ett underprogram som från huvudprogrammet tar in en sträng med exakt 3
+tecken och ett heltal, programmet skall dividera strängen med heltalet och
+skicka tillbaka resultatet i flyttalsform (endast typomvandling).
+
+Vi antar att parametrarna oavsett datatyp innehåller värden som går att tolka
+som tal eller att de åtministone går att omvandla till tal.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+Deluppgift 3:
+-------------
+Skriv ett underprogram som har tre parametrar. Alla parametrar är flyttal och
+tas in från huvudprogrammet. Underprogrammet skall sedan beräkna medianen av de
+tre talen.
+
+Resultatet skall skickas tillbaka i heltalsform avrundat till närmaste heltal.
+
+OBS! Det är ok med "fullständig uppräkning" i detta underprogram.
+
+OBS! Övriga generella krav finns på hemsidan.
+
+
+
+======================================================================
+
+Körexempel 1:
+-------------
+Mata in ett tecken: 2
+Mata in en sträng med exakt 3 tecken: 120
+Du matade in tecknet: 2 och strängen: 120 och differensen blev        -118
+
+Mata in en sträng: 120
+Mata in ett heltal: 120
+Den beräknade kvoten mellan 120 och 120 blir 1.0
+
+Mata in tre flyttal: -21.8
+-21.8
+-21.8
+Medianen av dessa är: -22
+
+
+Körexempel 2:
+-------------
+Mata in ett tecken: 2
+Mata in en sträng med exakt 3 tecken: -67
+Du matade in tecknet: 2 och strängen: -67 och differensen blev          69
+
+Mata in en sträng: 120
+Mata in ett heltal: -83
+Den beräknade kvoten mellan 120 och -83 blir -1.4
+
+Mata in tre flyttal: -21.8
+-21.8
+421.3
+Medianen av dessa är: -22
+
+
+Körexempel 3:
+-------------
+Mata in ett tecken: 6
+Mata in en sträng med exakt 3 tecken: 120
+Du matade in tecknet: 6 och strängen: 120 och differensen blev        -114
+
+Mata in en sträng: -67
+Mata in ett heltal: 120
+Den beräknade kvoten mellan -67 och 120 blir -0.6
+
+Mata in tre flyttal: -21.8
+-21.8
+0.0
+Medianen av dessa är: -22
+
+
+Körexempel 4:
+-------------
+Mata in ett tecken: 6
+Mata in en sträng med exakt 3 tecken: -67
+Du matade in tecknet: 6 och strängen: -67 och differensen blev          73
+
+Mata in en sträng: -67
+Mata in ett heltal: -83
+Den beräknade kvoten mellan -67 och -83 blir 0.8
+
+Mata in tre flyttal: -21.8
+421.3
+-21.8
+Medianen av dessa är: -22
+
